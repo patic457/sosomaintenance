@@ -84,8 +84,13 @@ include("session.php");
 		<div id="content">
 			<div class="right" id="load_body">
 				<?php
-				$m_temp = $_GET['m'];
-				echo "<p>".$m_temp;
+				if ($_GET['m'] == null) {
+					$m_temp = '0';
+				} else {
+					$m_temp = $_GET['m'];
+				}
+
+
 				if ($_SESSION['user_status_session'] == '2' && $m_temp == '') {
 					$m_temp = '4';
 				} else if ($_SESSION['user_status_session'] == '1' && $m_temp == '') {
