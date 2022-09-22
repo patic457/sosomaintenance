@@ -74,10 +74,9 @@ $ddate = date("Y/m/d");
 $result_username = $mysqli->query("SELECT * FROM user WHERE username='$fetch_list[username]'");
 $fetch_username  = mysqli_fetch_array($result_username);
 
-// $result_prename = $mysqli->query("SELECT * FROM prename WHERE id_prename='$fetch_username[id_prename]'");
-// $fetch_prename  = mysqli_fetch_array($result_prename);
-
-$fetch_prename  = $fetch_username['id_prename'];
+$result_prename = $mysqli->query("SELECT * FROM prename WHERE id_prename='$fetch_username[id_prename]'");
+$fetch_prename  = mysqli_fetch_array($result_prename);
+$prename_title  = $fetch_prename['prename'];
 
 $result_sector = $mysqli->query("SELECT * FROM sector WHERE id_sector='$fetch_username[id_sector]'");
 $fetch_sector  = mysqli_fetch_array($result_sector);
@@ -162,7 +161,7 @@ echo"</select>";
 <table class="form">
 <tr>
 <th style="text-align:center;" class="form"   scope="col" colspan="4">|------------------------------ ข้อมูลผู้แจ้ง -------------------------------|</th></tr>
-<tr><th  scope="row"  >ผู้แจ้ง : </th><td colspan="3"><?php echo $fetch_prename.$fetch_username['name'].' '.$fetch_username['lastname'] ?></td></tr>
+<tr><th  scope="row"  >ผู้แจ้ง : </th><td colspan="3"><?php echo $prename_title.$fetch_username['name'].' '.$fetch_username['lastname'] ?></td></tr>
 <tr><th scope="row">สังกัด : </th><td><?php echo $fetch_belong['belong']; ?></td><th scope="row">หน่วยงาน : </th><td><?php echo $fetch_sector['sector']; ?></td></tr>
 <tr><th scope="row">โทรสายตรง : </th><td><?php echo $fetch_username['tel']; ?></td><th scope="row">อีเมล์ : </th><td><?php echo $fetch_username['mail']; ?></td></tr>
 <tr><th align="center" style="text-align:center; " class="form"   scope="col" colspan="4">
