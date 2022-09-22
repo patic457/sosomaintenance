@@ -1,4 +1,4 @@
-<? session_start(); ?>
+<?php session_start(); ?>
 
 <script src="jquery.js" language="javascript" type="text/javascript"></script>
 <script  language="javascript" type="text/javascript">
@@ -21,7 +21,7 @@ win.focus();}*/
 
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<?
+<?php
 
 // $host = "localhost";
 // $u = "root";
