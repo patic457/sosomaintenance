@@ -63,7 +63,7 @@ include("session.php");
 
 		<div id="menu">
 			<ul>
-				<li><a href="index.php">หน้าแรก</a></li>
+				<li><a href="index.php?m=">หน้าแรก</a></li>
 				<?php if ($_SESSION['user_status_session'] != '9') { ?>
 					<li><a href="index.php?m=2">แจ้งซ่อม</a></li>
 					<li><a href="index.php?m=3">ประวัติการแจ้งซ่อม</a></li>
