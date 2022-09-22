@@ -84,7 +84,7 @@ include("session.php");
 		<div id="content">
 			<div class="right" id="load_body">
 				<?php
-				if ($_GET['m'] == null) {
+				if (is_null($_GET['m'])) {
 					$m_temp = '0';
 				} else {
 					$m_temp = $_GET['m'];
