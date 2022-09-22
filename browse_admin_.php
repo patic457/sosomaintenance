@@ -74,8 +74,10 @@ $ddate = date("Y/m/d");
 $result_username = $mysqli->query("SELECT * FROM user WHERE username='$fetch_list[username]'");
 $fetch_username  = mysqli_fetch_array($result_username);
 
-$result_prename = $mysqli->query("SELECT * FROM prename WHERE id_prename='$fetch_username[id_prename]'");
-$fetch_prename  = mysqli_fetch_array($result_prename);
+// $result_prename = $mysqli->query("SELECT * FROM prename WHERE id_prename='$fetch_username[id_prename]'");
+// $fetch_prename  = mysqli_fetch_array($result_prename);
+
+$fetch_prename  = $fetch_username['id_prename'];
 
 $result_sector = $mysqli->query("SELECT * FROM sector WHERE id_sector='$fetch_username[id_sector]'");
 $fetch_sector  = mysqli_fetch_array($result_sector);
