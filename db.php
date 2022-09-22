@@ -35,6 +35,8 @@ $u = "de7p9prkwmh3kquo";
 $p = "j2batag6pvrfimgh";
 $dbname = "g3uky2wss1pv3jyv";
 
+$mysqli = new mysqli($host,$u,$p,$dbname);
+
 
 mysqli_connect($host,$u,$p,$dbname) or die("Error1");
 // mysqli_select_db($dbname) or die("Error2");

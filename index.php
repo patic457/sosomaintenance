@@ -4,8 +4,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-include"db.php"; 
-include"session.php";
+include("db.php"); 
+include("session.php");
 
 ?>
 
@@ -39,7 +39,7 @@ color:red;
 <div id="wrap">
 
 <div id="header">
-<h1><a href='#'>ระบบจัดการงานซ่อมบำรุง</a></h1>
+<h1><a href=''>ระบบจัดการงานซ่อมบำรุง</a></h1>
 <h2>หน่วยอาคารสถานที่และยานพาหนะ คณะสัตวแพทยศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</h2>
 </div>
 
@@ -118,10 +118,10 @@ $sql_list_1 = "SELECT * FROM list_service WHERE job_status='รอการอ�
 $sql_list_2 = "SELECT * FROM list_service WHERE job_status='อนุมัติแล้วกำลังรอการดำเนินการ'";
 $sql_list_3 = "SELECT * FROM list_service WHERE job_status='อยู่ในระหว่างการดำเนินการ'";
 $sql_list_9 = "SELECT * FROM list_service WHERE job_status='อยู่ในระหว่างการดำเนินการ' AND id_technician_a='$_SESSION[username_session]'";
-$r_list_1 = mysqli_query($sql_list_1);
-$r_list_2 = mysqli_query($sql_list_2);
-$r_list_3 = mysqli_query($sql_list_3);
-$r_list_9 = mysqli_query($sql_list_9);
+$r_list_1 = $mysqli->query($sql_list_1);
+$r_list_2 = $mysqli->query($sql_list_2);
+$r_list_3 = $mysqli->query($sql_list_3);
+$r_list_9 = $mysqli->query($sql_list_9);
 
 $num_list1 = mysqli_num_rows($r_list_1);
 $num_list2 = mysqli_num_rows($r_list_2);

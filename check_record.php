@@ -24,7 +24,7 @@
 $pagesize = 100;
 // แบ่งหน้าแสดงผล
 if($_SESSION['user_status_session']=="0"){
-$sql_page = mysql_query("SELECT count(date) as date FROM list_service WHERE username='$_SESSION[username_session]'"); }
+$sql_page = $mysqli_connect->query("SELECT count(date) as date FROM list_service WHERE username='$_SESSION[username_session]'"); }
 else if($_SESSION['user_status_session']=="1" || $_SESSION['user_status_session']=="2"){$sql_page = mysql_query("SELECT count(date) as date FROM list_service");}
 
 //$sql_page = "SELECT count(date) as date FROM list_service";
@@ -49,7 +49,7 @@ if($id_building_!="0"){$sql.=" AND id_building='$id_building_'";}
 if($job_status_!="0"){$sql.=" AND job_status='$job_status_'";}
 
 $sql.=" ORDER BY id_list DESC";
-$result_r = mysql_query($sql);
+$result_r = $mysqli->query($sql);
 $num_r = mysqli_num_rows($result_r);
 
 $r=0;

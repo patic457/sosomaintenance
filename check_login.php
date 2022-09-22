@@ -1,11 +1,11 @@
 <?php session_start();
-include"db.php";
+include("db.php");
 $username_session = $_POST['a'];
 $password_session = base64_encode(md5($_POST['b']));
 
 if($username_session=="" && $password_session=="" ){ echo"<script>alert('กรุณากรอกให้ครบถ้วน')</script>"; }
 	else{ 	$sqllg = "SELECT * FROM user WHERE username = '$username_session' AND password = '$password_session'";
-	 	  		$sqllg_query = mysql_query($sqllg);
+	 	  		$sqllg_query = $mysqli ->query($sqllg);
 				$sqllg_num=mysqli_num_rows($sqllg_query);
 				$fetch  = mysqli_fetch_array($sqllg_query);
 				$id_prename_session = $fetch['id_prename'];
