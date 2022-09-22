@@ -37,7 +37,7 @@ $i_tech++;
 echo"</select>";
 };//End tech()
 
-function build(){
+function build($mysqli){
 $re_build = $mysqli->query("SELECT * FROM building");
 $num_build = mysqli_num_rows($re_build);
 $i_build=0;
@@ -88,7 +88,7 @@ echo"</select>";
   </select>
   </label> 
   <label id="b">
-อาคาร : <?php build(); ?>
+อาคาร : <?php build($mysqli); ?>
   </label>
   <p>
     <!--<label id="s">
