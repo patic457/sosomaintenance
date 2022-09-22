@@ -50,7 +50,7 @@ echo "pass4=$pass4";*/
 $sql = "UPDATE user SET password='$pass4',			
 id_prename='$_POST[prename]',name='$_POST[name]',lastname='$_POST[lastname]',id_sector='$_POST[id_sector]',tel='$_POST[tel]',mail='$_POST[mail]',user_status='$_POST[user]' WHERE username='$_SESSION[username_session]'";
 		$sqlquery = $mysqli->query($sql) or die("Error edit2");
-		mysql_close();
+		
 if($pass4!=$fetch_sel['password']){
 session_destroy();
 session_unset ();

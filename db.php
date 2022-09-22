@@ -1,5 +1,5 @@
 <?php 
-session_start(); 
+if (!session_id()) session_start();
 ?>
 
 <script src="jquery.js" language="javascript" type="text/javascript"></script>

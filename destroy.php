@@ -1,4 +1,4 @@
-<?php //session_start(); 
+<?php if (!session_id()) session_start();; 
 include"db.php";
  
 session_destroy();

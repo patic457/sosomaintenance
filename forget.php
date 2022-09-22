@@ -1,4 +1,4 @@
-<?php //session_start();include('db.php'); ?>
+<?php if (!session_id()) session_start();;include('db.php'); ?>
 <head>
 <style>
 .login {

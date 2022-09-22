@@ -1,5 +1,5 @@
 <?php 
-//session_start();
+if (!session_id()) session_start();;
 include"db.php";
 $username = $_POST['a'];
 $mail = $_POST['b'];
