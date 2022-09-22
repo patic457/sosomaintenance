@@ -1,7 +1,11 @@
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
-<?php include"db.php"; include"session.php"; include"func.php";
+<?php 
 
-function Select($sta){
+include"db.php"; 
+include"session.php"; 
+include"func.php";
+
+function Select($mysqli,$sta){
 $result = $mysqli->query("SELECT * FROM list_service WHERE job_status='$sta' ORDER BY id_list DESC");
 $num = mysqli_num_rows($result);
 if($num!=0){}else{}
@@ -78,7 +82,7 @@ $i++;
 <center>
 <form id="ff" method="post" action="browse.php"><table align="center" class="css"><tr><th scope="col">วันที่แจ้ง</th><th scope="col">เวลาที่แจ้ง</th><th scope="col">ผู้แจ้ง</th>
 <th scope="col">ประเภทที่แจ้ง</th><th scope="col">รายละเอียด</th></tr>
-<?php Select("รอการอนุมัติ"); ?>
+<?php Select($mysqli,"รอการอนุมัติ"); ?>
 </table></form></center>   
 <strong></strong>  
 
