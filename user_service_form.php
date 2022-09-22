@@ -20,20 +20,20 @@ $(function(){$("#bt").click(function(){
 
 $ddate = date("Y/m/d");
 
-$result_username = mysql_query("SELECT * FROM user WHERE username='$_SESSION[username_session]'");
+$result_username = $mysqli->query("SELECT * FROM user WHERE username='$_SESSION[username_session]'");
 $fetch_username  = mysqli_fetch_array($result_username);
 
-$result_prename = mysql_query("SELECT * FROM prename WHERE id_prename='$fetch_username[id_prename]'");
+$result_prename = $mysqli->query("SELECT * FROM prename WHERE id_prename='$fetch_username[id_prename]'");
 $fetch_prename  = mysqli_fetch_array($result_prename);
 
-$result_sector = mysql_query("SELECT * FROM sector WHERE id_sector='$fetch_username[id_sector]'");
+$result_sector = $mysqli->query("SELECT * FROM sector WHERE id_sector='$fetch_username[id_sector]'");
 $fetch_sector  = mysqli_fetch_array($result_sector);
 
-$result_belong = mysql_query("SELECT * FROM belong WHERE id_belong='$fetch_sector[id_belong]'");
+$result_belong = $mysqli->query("SELECT * FROM belong WHERE id_belong='$fetch_sector[id_belong]'");
 $fetch_belong  = mysqli_fetch_array($result_belong);
 
-function problem_sel(){
-$result_problem_sel = mysql_query("SELECT * FROM type_problem");
+function problem_sel($mysqli){
+$result_problem_sel = $mysqli->query("SELECT * FROM type_problem");
 $num_problem_sel = mysqli_num_rows($result_problem_sel);
 $prob = 0;
 echo"<select id='p' name='p'>";
@@ -46,8 +46,8 @@ $prob++;
 echo"</select>";
 }; //problem_sel
 
-function building_sel(){
-$result_building_sel = mysql_query("SELECT * FROM building");
+function building_sel($mysqli){
+$result_building_sel = $mysqli->query("SELECT * FROM building");
 $num_building_sel = mysqli_num_rows($result_building_sel);
 $build = 0;
 echo"<select id='b' name='b'>";
@@ -71,13 +71,13 @@ echo"</select>";
 <tr><th scope="row">สังกัด : </th><td><?php echo $fetch_belong['belong'];?></td><th scope="row">หน่วยงาน : </th><td><?php echo $fetch_sector['sector'];?></td></tr>
 <tr><th scope="row">โทรสายตรง : </th><td><?php echo $fetch_username['tel'];?></td><th scope="row">อีเมล์ : </th><td><?php echo $fetch_username['mail'];?></td></tr>
 <tr><th align="center"  style="text-align:center;" class="form"   scope="col" colspan="4">|------------------------------ ข้อมูลแจ้งซ่อม -------------------------------|</th></tr>
-<tr><th scope="row">ประเภทที่แจ้ง : </th><td><?php problem_sel(); ?></td>
+<tr><th scope="row">ประเภทที่แจ้ง : </th><td><?php problem_sel($mysqli); ?></td>
 <?php if($_SESSION['user_status_session']!='0'){ ?>
-<th scope="row">อาคาร : </th><td><?php building_sel();?></td></tr>
+<th scope="row">อาคาร : </th><td><?php building_sel($mysqli);?></td></tr>
 <tr><th scope="row">ชั้น : </th><td ><label id="floor_sel"><font color="#FF0000">กรุณาเลือกอาคารก่อน</font></label></td>
 <th scope="row">ห้อง : </th><td><label id="room_sel"><font color="#FF0000">กรุณาเลือกชั้นก่อน</font></label></td></tr>
 <?php }else{ 
-$result_db = mysql_query("SELECT * FROM room WHERE id_building='$fetch_sector[id_building]'");
+$result_db = $mysqli->query("SELECT * FROM room WHERE id_building='$fetch_sector[id_building]'");
 $fetch_db_1 = mysqli_fetch_array($result_db);
 ?>
 <script>
@@ -92,7 +92,7 @@ $(function(){$("#bt").click(function(){
 </script>
 <th scope="row">ห้อง : </th><td>
 <?php 
-$result_room_user_sel = mysql_query("SELECT * FROM room WHERE id_sector='$fetch_sector[id_sector]'");
+$result_room_user_sel = $mysqli->query("SELECT * FROM room WHERE id_sector='$fetch_sector[id_sector]'");
 $num_room_user_sel = mysqli_num_rows($result_room_user_sel);
 $roo = 0;
 echo"<select id='room' name='room'>";
