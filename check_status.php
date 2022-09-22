@@ -17,7 +17,7 @@ switch($step){
 		{
 		$sqll = "update list_service set job_status='$s', date_complete='$date_temp', time_complete='$time_temp', username_1='$_SESSION[username_session]', comment='$comment' where id_list='$id'";
 		}
-		$sqlquery = mysql_query($sqll) or die("Error 1");
+		$sqlquery = $mysqli->query($sqll) or die("Error 1");
 		print"<script>alert('บันทึกข้อมูลสำเร็จแล้ว');Location('index.php?m=5');</script>";
 	break;
 
@@ -28,7 +28,7 @@ switch($step){
 		$time_temp = date("H").":".date("i").":".date("s");
 
 		$sqll = "update list_service set job_status='อยู่ในระหว่างการดำเนินการ' , id_technician_a='$tech_a' , id_technician_b='$tech_b' , date_2='$date_temp' , time_2='$time_temp' where id_list='$id'";
-		$sqlquery = mysql_query($sqll) or die("Error 2");
+		$sqlquery = $mysqli->query($sqll) or die("Error 2");
 		print"<script>alert('บันทึกข้อมูลสำเร็จแล้ว');Location('index.php?m=6');</script>";
 	break;
 
@@ -39,7 +39,7 @@ switch($step){
 		$time_temp = date("H").":".date("i").":".date("s");
 		
 		$sqll = "update list_service set job_status='$s' , comment='$comment' , date_complete='$date_temp' , time_complete='$time_temp' where id_list='$id'";
-		$sqlquery = mysql_query($sqll) or die("Error 3");
+		$sqlquery = $mysqli->query($sqll) or die("Error 3");
 		print"<script>alert('คุณได้ดำเนินการเรียบร้อยแล้ว ระบบได้จัดเก็บประวัติแจ้งซ่อมลงในฐานข้อมูลเรียบร้อยแล้ว');Location('index.php');</script>";
 	break;
 		 

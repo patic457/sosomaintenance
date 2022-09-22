@@ -17,7 +17,7 @@ function(data){$("#msg").html(data);});
 });
 </script>
 <?php 
-$result = mysql_query("SELECT * FROM room WHERE id_room='$_POST[id_room_]'");
+$result = $mysqli->query("SELECT * FROM room WHERE id_room='$_POST[id_room_]'");
 $num = mysqli_num_rows($result);
 $fetch  = mysqli_fetch_array($result);
 $room_sel_temp = $fetch['room'];
@@ -34,7 +34,7 @@ $id_sector_sel_temp = $fetch['id_sector'];
 <tr><td>
 อาคาร : <select name="be" id="be">
 <?php 
-$resultb = mysql_query("SELECT * FROM building");
+$resultb = $mysqli->query("SELECT * FROM building");
 $numb = mysqli_num_rows($resultb);
 $j=0;
 while($j<$numb){	
@@ -51,7 +51,7 @@ $j++; }
 หน่วยงาน : 
  <select name="de" id="de">
 <?php 
-$results = mysql_query("SELECT * FROM sector order by id_sector ASC");
+$results = $mysqli->query("SELECT * FROM sector order by id_sector ASC");
 $num = mysqli_num_rows($results);
 $i=0;
 

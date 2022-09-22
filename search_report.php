@@ -20,7 +20,7 @@ $.post("check_search_report.php",{id_building: id_building,var_check: var_check}
 <?
 
 function tech(){
-$re_tech = mysql_query("SELECT * FROM technician");
+$re_tech = $mysqli->query("SELECT * FROM technician");
 $num_tech = mysqli_num_rows($re_tech);
 $i_tech=0;
 echo"<select id=\"techh\" name='techh'>";
@@ -38,7 +38,7 @@ echo"</select>";
 };//End tech()
 
 function build(){
-$re_build = mysql_query("SELECT * FROM building");
+$re_build = $mysqli->query("SELECT * FROM building");
 $num_build = mysqli_num_rows($re_build);
 $i_build=0;
 echo"<select id=\"build\" name=\"build\">";

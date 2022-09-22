@@ -5,12 +5,12 @@
 $pagesize = 15;
 // แบ่งหน้าแสดงผล
 
-if(isset($_GET['link_a'])==true){$sql_page=mysql_query("SELECT count(id_sector) as id_sector FROM sector WHERE id_belong='$_GET[link_a]'");}
-else if(isset($_GET['link_b'])==true){$sql_page=mysql_query("SELECT count(id_sector) as id_sector FROM sector WHERE id_building='$_GET[link_b]'");}
-else{ $sql_page=mysql_query("SELECT count(id_sector) as id_sector FROM sector");}
+if(isset($_GET['link_a'])==true){$sql_page=$mysqli->query("SELECT count(id_sector) as id_sector FROM sector WHERE id_belong='$_GET[link_a]'");}
+else if(isset($_GET['link_b'])==true){$sql_page=$mysqli->query("SELECT count(id_sector) as id_sector FROM sector WHERE id_building='$_GET[link_b]'");}
+else{ $sql_page=$mysqli->query("SELECT count(id_sector) as id_sector FROM sector");}
 
 
-//$sql_page = mysql_query("SELECT count(id_sector) as id_sector FROM sector");
+//$sql_page = $mysqli->query("SELECT count(id_sector) as id_sector FROM sector");
 $crow = mysqli_fetch_row($sql_page);
 $totalrecord = $crow[0];
 $totalpage = ceil($totalrecord / $pagesize);
@@ -21,14 +21,14 @@ else {
 $pageid = 1;
 $start = 0;
 }
-//$result = mysql_query("SELECT * FROM building ORDER BY id_building DESC limit $start,$pagesize"); ต้องใช้ทุกครั้ง
+//$result = $mysqli->query("SELECT * FROM building ORDER BY id_building DESC limit $start,$pagesize"); ต้องใช้ทุกครั้ง
 //End Page
 
 if(isset($_GET['link_a'])==true){$sql_ = "SELECT * FROM sector WHERE id_belong='$_GET[link_a]' ORDER BY id_belong,id_building ASC limit $start,$pagesize";}
 else if(isset($_GET['link_b'])==true){ $sql_ = "SELECT * FROM sector WHERE id_building='$_GET[link_b]' ORDER BY id_belong,id_building ASC limit $start,$pagesize";}
 else{ $sql_ = "SELECT * FROM sector ORDER BY id_belong,id_building ASC limit $start,$pagesize"; }
 
-$result_sector = mysql_query($sql_);
+$result_sector = $mysqli->query($sql_);
 $num_sector = mysqli_num_rows($result_sector);
 ?>
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
@@ -113,11 +113,11 @@ $(function(){
 </script>
 <?
 
-$result_ = mysql_query("SELECT belong FROM belong WHERE id_belong='$id_belong_temp'");
+$result_ = $mysqli->query("SELECT belong FROM belong WHERE id_belong='$id_belong_temp'");
 $fetch_  = mysqli_fetch_array($result_);
 $belong_temp = $fetch_['belong'];
 
-$result_build = mysql_query("SELECT building FROM building WHERE id_building='$id_building_temp'");
+$result_build = $mysqli->query("SELECT building FROM building WHERE id_building='$id_building_temp'");
 $fetch_build  = mysqli_fetch_array($result_build);
 $building_temp = $fetch_build['building'];
 ?>
@@ -127,7 +127,7 @@ $building_temp = $fetch_build['building'];
 <td align="center" id="click<?php echo $i; ?>"><?php echo $building_temp; ?></td>
 <td>
 <?
-$sql_row = mysql_query("SELECT * FROM room WHERE id_sector='$id_sector_temp'");
+$sql_row = $mysqli->query("SELECT * FROM room WHERE id_sector='$id_sector_temp'");
 $row_s = mysqli_num_rows($sql_row);
 echo $row_s;
 ?>

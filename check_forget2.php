@@ -9,7 +9,7 @@ else if($pass1!=$pass2){ echo"<script>alert('กรุณากรอกรห�
 	else{ 	if(strlen($pass2)<=5){ echo"<script>alert('กรุณากรอกรหัสผ่านไม่น้อยกว่า 6 ตัวอักษร');</script>";exit();}
 			$pass=base64_encode(md5($pass2));
 			$sqllg ="UPDATE user SET password='$pass' WHERE username='$username'";
-			$sqlquery = mysql_query($sqllg) or die("Error 3");
+			$sqlquery = $mysqli->query($sqllg) or die("Error 3");
 				  echo"<script>alert('ท่านได้ทำการเปลี่ยนรหัสผ่านเรียบร้อยแล้ว');Location('login.php');</script>"; }?>
                      <div id="ree"></div>
 <script language="javascript">

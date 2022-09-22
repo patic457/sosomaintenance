@@ -3,7 +3,7 @@
 
 $pagesize = 10;
 // แบ่งหน้าแสดงผล
-$sql_page = mysql_query("SELECT count(id_prename) as id_prename FROM prename");
+$sql_page = $mysqli->query("SELECT count(id_prename) as id_prename FROM prename");
 $crow = mysqli_fetch_row($sql_page);
 $totalrecord = $crow[0];
 $totalpage = ceil($totalrecord / $pagesize);
@@ -14,7 +14,7 @@ else {
 $pageid = 1;
 $start = 0;
 }
-//$result = mysql_query("SELECT * FROM building ORDER BY id_building DESC limit $start,$pagesize"); ต้องใช้ทุกครั้ง
+//$result = $mysqli->query("SELECT * FROM building ORDER BY id_building DESC limit $start,$pagesize"); ต้องใช้ทุกครั้ง
 //End Page
  ?>
 <link rel="stylesheet" type="text/css" href="style_admin.css" />   
@@ -42,7 +42,7 @@ $(function(){
   </tr>
 <?
 
-$result = mysql_query("SELECT * FROM prename order by id_prename ASC limit $start,$pagesize");
+$result = $mysqli->query("SELECT * FROM prename order by id_prename ASC limit $start,$pagesize");
 $num = mysqli_num_rows($result);
 $i=0;
 

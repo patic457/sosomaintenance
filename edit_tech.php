@@ -3,7 +3,7 @@
 <?php 
 if(isset($_POST['edit'])==true){
 $edit=$_POST['edit'];
-$resultt = mysql_query("SELECT * FROM technician WHERE id_technician='$edit'");
+$resultt = $mysqli->query("SELECT * FROM technician WHERE id_technician='$edit'");
 $fetch  = mysqli_fetch_array($resultt);
 $id_technician_temp = $fetch['id_technician'];
 $name_temp = $fetch['name'];
@@ -14,7 +14,7 @@ $job_temp = $fetch['job'];
   
 function a(){
 
-$result = mysql_query("SELECT * FROM type_problem");
+$result = $mysqli->query("SELECT * FROM type_problem");
 $num = mysqli_num_rows($result);
 $i=1;
 while($i<=$num){

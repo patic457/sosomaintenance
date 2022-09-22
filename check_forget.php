@@ -5,7 +5,7 @@ $mail = $_POST['b'];
 
 if($username=="" && $mail=="" ){ echo"<script>alert('กรุณากรอกให้ครบถ้วน')</script>"; }
 	else{ 	$sqllg = "SELECT * FROM user WHERE username = '$username' AND mail = '$mail'";
-	 	  		$sqllg_query = mysql_query($sqllg);
+	 	  		$sqllg_query = $mysqli->query($sqllg);
 				$sqllg_num=mysqli_num_rows($sqllg_query);
 				//$fetch  = mysqli_fetch_array($sqllg_query);
 				//$user_status_temp = $fetch['user_status'];

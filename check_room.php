@@ -6,7 +6,7 @@ $check_room = $_POST['check_room'];
 
 switch ($check_room) {
 	case 'service_room':
-		$result_room = mysql_query("SELECT * FROM room WHERE floor='$floor_' AND id_building='$id_building_'");		
+		$result_room = $mysqli->query("SELECT * FROM room WHERE floor='$floor_' AND id_building='$id_building_'");		
 		$num = mysqli_num_rows($result_room);
 		$r=0;
 		print "<select  id=\"room\" name=\"room\"  >";

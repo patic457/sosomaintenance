@@ -4,7 +4,7 @@ $check_fl = $_POST['check_fl'];
 
 switch ($check_fl) {
 	case 'add_fl':
-		$result_fl = mysql_query("SELECT floor FROM building WHERE id_building='$b'");
+		$result_fl = $mysqli->query("SELECT floor FROM building WHERE id_building='$b'");
 		$fetch_fl  = mysqli_fetch_array($result_fl);
 		$floor_temp = $fetch_fl['floor'];
 		$fl=1;
@@ -18,7 +18,7 @@ switch ($check_fl) {
 	break;
 	
 	case 'edit_fl':
-		$result_fl = mysql_query("SELECT floor FROM building WHERE id_building='$b'");
+		$result_fl = $mysqli->query("SELECT floor FROM building WHERE id_building='$b'");
 		$fetch_fl  = mysqli_fetch_array($result_fl);
 		$floor_temp = $fetch_fl['floor'];
 		$fl=1;
@@ -41,7 +41,7 @@ switch ($check_fl) {
         });
         </script>
 		<?
-		$result_fl = mysql_query("SELECT floor FROM building WHERE id_building='$b'");
+		$result_fl = $mysqli->query("SELECT floor FROM building WHERE id_building='$b'");
 		$fetch_fl  = mysqli_fetch_array($result_fl);
 		$floor_temp = $fetch_fl['floor'];
 		$fl=1;

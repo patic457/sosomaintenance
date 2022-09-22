@@ -14,7 +14,7 @@ function Select(){
 $pagesize = 15;
 // แบ่งหน้าแสดงผล
 if($_SESSION['user_status_session']=='9'){
-$sql_page = mysql_query("SELECT count(date) as date FROM list_service WHERE username='$_SESSION[username_session]'");
+$sql_page = $mysqli->query("SELECT count(date) as date FROM list_service WHERE username='$_SESSION[username_session]'");
 }
 
 //$sql_page = "SELECT count(date) as date FROM list_service";
@@ -33,7 +33,7 @@ $start = 0;
 //End Page
 
 if($_SESSION['user_status_session']=='9'){
-$result = mysql_query("SELECT * FROM list_service WHERE id_technician_a='$_SESSION[username_session]' ORDER BY id_list DESC limit $start,$pagesize");
+$result = $mysqli->query("SELECT * FROM list_service WHERE id_technician_a='$_SESSION[username_session]' ORDER BY id_list DESC limit $start,$pagesize");
 }
 
 while($fetch = mysqli_fetch_array($result)){	
@@ -67,22 +67,22 @@ $job_status_temp = $fetch['job_status'];
 
 echo"<input type=\"hidden\" id=\"id$i\" value=\"$id_list_temp\" >";
 
-$result_u = mysql_query("SELECT * FROM user WHERE username='$username_temp'");
+$result_u = $mysqli->query("SELECT * FROM user WHERE username='$username_temp'");
 $fetch_u  = mysqli_fetch_array($result_u);
 $id_prename_temp =  $fetch_u['id_prename'];
 $name_temp =  $fetch_u['name'];
 $lastname_temp =  $fetch_u['lastname'];
 $id_sector_temp =  $fetch_u['id_sector'];
 
-$result_pre = mysql_query("SELECT * FROM prename WHERE id_prename='$id_prename_temp'");
+$result_pre = $mysqli->query("SELECT * FROM prename WHERE id_prename='$id_prename_temp'");
 $fetch_pre  = mysqli_fetch_array($result_pre);
 $prename_temp =  $fetch_pre['prename'];
 
-$result_s = mysql_query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
+$result_s = $mysqli->query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
 $fetch_s  = mysqli_fetch_array($result_s);
 $sector_temp =  $fetch_s['sector'];
 
-$result_p = mysql_query("SELECT * FROM type_problem WHERE id_problem='$id_problem_temp'");
+$result_p = $mysqli->query("SELECT * FROM type_problem WHERE id_problem='$id_problem_temp'");
 $fetch_p  = mysqli_fetch_array($result_p);
 $problem_temp =  $fetch_p['problem'];
 

@@ -25,7 +25,7 @@ $pagesize = 100;
 // แบ่งหน้าแสดงผล
 if($_SESSION['user_status_session']=="0"){
 $sql_page = $mysqli_connect->query("SELECT count(date) as date FROM list_service WHERE username='$_SESSION[username_session]'"); }
-else if($_SESSION['user_status_session']=="1" || $_SESSION['user_status_session']=="2"){$sql_page = mysql_query("SELECT count(date) as date FROM list_service");}
+else if($_SESSION['user_status_session']=="1" || $_SESSION['user_status_session']=="2"){$sql_page = $mysqli->query("SELECT count(date) as date FROM list_service");}
 
 //$sql_page = "SELECT count(date) as date FROM list_service";
 
@@ -82,22 +82,22 @@ $id_room_temps = $fetch['id_room'];
 $details_temps = $fetch['details'];
 $job_status_temps = $fetch['job_status'];
 
-$result_u = mysql_query("SELECT * FROM user WHERE username='$username_temps'");
+$result_u = $mysqli->query("SELECT * FROM user WHERE username='$username_temps'");
 $fetch_u  = mysqli_fetch_array($result_u);
 $id_prename_temps =  $fetch_u['id_prename'];
 $name_temps =  $fetch_u['name'];
 $lastname_temps =  $fetch_u['lastname'];
 $id_sector_temps =  $fetch_u['id_sector'];
 
-$result_pre = mysql_query("SELECT * FROM prename WHERE id_prename='$id_prename_temps'");
+$result_pre = $mysqli->query("SELECT * FROM prename WHERE id_prename='$id_prename_temps'");
 $fetch_pre  = mysqli_fetch_array($result_pre);
 $prename_temps =  $fetch_pre['prename'];
 
-$result_s = mysql_query("SELECT * FROM sector WHERE id_sector='$id_sector_temps'");
+$result_s = $mysqli->query("SELECT * FROM sector WHERE id_sector='$id_sector_temps'");
 $fetch_s  = mysqli_fetch_array($result_s);
 $sector_temps =  $fetch_s['sector'];
 
-$result_p = mysql_query("SELECT * FROM type_problem WHERE id_problem='$id_problem_temps'");
+$result_p = $mysqli->query("SELECT * FROM type_problem WHERE id_problem='$id_problem_temps'");
 $fetch_p  = mysqli_fetch_array($result_p);
 $problem_temps =  $fetch_p['problem'];
 

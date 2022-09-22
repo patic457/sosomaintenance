@@ -15,7 +15,7 @@ $.get("check_record.php",{tech: techh,month: month,year: year,id_building: id_bu
 <?
 
 function tech(){
-$re_tech = mysql_query("SELECT * FROM user where user_status='9'");
+$re_tech = $mysqli->query("SELECT * FROM user where user_status='9'");
 $num_tech = mysqli_num_rows($re_tech);
 $i_tech=0;
 echo"<select id=\"techh\" name='techh'>";
@@ -33,7 +33,7 @@ echo"</select>";
 };//End tech()
 
 function build(){
-$re_build = mysql_query("SELECT * FROM building");
+$re_build = $mysqli->query("SELECT * FROM building");
 $num_build = mysqli_num_rows($re_build);
 $i_build=0;
 echo"<select id=\"build\" name=\"build\">";

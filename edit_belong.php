@@ -7,7 +7,7 @@ $.post("check_admin.php",{id_belong_: id_belong_,belong_: belong_,check_status_1
 });
 </script>
 <?php 
-$result = mysql_query("SELECT * FROM belong WHERE id_belong='$_POST[id_belong_]'");
+$result = $mysqli->query("SELECT * FROM belong WHERE id_belong='$_POST[id_belong_]'");
 $num = mysqli_num_rows($result);
 $fetch  = mysqli_fetch_array($result);	
 ?>

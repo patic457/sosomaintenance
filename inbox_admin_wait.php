@@ -5,7 +5,7 @@
 <form id="ff" method="post"><table align="center" class="css"><tr><th scope="col">วันที่แจ้ง</th><th scope="col">เวลาที่แจ้ง</th><th scope="col">หน่วยงาน</th>
 <th scope="col">ประเภทที่แจ้ง</th><th scope="col">สถานะ</th><th scope="col">รายละเอียด</th></tr>
 
-<?php $result = mysql_query("SELECT * FROM list_service WHERE job_status='อยู่ในระหว่างการดำเนินการ' ORDER BY YEAR(date) , MONTH(date) , DAY(date) DESC");
+<?php $result = $mysqli->query("SELECT * FROM list_service WHERE job_status='อยู่ในระหว่างการดำเนินการ' ORDER BY YEAR(date) , MONTH(date) , DAY(date) DESC");
 $num = mysqli_num_rows($result);
 echo"<div class='title'>อยู่ในระหว่างการดำเนินการ</div><p>";
 
@@ -39,26 +39,26 @@ $details_temp = $fetch['details'];
 $job_status_temp = $fetch['job_status'];
 echo"<input type=\"hidden\" id=\"id$i\" value=\"$id_list_temp\" >";
 
-$result_u = mysql_query("SELECT * FROM user WHERE username='$username_temp'");
+$result_u = $mysqli->query("SELECT * FROM user WHERE username='$username_temp'");
 $fetch_u  = mysqli_fetch_array($result_u);
 $id_prename_temp =  $fetch_u['id_prename'];
 $name_temp =  $fetch_u['name'];
 $lastname_temp =  $fetch_u['lastname'];
 $id_sector_temp =  $fetch_u['id_sector'];
 
-$result_pre = mysql_query("SELECT * FROM prename WHERE id_prename='$id_prename_temp'");
+$result_pre = $mysqli->query("SELECT * FROM prename WHERE id_prename='$id_prename_temp'");
 $fetch_pre  = mysqli_fetch_array($result_pre);
 $prename_temp =  $fetch_pre['prename'];
 
-$result_s = mysql_query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
+$result_s = $mysqli->query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
 $fetch_s  = mysqli_fetch_array($result_s);
 $sector_temp =  $fetch_s['sector'];
 
-$result_p = mysql_query("SELECT * FROM type_problem WHERE id_problem='$id_problem_temp'");
+$result_p = $mysqli->query("SELECT * FROM type_problem WHERE id_problem='$id_problem_temp'");
 $fetch_p  = mysqli_fetch_array($result_p);
 $problem_temp =  $fetch_p['problem'];
 
-/*$result_st = mysql_query("SELECT * FROM status WHERE id_status='$id_status_temp'");
+/*$result_st = $mysqli->query("SELECT * FROM status WHERE id_status='$id_status_temp'");
 $fetch_st  = mysqli_fetch_array($result_st);
 $status_temp =  $fetch_st['status'];*/
 

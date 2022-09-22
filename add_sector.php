@@ -13,11 +13,11 @@ $(function(){$("#bt").click(
 });
 </script>
 <?
-$result = mysql_query("SELECT * FROM belong");
+$result = $mysqli->query("SELECT * FROM belong");
 $num = mysqli_num_rows($result);
 $i=0;
 
-$result_b = mysql_query("SELECT * FROM building");
+$result_b = $mysqli->query("SELECT * FROM building");
 $num_b = mysqli_num_rows($result_b);
 $j=0;
 ?>

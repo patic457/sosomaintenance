@@ -10,7 +10,7 @@ function(data){$("#msg").html(data);}); }
 });
 </script>
 <?
-$result_sector = mysql_query("SELECT * FROM sector WHERE id_sector='$_POST[id_sector_]'");
+$result_sector = $mysqli->query("SELECT * FROM sector WHERE id_sector='$_POST[id_sector_]'");
 $fetch_sector  = mysqli_fetch_array($result_sector);
 
 
@@ -25,7 +25,7 @@ $fetch_sector  = mysqli_fetch_array($result_sector);
 
 อาคาร: <select id="id_building_sel">
 <?php 
-$result_bu = mysql_query("SELECT * FROM building");
+$result_bu = $mysqli->query("SELECT * FROM building");
 $num_bu = mysqli_num_rows($result_bu);
 $bu=0; 
 while($bu<$num_bu){	
@@ -38,7 +38,7 @@ $bu++;
 
 สังกัด : <select id="id_belong_sel">
 <?
-$result_be = mysql_query("SELECT * FROM belong");
+$result_be = $mysqli->query("SELECT * FROM belong");
 $num_be = mysqli_num_rows($result_be);
 $se=0; 
 while($se<$num_be){	

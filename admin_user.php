@@ -15,7 +15,7 @@
         <select name="f" >
           <option  value="" selected>--กรุณาเลือก--</option>
           <?php 
-$resultt = mysql_query("SELECT * FROM type_user");
+$resultt = $mysqli->query("SELECT * FROM type_user");
 $numm= mysqli_num_rows($resultt);
 $i=0;
 while($i<$numm){	
@@ -33,7 +33,7 @@ $i++;
   <select name="d">
       <option selected>--กรุณาเลือก--</option>
       <?php 
-$result = mysql_query("SELECT * FROM sector");
+$result = $mysqli->query("SELECT * FROM sector");
 $num = mysqli_num_rows($result);
 $i=0;
 while($i<$num){	

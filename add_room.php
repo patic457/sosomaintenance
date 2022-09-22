@@ -1,5 +1,5 @@
 <?php  include"session.php"; 
-$result = mysql_query("SELECT * FROM sector order by id_belong ASC");
+$result = $mysqli->query("SELECT * FROM sector order by id_belong ASC");
 $num = mysqli_num_rows($result);
 $i=0;
 ?>
@@ -27,7 +27,7 @@ function(data){$("#msg").html(data);});
 อาคาร : <select name="b" id="b">
 <option value="0">--กรุณาเลือก--</option>
 <?php 
-$resultb = mysql_query("SELECT * FROM building");
+$resultb = $mysqli->query("SELECT * FROM building");
 $numb = mysqli_num_rows($resultb);
 $j=0;
 while($j<$numb){	

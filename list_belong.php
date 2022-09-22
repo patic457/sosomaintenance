@@ -4,7 +4,7 @@
 
 $pagesize = 10;
 // แบ่งหน้าแสดงผล
-$sql_page = mysql_query("SELECT count(id_belong) as id_belong FROM belong");
+$sql_page = $mysqli->query("SELECT count(id_belong) as id_belong FROM belong");
 $crow = mysqli_fetch_row($sql_page);
 $totalrecord = $crow[0];
 $totalpage = ceil($totalrecord / $pagesize);
@@ -15,10 +15,10 @@ else {
 $pageid = 1;
 $start = 0;
 }
-//$result = mysql_query("SELECT * FROM building ORDER BY id_building DESC limit $start,$pagesize"); ต้องใช้ทุกครั้ง
+//$result = $mysqli->query("SELECT * FROM building ORDER BY id_building DESC limit $start,$pagesize"); ต้องใช้ทุกครั้ง
 //End Page
 
-$result = mysql_query("SELECT * FROM belong order by id_belong ASC limit $start,$pagesize");
+$result = $mysqli->query("SELECT * FROM belong order by id_belong ASC limit $start,$pagesize");
 $num = mysqli_num_rows($result);
 
 ?>
@@ -103,7 +103,7 @@ $(function(){
 <td id="click<?php echo $i; ?>" ><?php print $belong_temp; ?></td>
 <td id="click<?php echo $i; ?>">
 <?
-$sql_row = mysql_query("SELECT * FROM sector WHERE id_belong='$id_belong_temp'");
+$sql_row = $mysqli->query("SELECT * FROM sector WHERE id_belong='$id_belong_temp'");
 $row_s = mysqli_num_rows($sql_row);
 echo $row_s;
 ?>

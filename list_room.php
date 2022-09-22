@@ -5,9 +5,9 @@
 $pagesize = 15;
 // แบ่งหน้าแสดงผล
 
-if(empty($_GET['link_s'])!=true){$sql_page=mysql_query("SELECT count(id_room) as id_room FROM room WHERE id_sector='$_GET[link_s]'");}
-else if(empty($_GET['link_b'])!=true){$sql_page=mysql_query("SELECT count(id_room) as id_room FROM room WHERE id_building='$_GET[link_b]'");}
-else{ $sql_page=mysql_query("SELECT count(id_room) as id_room FROM room");}
+if(empty($_GET['link_s'])!=true){$sql_page=$mysqli->query("SELECT count(id_room) as id_room FROM room WHERE id_sector='$_GET[link_s]'");}
+else if(empty($_GET['link_b'])!=true){$sql_page=$mysqli->query("SELECT count(id_room) as id_room FROM room WHERE id_building='$_GET[link_b]'");}
+else{ $sql_page=$mysqli->query("SELECT count(id_room) as id_room FROM room");}
 
 $crow = mysqli_fetch_row($sql_page);
 $totalrecord = $crow[0];
@@ -19,7 +19,7 @@ else {
 $pageid = 1;
 $start = 0;
 }
-//$result = mysql_query("SELECT * FROM building ORDER BY id_building ASC limit $start,$pagesize"); ต้องใช้ทุกครั้ง
+//$result = $mysqli->query("SELECT * FROM building ORDER BY id_building ASC limit $start,$pagesize"); ต้องใช้ทุกครั้ง
 //End Page
 ?>
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />  
@@ -59,7 +59,7 @@ if(isset($_GET['link_s'])==true){ $sql_ = "SELECT * FROM room WHERE id_sector='$
 else if(isset($_GET['link_b'])==true){ $sql_ = "SELECT * FROM room WHERE id_building='$_GET[link_b]' ORDER BY id_building,floor,id_sector ASC limit $start,$pagesize";}
 else{$sql_ = "SELECT * FROM room ORDER BY id_building,floor,id_sector ASC limit $start,$pagesize";}
 
-$result_room = mysql_query($sql_);
+$result_room = $mysqli->query($sql_);
 $num_room = mysqli_num_rows($result_room);
 
 $i=0;
@@ -111,17 +111,17 @@ $(function(){
 
 
 
-$result = mysql_query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
+$result = $mysqli->query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
 
 $fetch  = mysqli_fetch_array($result);
 $sector_temp = $fetch['sector'];
 
-$resultb = mysql_query("SELECT * FROM building WHERE id_building='$id_building_temp'");
+$resultb = $mysqli->query("SELECT * FROM building WHERE id_building='$id_building_temp'");
 
 $fetchb  = mysqli_fetch_array($resultb);
 $id_building_temp = $fetchb['id_building'];
 
-$result_ = mysql_query("SELECT building FROM building WHERE id_building='$id_building_temp'");
+$result_ = $mysqli->query("SELECT building FROM building WHERE id_building='$id_building_temp'");
 $fetch_  = mysqli_fetch_array($result_);
 $building_temp = $fetch_['building'];
 ?>

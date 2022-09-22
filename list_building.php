@@ -4,7 +4,7 @@
 
 $pagesize = 10;
 // แบ่งหน้าแสดงผล
-$sql_page = mysql_query("SELECT count(id_building) as id_building FROM building");
+$sql_page = $mysqli->query("SELECT count(id_building) as id_building FROM building");
 $crow = mysqli_fetch_row($sql_page);
 $totalrecord = $crow[0];
 $totalpage = ceil($totalrecord / $pagesize);
@@ -15,7 +15,7 @@ else {
 $pageid = 1;
 $start = 0;
 }
-//$result = mysql_query("SELECT * FROM building ORDER BY id_building DESC limit $start,$pagesize"); ต้องใช้ทุกครั้ง
+//$result = $mysqli->query("SELECT * FROM building ORDER BY id_building DESC limit $start,$pagesize"); ต้องใช้ทุกครั้ง
 //End Page
 
 ?>
@@ -46,7 +46,7 @@ $(function(){
   </tr>
 <?
 
-$result = mysql_query("SELECT * FROM building ORDER BY id_building DESC limit $start,$pagesize");
+$result = $mysqli->query("SELECT * FROM building ORDER BY id_building DESC limit $start,$pagesize");
 $num = mysqli_num_rows($result);
 $i=0;
 
@@ -107,7 +107,7 @@ $(function(){
 </td>
 <td id="click<?php echo $i; ?>">
 <?
-$sql_row = mysql_query("SELECT * FROM sector WHERE id_building='$id_building_temp'");
+$sql_row = $mysqli->query("SELECT * FROM sector WHERE id_building='$id_building_temp'");
 $row_s = mysqli_num_rows($sql_row);
 echo $row_s;
 ?>

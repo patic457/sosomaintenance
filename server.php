@@ -23,15 +23,15 @@ if (preg_match('|MSIE ([0-9].[0-9]{1,2})|',$useragent,$matched)) {
 
 if($browser=='IE')
   {
-	mysql_query("set character set tis620");
+	$mysqli->query("set character set tis620");
 	$sql = "SELECT * FROM user WHERE name LIKE '" . $_GET['q'] . "%' order by name asc ";//print "IEbrowser: $browser $browser_version";
   }
 else
   {
-  mysql_query("set character set utf-8");
+  $mysqli->query("set character set utf-8");
 	$sql = "SELECT * FROM user WHERE name LIKE '" . $_GET['q'] . "%' order by name asc ";//print "Fbrowser: $browser $browser_version";
   }
-	$rs = mysql_query($sql);
+	$rs = $mysqli->query($sql);
 ?>
 <script language="javascript" src="jquery.js"></script>
 
@@ -61,9 +61,9 @@ while($i<$num)
 {
 $result=mysqli_fetch_array($rs);
 
-$r_prename = mysql_query("SELECT * FROM prename WHERE id_prename='$result[id_prename]'");
+$r_prename = $mysqli->query("SELECT * FROM prename WHERE id_prename='$result[id_prename]'");
 
-$r_sector = mysql_query("SELECT * FROM sector WHERE id_sector='$result[id_sector]'");
+$r_sector = $mysqli->query("SELECT * FROM sector WHERE id_sector='$result[id_sector]'");
 
 $result_prename=mysqli_fetch_array($r_prename);
 

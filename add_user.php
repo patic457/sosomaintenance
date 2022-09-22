@@ -19,7 +19,7 @@ $.post("check_user.php",{check:check,username:username,password:password,prename
 <tr><td>คำนำหน้า :
     
     <?
-$result_pre = mysql_query("SELECT * FROM prename");
+$result_pre = $mysqli->query("SELECT * FROM prename");
 $num_pre = mysqli_num_rows($result_pre);
 echo"<select id='prename'>";
     echo"<option selected value=''>--กรุณาเลือก--</option>";
@@ -40,7 +40,7 @@ $ii++;
   <select id="id_sector">
       <option  value="0" selected>--กรุณาเลือก--</option>
       <?php 
-$result = mysql_query("SELECT * FROM sector");
+$result = $mysqli->query("SELECT * FROM sector");
 $num = mysqli_num_rows($result);
 $i=0;
 while($i<$num){	

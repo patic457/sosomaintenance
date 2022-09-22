@@ -8,7 +8,7 @@ $.post("check_admin.php",{id_prename_: id_prename,prename_: prename,check_status
 });
 </script>
 <?
-$result_pre = mysql_query("SELECT * FROM prename WHERE id_prename='$_POST[id_prename_]'");
+$result_pre = $mysqli->query("SELECT * FROM prename WHERE id_prename='$_POST[id_prename_]'");
 $fetch_pre  = mysqli_fetch_array($result_pre);
 $prename_temp = $fetch_pre['prename'];
  ?>
