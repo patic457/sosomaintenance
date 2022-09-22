@@ -8,8 +8,8 @@ $.post("check_admin.php",{id_building_: id_building_,building_: building,floor_:
 </script>
 <?php 
 $result = mysql_query("SELECT * FROM building WHERE id_building='$_POST[id_building_]'");
-$num = mysql_num_rows($result);
-$fetch  = mysql_fetch_array($result);	
+$num = mysqli_num_rows($result);
+$fetch  = mysqli_fetch_array($result);	
 ?>
 <body><table class="mana"><tr><td>
 <tr><th>แก้ไขข้อมูล</th></tr>

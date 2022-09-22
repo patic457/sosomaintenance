@@ -11,7 +11,7 @@ function(data){$("#msg").html(data);}); }
 </script>
 <?
 $result_sector = mysql_query("SELECT * FROM sector WHERE id_sector='$_POST[id_sector_]'");
-$fetch_sector  = mysql_fetch_array($result_sector);
+$fetch_sector  = mysqli_fetch_array($result_sector);
 
 
 ?>
@@ -26,10 +26,10 @@ $fetch_sector  = mysql_fetch_array($result_sector);
 อาคาร: <select id="id_building_sel">
 <?php 
 $result_bu = mysql_query("SELECT * FROM building");
-$num_bu = mysql_num_rows($result_bu);
+$num_bu = mysqli_num_rows($result_bu);
 $bu=0; 
 while($bu<$num_bu){	
-$fetch_bu  = mysql_fetch_array($result_bu);
+$fetch_bu  = mysqli_fetch_array($result_bu);
 $id_building_temp_bu = $fetch_bu['id_building'];
 $building_temp_bu = $fetch_bu['building'];
 ?><option <?php if($id_building_temp_bu==$fetch_sector['id_building']){echo "selected";} ?> value="<?php echo $id_building_temp_bu; ?>"><?php echo $building_temp_bu; ?></option><?
@@ -39,10 +39,10 @@ $bu++;
 สังกัด : <select id="id_belong_sel">
 <?
 $result_be = mysql_query("SELECT * FROM belong");
-$num_be = mysql_num_rows($result_be);
+$num_be = mysqli_num_rows($result_be);
 $se=0; 
 while($se<$num_be){	
-$fetch_be  = mysql_fetch_array($result_be);
+$fetch_be  = mysqli_fetch_array($result_be);
 $id_belong_temp_be = $fetch_be['id_belong'];
 $belong_temp_be = $fetch_be['belong'];
 ?><option <?php if($id_belong_temp_be==$fetch_sector['id_belong']){echo "selected";} ?>  value="<?php echo $id_belong_temp_be; ?>"><?php echo $belong_temp_be; ?></option><?

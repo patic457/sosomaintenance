@@ -43,12 +43,12 @@ $(function(){
 <?
 
 $result = mysql_query("SELECT * FROM prename order by id_prename ASC limit $start,$pagesize");
-$num = mysql_num_rows($result);
+$num = mysqli_num_rows($result);
 $i=0;
 
 while($i<$num){	
 
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $id_prename_temp = $fetch['id_prename'];
 $prename_temp = $fetch['prename'];
 ?>

@@ -3,7 +3,7 @@
 
 function Select($sta){
 $result = mysql_query("SELECT * FROM list_service WHERE job_status='$sta' ORDER BY id_list DESC");
-$num = mysql_num_rows($result);
+$num = mysqli_num_rows($result);
 if($num!=0){}else{}
 $i=0;
 echo"<div class='title'>รอการอนุมัติ</div><p>";
@@ -29,7 +29,7 @@ $.post("browse.php",{btb: btb}),function(data){$("#case").html(window.open("brow
 
 </script>
 <?
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $id_list_temp = $fetch['id_list'];
 $date_temp = $fetch['date'];
 $time_temp = $fetch['time'];$t = substr($time_temp,0,5);
@@ -42,26 +42,26 @@ $details_temp = $fetch['details'];
 $job_status_temp = $fetch['job_status'];
 
 $result_u = mysql_query("SELECT * FROM user WHERE username='$username_temp'");
-$fetch_u  = mysql_fetch_array($result_u);
+$fetch_u  = mysqli_fetch_array($result_u);
 $id_prename_temp =  $fetch_u['id_prename'];
 $name_temp =  $fetch_u['name'];
 $lastname_temp =  $fetch_u['lastname'];
 $id_sector_temp =  $fetch_u['id_sector'];
 
 $result_pre = mysql_query("SELECT * FROM prename WHERE id_prename='$id_prename_temp'");
-$fetch_pre  = mysql_fetch_array($result_pre);
+$fetch_pre  = mysqli_fetch_array($result_pre);
 $prename_temp =  $fetch_pre['prename'];
 
 $result_s = mysql_query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
-$fetch_s  = mysql_fetch_array($result_s);
+$fetch_s  = mysqli_fetch_array($result_s);
 $sector_temp =  $fetch_s['sector'];
 
 $result_p = mysql_query("SELECT * FROM type_problem WHERE id_problem='$id_problem_temp'");
-$fetch_p  = mysql_fetch_array($result_p);
+$fetch_p  = mysqli_fetch_array($result_p);
 $problem_temp =  $fetch_p['problem'];
 
 /*$result_st = mysql_query("SELECT * FROM status WHERE id_status='$id_status_temp'");
-$fetch_st  = mysql_fetch_array($result_st);
+$fetch_st  = mysqli_fetch_array($result_st);
 $status_temp =  $fetch_st['status'];*/
 
 

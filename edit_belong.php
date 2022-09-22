@@ -8,8 +8,8 @@ $.post("check_admin.php",{id_belong_: id_belong_,belong_: belong_,check_status_1
 </script>
 <?php 
 $result = mysql_query("SELECT * FROM belong WHERE id_belong='$_POST[id_belong_]'");
-$num = mysql_num_rows($result);
-$fetch  = mysql_fetch_array($result);	
+$num = mysqli_num_rows($result);
+$fetch  = mysqli_fetch_array($result);	
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <body>

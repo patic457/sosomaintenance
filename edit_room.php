@@ -18,8 +18,8 @@ function(data){$("#msg").html(data);});
 </script>
 <?php 
 $result = mysql_query("SELECT * FROM room WHERE id_room='$_POST[id_room_]'");
-$num = mysql_num_rows($result);
-$fetch  = mysql_fetch_array($result);
+$num = mysqli_num_rows($result);
+$fetch  = mysqli_fetch_array($result);
 $room_sel_temp = $fetch['room'];
 $id_building_sel_temp = $fetch['id_building'];	
 $id_sector_sel_temp = $fetch['id_sector'];
@@ -35,10 +35,10 @@ $id_sector_sel_temp = $fetch['id_sector'];
 อาคาร : <select name="be" id="be">
 <?php 
 $resultb = mysql_query("SELECT * FROM building");
-$numb = mysql_num_rows($resultb);
+$numb = mysqli_num_rows($resultb);
 $j=0;
 while($j<$numb){	
-$fetchb  = mysql_fetch_array($resultb);
+$fetchb  = mysqli_fetch_array($resultb);
 $id_building_temp = $fetchb['id_building'];
 $building_temp = $fetchb['building'];
 ?><option value="<?php echo $id_building_temp; ?>" <?php if($id_building_temp==$id_building_sel_temp){echo "selected";} ?> ><?php echo $building_temp; ?></option><?
@@ -52,11 +52,11 @@ $j++; }
  <select name="de" id="de">
 <?php 
 $results = mysql_query("SELECT * FROM sector order by id_sector ASC");
-$num = mysql_num_rows($results);
+$num = mysqli_num_rows($results);
 $i=0;
 
 while($i<$num){	
-$fetchs  = mysql_fetch_array($results);
+$fetchs  = mysqli_fetch_array($results);
 $id_sector_temp = $fetchs['id_sector'];
 $sector_temp = $fetchs['sector'];
 ?><option value="<?php echo $id_sector_temp; ?>" <?php if($id_sector_temp==$id_sector_sel_temp){echo "selected";} ?>  ><?php echo $sector_temp; ?></option><?

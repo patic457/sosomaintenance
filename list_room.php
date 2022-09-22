@@ -60,12 +60,12 @@ else if(isset($_GET['link_b'])==true){ $sql_ = "SELECT * FROM room WHERE id_buil
 else{$sql_ = "SELECT * FROM room ORDER BY id_building,floor,id_sector ASC limit $start,$pagesize";}
 
 $result_room = mysql_query($sql_);
-$num_room = mysql_num_rows($result_room);
+$num_room = mysqli_num_rows($result_room);
 
 $i=0;
 
 while($i<$num_room){	
-$fetch  = mysql_fetch_array($result_room);
+$fetch  = mysqli_fetch_array($result_room);
 $id_room_temp = $fetch['id_room'];
 $room_temp = $fetch['room'];
 $id_sector_temp = $fetch['id_sector'];
@@ -113,16 +113,16 @@ $(function(){
 
 $result = mysql_query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
 
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $sector_temp = $fetch['sector'];
 
 $resultb = mysql_query("SELECT * FROM building WHERE id_building='$id_building_temp'");
 
-$fetchb  = mysql_fetch_array($resultb);
+$fetchb  = mysqli_fetch_array($resultb);
 $id_building_temp = $fetchb['id_building'];
 
 $result_ = mysql_query("SELECT building FROM building WHERE id_building='$id_building_temp'");
-$fetch_  = mysql_fetch_array($result_);
+$fetch_  = mysqli_fetch_array($result_);
 $building_temp = $fetch_['building'];
 ?>
 

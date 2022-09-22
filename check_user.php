@@ -12,7 +12,7 @@ print"<script>alert('ลบข้อมูลผู้ใช้สำเร็�
 else if($_POST['check']=='add'){
 
 $sql_a = mysql_query("select * FROM user WHERE username='$_POST[username]'");
-$num_a = mysql_num_rows($sql_a);
+$num_a = mysqli_num_rows($sql_a);
 $pass1 = $_POST['password'];
 $pass2 = md5($pass1);
 $pass3 = base64_encode($pass2);
@@ -36,7 +36,7 @@ echo"<script>alert('แก้ไขข้อมูลสำเร็ลแล้
 else if($_POST['check']=='edit_profile'){
 
 $sql_a = mysql_query("select password FROM user WHERE username='$_SESSION[username_session]'");
-$fetch_sel  = mysql_fetch_array($sql_a);
+$fetch_sel  = mysqli_fetch_array($sql_a);
 
 $pass1 = $_POST['password'];
 $pass2 = md5($pass1);

@@ -17,7 +17,7 @@ else if(id_sector=='0'){alert('กรุณาเลือกหน่วยง�
 <body>
 
 <?php $result_sel = mysql_query("SELECT * FROM user WHERE username='$_SESSION[username_session]'"); 
-$fetch_sel  = mysql_fetch_array($result_sel); ?>
+$fetch_sel  = mysqli_fetch_array($result_sel); ?>
 
 <center><table class="mana"><tr><td>
 <strong>แก้ไขผู้ใช้</strong>
@@ -28,12 +28,12 @@ $fetch_sel  = mysql_fetch_array($result_sel); ?>
     
     <?
 $result_pre = mysql_query("SELECT * FROM prename");
-$num_pre = mysql_num_rows($result_pre);
+$num_pre = mysqli_num_rows($result_pre);
 echo"<select id='prenamee'>";
     echo"<option  value='0'>--กรุณาเลือก--</option>";
 $ii=0;
 while($ii<$num_pre){	
-$fetch_pre  = mysql_fetch_array($result_pre);
+$fetch_pre  = mysqli_fetch_array($result_pre);
 $id_prename_temp = $fetch_pre['id_prename'];
 $prename_temp = $fetch_pre['prename'];
  ?><option <?php if($id_prename_temp==$fetch_sel['id_prename']){echo"selected";} ?> value="<?php echo $id_prename_temp; ?>"><?php echo $prename_temp; ?></option><?
@@ -51,11 +51,11 @@ $ii++;
       <option selected value="0">--กรุณาเลือก--</option>
       <?php 
 $result = mysql_query("SELECT * FROM sector");
-$num = mysql_num_rows($result);
+$num = mysqli_num_rows($result);
 $i=0;
 while($i<$num){	
 
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $id_sector_temp = $fetch['id_sector'];
 $sector_temp = $fetch['sector'];    
        ?><option <?php if($id_sector_temp==$fetch_sel['id_sector']){echo"selected";} ?> value="<?php echo $id_sector_temp; ?>"><?php echo $sector_temp; ?></option><?

@@ -156,12 +156,12 @@ $conmath="$day-$mouth-$year";
 
 function prename_t(){
 $result_pre = mysql_query("SELECT * FROM prename");
-$num_pre = mysql_num_rows($result_pre);
+$num_pre = mysqli_num_rows($result_pre);
 echo"<select id='a' name='a'>";
     echo"<option selected value=''>--กรุณาเลือก--</option>";
 $ii=0;
 while($ii<$num_pre){	
-$fetch_pre  = mysql_fetch_array($result_pre);
+$fetch_pre  = mysqli_fetch_array($result_pre);
 $id_prename_temp = $fetch_pre['id_prename'];
 $prename_temp = $fetch_pre['prename'];
  ?><option value="<?php echo $id_prename_temp; ?>"><?php echo $prename_temp; ?></option><?

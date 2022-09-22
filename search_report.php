@@ -21,12 +21,12 @@ $.post("check_search_report.php",{id_building: id_building,var_check: var_check}
 
 function tech(){
 $re_tech = mysql_query("SELECT * FROM technician");
-$num_tech = mysql_num_rows($re_tech);
+$num_tech = mysqli_num_rows($re_tech);
 $i_tech=0;
 echo"<select id=\"techh\" name='techh'>";
 echo"<option selected value=\"0\">--ช่างเทคนิคทุกคน--</option>";
 while($i_tech<$num_tech){
-$fetch_list_tech  = mysql_fetch_array($re_tech);
+$fetch_list_tech  = mysqli_fetch_array($re_tech);
 $id_tech_temp = $fetch_list_tech['id_technician'];
 $prename_temp = $fetch_list_tech['prename'];
 $name_temp =  $fetch_list_tech['name']; 
@@ -39,12 +39,12 @@ echo"</select>";
 
 function build(){
 $re_build = mysql_query("SELECT * FROM building");
-$num_build = mysql_num_rows($re_build);
+$num_build = mysqli_num_rows($re_build);
 $i_build=0;
 echo"<select id=\"build\" name=\"build\">";
 echo"<option selected value=\"0\">--ทุกอาคาร--</option>";
 while($i_build<$num_build){
-$fetch_list_build  = mysql_fetch_array($re_build);
+$fetch_list_build  = mysqli_fetch_array($re_build);
 $id_building_temp = $fetch_list_build['id_building'];
 $building_temp = $fetch_list_build['building'];
 echo"<option value=\"$id_building_temp\">$building_temp</option>";

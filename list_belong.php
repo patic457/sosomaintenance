@@ -19,7 +19,7 @@ $start = 0;
 //End Page
 
 $result = mysql_query("SELECT * FROM belong order by id_belong ASC limit $start,$pagesize");
-$num = mysql_num_rows($result);
+$num = mysqli_num_rows($result);
 
 ?>
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
@@ -52,7 +52,7 @@ $(function(){
 
 $i=0;
 while($i<$num){	
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $id_belong_temp = $fetch['id_belong'];
 $belong_temp = $fetch['belong'];
 ?>
@@ -104,7 +104,7 @@ $(function(){
 <td id="click<?php echo $i; ?>">
 <?
 $sql_row = mysql_query("SELECT * FROM sector WHERE id_belong='$id_belong_temp'");
-$row_s = mysql_num_rows($sql_row);
+$row_s = mysqli_num_rows($sql_row);
 echo $row_s;
 ?>
 </td>

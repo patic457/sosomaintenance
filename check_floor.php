@@ -5,7 +5,7 @@ $check_fl = $_POST['check_fl'];
 switch ($check_fl) {
 	case 'add_fl':
 		$result_fl = mysql_query("SELECT floor FROM building WHERE id_building='$b'");
-		$fetch_fl  = mysql_fetch_array($result_fl);
+		$fetch_fl  = mysqli_fetch_array($result_fl);
 		$floor_temp = $fetch_fl['floor'];
 		$fl=1;
 		print "ชั้น :<select  id=\"c\" name=\"c\"  >";
@@ -19,7 +19,7 @@ switch ($check_fl) {
 	
 	case 'edit_fl':
 		$result_fl = mysql_query("SELECT floor FROM building WHERE id_building='$b'");
-		$fetch_fl  = mysql_fetch_array($result_fl);
+		$fetch_fl  = mysqli_fetch_array($result_fl);
 		$floor_temp = $fetch_fl['floor'];
 		$fl=1;
 		print "ชั้น :<select  id=\"ce\" name=\"ce\"  >";
@@ -42,7 +42,7 @@ switch ($check_fl) {
         </script>
 		<?
 		$result_fl = mysql_query("SELECT floor FROM building WHERE id_building='$b'");
-		$fetch_fl  = mysql_fetch_array($result_fl);
+		$fetch_fl  = mysqli_fetch_array($result_fl);
 		$floor_temp = $fetch_fl['floor'];
 		$fl=1;
 		print "<select  id=\"floorr\" name=\"floorr\"  >";

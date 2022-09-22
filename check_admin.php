@@ -144,7 +144,7 @@ switch ($check_status_1) {
 					  case 'edit':
 
 						$result_fl = mysql_query("SELECT floor FROM room WHERE id_room='$_POST[id_room_]'");
-						$fetch_fl  = mysql_fetch_array($result_fl);
+						$fetch_fl  = mysqli_fetch_array($result_fl);
 						$floor_temp = $fetch_fl['floor'];
 						
 						if(empty($_POST['floor_'])==true){$fl = $floor_temp;}else{$fl = $_POST['floor_'];}

@@ -47,12 +47,12 @@ $(function(){
 <?
 
 $result = mysql_query("SELECT * FROM building ORDER BY id_building DESC limit $start,$pagesize");
-$num = mysql_num_rows($result);
+$num = mysqli_num_rows($result);
 $i=0;
 
 while($i<$num){	
 
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $id_building_temp = $fetch['id_building'];
 $building_temp = $fetch['building'];
 $floor_temp = $fetch['floor'];
@@ -108,7 +108,7 @@ $(function(){
 <td id="click<?php echo $i; ?>">
 <?
 $sql_row = mysql_query("SELECT * FROM sector WHERE id_building='$id_building_temp'");
-$row_s = mysql_num_rows($sql_row);
+$row_s = mysqli_num_rows($sql_row);
 echo $row_s;
 ?>
 </td>

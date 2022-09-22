@@ -136,10 +136,10 @@ else if($month=='10'){echo"ประจำเดือน ตุลาคม 255
 <?
 $sql.=" ORDER BY id_list DESC";
 $result_r = mysql_query($sql);
-$num_r = mysql_num_rows($result_r);
+$num_r = mysqli_num_rows($result_r);
 $i=0;
 while($i<$num_r){
-$fetch_r  = mysql_fetch_array($result_r);
+$fetch_r  = mysqli_fetch_array($result_r);
 $date_temp = $fetch_r['date'];
 $details_temp = $fetch_r['details'];
 $id_building_temp = $fetch_r['id_building'];
@@ -150,33 +150,33 @@ $id_technician_b_temp = $fetch_r['id_technician_b'];
 $job_status_temp = $fetch_r['job_status'];
 
 $result_u = mysql_query("SELECT * FROM user WHERE username='$username_temp'");
-$fetch_u  = mysql_fetch_array($result_u);
+$fetch_u  = mysqli_fetch_array($result_u);
 $id_prename_temp =  $fetch_u['id_prename'];
 $name_temp =  $fetch_u['name'];
 $lastname_temp =  $fetch_u['lastname'];
 
 $result_pre = mysql_query("SELECT * FROM prename WHERE id_prename='$id_prename_temp'");
-$fetch_pre  = mysql_fetch_array($result_pre);
+$fetch_pre  = mysqli_fetch_array($result_pre);
 $prename_temp =  $fetch_pre['prename'];
 
 $result_s = mysql_query("SELECT * FROM building WHERE id_building='$id_building_temp'");
-$fetch_s  = mysql_fetch_array($result_s);
+$fetch_s  = mysqli_fetch_array($result_s);
 $building_temp =  $fetch_s['building'];
 
 
 $result_t = mysql_query("SELECT * FROM user WHERE username='$id_technician_a_temp'");
-$fetch_t  = mysql_fetch_array($result_t);
+$fetch_t  = mysqli_fetch_array($result_t);
 $name_t_temp =  $fetch_t['name'];
 $lastname_t_temp =  $fetch_t['lastname'];
 
 $result_pre_a = mysql_query("SELECT * FROM prename WHERE id_prename='$fetch_t[id_prename]'");
-$fetch_pre_a  = mysql_fetch_array($result_pre_a);
+$fetch_pre_a  = mysqli_fetch_array($result_pre_a);
 
 //echo "$fetch_pre_a[prename]$name_t_temp $lastname_t_temp";
 
 
 $result_t = mysql_query("SELECT * FROM user WHERE username='$id_technician_b_temp'");
-$fetch_t  = mysql_fetch_array($result_t);
+$fetch_t  = mysqli_fetch_array($result_t);
 $prename_tt_temp =  $fetch_t['prename'];
 $name_tt_temp =  $fetch_t['name'];
 $lastname_tt_temp =  $fetch_t['lastname'];

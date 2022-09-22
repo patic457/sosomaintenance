@@ -16,10 +16,10 @@
           <option  value="" selected>--กรุณาเลือก--</option>
           <?php 
 $resultt = mysql_query("SELECT * FROM type_user");
-$numm= mysql_num_rows($resultt);
+$numm= mysqli_num_rows($resultt);
 $i=0;
 while($i<$numm){	
-$fetchh  = mysql_fetch_array($resultt);
+$fetchh  = mysqli_fetch_array($resultt);
 $id_type_user_temp = $fetchh['id_type_user'];
 $type_user_temp = $fetchh['type_user'];    
        ?><option value="<?php echo $id_type_user_temp; ?>"><?php echo $type_user_temp; ?></option><?
@@ -34,11 +34,11 @@ $i++;
       <option selected>--กรุณาเลือก--</option>
       <?php 
 $result = mysql_query("SELECT * FROM sector");
-$num = mysql_num_rows($result);
+$num = mysqli_num_rows($result);
 $i=0;
 while($i<$num){	
 
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $id_sector_temp = $fetch['id_sector'];
 $sector_temp = $fetch['sector'];    
        ?><option value="<?php echo $id_sector_temp; ?>"><?php echo $sector_temp; ?></option><?

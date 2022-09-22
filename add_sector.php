@@ -14,11 +14,11 @@ $(function(){$("#bt").click(
 </script>
 <?
 $result = mysql_query("SELECT * FROM belong");
-$num = mysql_num_rows($result);
+$num = mysqli_num_rows($result);
 $i=0;
 
 $result_b = mysql_query("SELECT * FROM building");
-$num_b = mysql_num_rows($result_b);
+$num_b = mysqli_num_rows($result_b);
 $j=0;
 ?>
 <script language="javascript">
@@ -36,7 +36,7 @@ $.post("check_floor.php",{b: b_},function(data){$("#floor").html(data);});
 <option value="0">--กรุณาเลือก--</option>
 <?php 
 while($i<$num_b){	
-$fetch_b  = mysql_fetch_array($result_b);
+$fetch_b  = mysqli_fetch_array($result_b);
 $id_building_temp = $fetch_b['id_building'];
 $building_temp = $fetch_b['building'];
 ?><option value="<?php echo $id_building_temp; ?>"><?php echo $building_temp; ?></option><?
@@ -47,7 +47,7 @@ $i++;
 <option value="0">--กรุณาเลือก--</option>
 <?php 
 while($j<$num){	
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $id_belong_temp = $fetch['id_belong'];
 $belong_temp = $fetch['belong'];
 ?><option value="<?php echo $id_belong_temp; ?>"><?php echo $belong_temp; ?></option><?

@@ -9,7 +9,7 @@ $u = $_SESSION['username_session'];
 
 if($_SESSION['user_status_session']=='0'){
 $result_db = mysql_query("SELECT * FROM room WHERE id_room='$r'");
-$fetch_db  = mysql_fetch_array($result_db);
+$fetch_db  = mysqli_fetch_array($result_db);
 $f=$fetch_db['floor'];
 $b=$fetch_db['id_building'];
 }

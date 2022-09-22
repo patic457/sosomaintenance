@@ -54,20 +54,20 @@ else
   </tr>
 
 <?
-$num = mysql_num_rows($rs);
+$num = mysqli_num_rows($rs);
 
 $i=0;
 while($i<$num)
 {
-$result=mysql_fetch_array($rs);
+$result=mysqli_fetch_array($rs);
 
 $r_prename = mysql_query("SELECT * FROM prename WHERE id_prename='$result[id_prename]'");
 
 $r_sector = mysql_query("SELECT * FROM sector WHERE id_sector='$result[id_sector]'");
 
-$result_prename=mysql_fetch_array($r_prename);
+$result_prename=mysqli_fetch_array($r_prename);
 
-$result_sector=mysql_fetch_array($r_sector);
+$result_sector=mysqli_fetch_array($r_sector);
 
 if($browser=='IE'){
 	$prename_th = iconv('TIS-620', 'UTF-8', $result_prename['prename']);

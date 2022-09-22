@@ -5,7 +5,7 @@
 <th scope="col">ประเภทที่แจ้ง</th><th scope="col">สถานะ</th><th scope="col">รายละเอียด</th></tr>
 <?php 
 $result = mysql_query("SELECT * FROM list_service WHERE job_status='อนุมัติแล้วกำลังรอการดำเนินการ' ORDER BY YEAR(date) , MONTH(date) , DAY(date) DESC");
-$num = mysql_num_rows($result);
+$num = mysqli_num_rows($result);
 if($num!=0){}else{}
 $i=0;
 echo"<div class='title'>รอการมอบหมายงาน</div><p>";
@@ -24,7 +24,7 @@ $.post("check_inbox_admin.php",{bt: bt_,id: id_},function(data){$("#msg<?php ech
 
 </script>
 <?
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $id_list_temp = $fetch['id_list'];
 $date_temp = $fetch['date'];
 $time_temp = $fetch['time'];
@@ -40,22 +40,22 @@ $job_status_temp = $fetch['job_status'];
 echo"<input type=\"hidden\" id=\"id$i\" value=\"$id_list_temp\" >";
 
 $result_u = mysql_query("SELECT * FROM user WHERE username='$username_temp'");
-$fetch_u  = mysql_fetch_array($result_u);
+$fetch_u  = mysqli_fetch_array($result_u);
 $id_prename_temp =  $fetch_u['id_prename'];
 $name_temp =  $fetch_u['name'];
 $lastname_temp =  $fetch_u['lastname'];
 $id_sector_temp =  $fetch_u['id_sector'];
 
 $result_pre = mysql_query("SELECT * FROM prename WHERE id_prename='$id_prename_temp'");
-$fetch_pre  = mysql_fetch_array($result_pre);
+$fetch_pre  = mysqli_fetch_array($result_pre);
 $prename_temp =  $fetch_pre['prename'];
 
 $result_s = mysql_query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
-$fetch_s  = mysql_fetch_array($result_s);
+$fetch_s  = mysqli_fetch_array($result_s);
 $sector_temp =  $fetch_s['sector'];
 
 $result_p = mysql_query("SELECT * FROM type_problem WHERE id_problem='$id_problem_temp'");
-$fetch_p  = mysql_fetch_array($result_p);
+$fetch_p  = mysqli_fetch_array($result_p);
 $problem_temp =  $fetch_p['problem'];
 
 print"<tr><td>";conthai($date_temp);echo"</td><td>$t</td><td>$sector_temp</td><td>$problem_temp</td><td style=\"color:#FF6600;\">";

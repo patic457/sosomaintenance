@@ -6,8 +6,8 @@ $mail = $_POST['b'];
 if($username=="" && $mail=="" ){ echo"<script>alert('กรุณากรอกให้ครบถ้วน')</script>"; }
 	else{ 	$sqllg = "SELECT * FROM user WHERE username = '$username' AND mail = '$mail'";
 	 	  		$sqllg_query = mysql_query($sqllg);
-				$sqllg_num=mysql_num_rows($sqllg_query);
-				//$fetch  = mysql_fetch_array($sqllg_query);
+				$sqllg_num=mysqli_num_rows($sqllg_query);
+				//$fetch  = mysqli_fetch_array($sqllg_query);
 				//$user_status_temp = $fetch['user_status'];
 				 if($sqllg_num=="0"){echo"<script>alert('ชื่อผู้ใช้หรืออีเมล์ไม่ถูกต้อง');</script>";}
 					 else{ echo"<form id='fm'   method='post'><strong>กรุณากรอกรหัสผ่านใหม่</strong><p><input id='pass1' name='pass1' type='password'  maxlength='10'/><p>"; 

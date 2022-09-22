@@ -50,12 +50,12 @@ if($job_status_!="0"){$sql.=" AND job_status='$job_status_'";}
 
 $sql.=" ORDER BY id_list DESC";
 $result_r = mysql_query($sql);
-$num_r = mysql_num_rows($result_r);
+$num_r = mysqli_num_rows($result_r);
 
 $r=0;
 //echo"$num_r";
 while($r<$num_r){	
-$fetch = mysql_fetch_array($result_r);
+$fetch = mysqli_fetch_array($result_r);
 ?>
 <script language="javascript">
 $(function(){
@@ -69,7 +69,7 @@ $.post("check_inbox_admin.php",{bt: bt_,id: id_},function(data){$("#msg<?php ech
 </script>
 
 <?
-//$fetch  = mysql_fetch_array($result);
+//$fetch  = mysqli_fetch_array($result);
 $id_list_temps = $fetch['id_list'];
 $date_temps = $fetch['date'];
 $time_temps = $fetch['time'];
@@ -83,22 +83,22 @@ $details_temps = $fetch['details'];
 $job_status_temps = $fetch['job_status'];
 
 $result_u = mysql_query("SELECT * FROM user WHERE username='$username_temps'");
-$fetch_u  = mysql_fetch_array($result_u);
+$fetch_u  = mysqli_fetch_array($result_u);
 $id_prename_temps =  $fetch_u['id_prename'];
 $name_temps =  $fetch_u['name'];
 $lastname_temps =  $fetch_u['lastname'];
 $id_sector_temps =  $fetch_u['id_sector'];
 
 $result_pre = mysql_query("SELECT * FROM prename WHERE id_prename='$id_prename_temps'");
-$fetch_pre  = mysql_fetch_array($result_pre);
+$fetch_pre  = mysqli_fetch_array($result_pre);
 $prename_temps =  $fetch_pre['prename'];
 
 $result_s = mysql_query("SELECT * FROM sector WHERE id_sector='$id_sector_temps'");
-$fetch_s  = mysql_fetch_array($result_s);
+$fetch_s  = mysqli_fetch_array($result_s);
 $sector_temps =  $fetch_s['sector'];
 
 $result_p = mysql_query("SELECT * FROM type_problem WHERE id_problem='$id_problem_temps'");
-$fetch_p  = mysql_fetch_array($result_p);
+$fetch_p  = mysqli_fetch_array($result_p);
 $problem_temps =  $fetch_p['problem'];
 
 print"<tr><td>";Conthai($date_temps);echo"</td><td>$t</td><td>$sector_temps</td><td>$problem_temps</td><td>";

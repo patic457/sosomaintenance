@@ -4,7 +4,7 @@
 if(isset($_POST['edit'])==true){
 $edit=$_POST['edit'];
 $resultt = mysql_query("SELECT * FROM technician WHERE id_technician='$edit'");
-$fetch  = mysql_fetch_array($resultt);
+$fetch  = mysqli_fetch_array($resultt);
 $id_technician_temp = $fetch['id_technician'];
 $name_temp = $fetch['name'];
 $lastname_temp = $fetch['lastname'];
@@ -15,10 +15,10 @@ $job_temp = $fetch['job'];
 function a(){
 
 $result = mysql_query("SELECT * FROM type_problem");
-$num = mysql_num_rows($result);
+$num = mysqli_num_rows($result);
 $i=1;
 while($i<=$num){
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $id_problem_temp = $fetch['id_problem'];
 $problem_temp = $fetch['problem'];
 ?><option value="<?php echo $id_problem_temp; ?>"><?php echo $problem_temp; ?></option><?

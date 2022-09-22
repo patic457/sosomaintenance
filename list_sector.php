@@ -29,7 +29,7 @@ else if(isset($_GET['link_b'])==true){ $sql_ = "SELECT * FROM sector WHERE id_bu
 else{ $sql_ = "SELECT * FROM sector ORDER BY id_belong,id_building ASC limit $start,$pagesize"; }
 
 $result_sector = mysql_query($sql_);
-$num_sector = mysql_num_rows($result_sector);
+$num_sector = mysqli_num_rows($result_sector);
 ?>
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
                       
@@ -65,7 +65,7 @@ $(function(){
 $i=0;
 
 while($i<$num_sector){	
-$fetch  = mysql_fetch_array($result_sector);
+$fetch  = mysqli_fetch_array($result_sector);
 $id_sector_temp = $fetch['id_sector'];
 $sector_temp = $fetch['sector'];
 $id_belong_temp = $fetch['id_belong'];
@@ -114,11 +114,11 @@ $(function(){
 <?
 
 $result_ = mysql_query("SELECT belong FROM belong WHERE id_belong='$id_belong_temp'");
-$fetch_  = mysql_fetch_array($result_);
+$fetch_  = mysqli_fetch_array($result_);
 $belong_temp = $fetch_['belong'];
 
 $result_build = mysql_query("SELECT building FROM building WHERE id_building='$id_building_temp'");
-$fetch_build  = mysql_fetch_array($result_build);
+$fetch_build  = mysqli_fetch_array($result_build);
 $building_temp = $fetch_build['building'];
 ?>
 
@@ -128,7 +128,7 @@ $building_temp = $fetch_build['building'];
 <td>
 <?
 $sql_row = mysql_query("SELECT * FROM room WHERE id_sector='$id_sector_temp'");
-$row_s = mysql_num_rows($sql_row);
+$row_s = mysqli_num_rows($sql_row);
 echo $row_s;
 ?>
 </td>

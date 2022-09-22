@@ -45,12 +45,12 @@ $(function(){
   </tr>
 <?
 $result = mysql_query("SELECT * FROM type_problem ORDER BY id_problem ASC limit $start,$pagesize");
-$num = mysql_num_rows($result);
+$num = mysqli_num_rows($result);
 $i=0;
 
 while($i<$num){	
 
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $id_problem_temp = $fetch['id_problem'];
 $problem_temp = $fetch['problem'];
 ?>

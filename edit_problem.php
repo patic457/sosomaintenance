@@ -8,8 +8,8 @@ $.post("check_admin.php",{id_problem_: id_problem,problem_: problem_name,check_s
 </script>
 <?
 $result_problem = mysql_query("SELECT * FROM type_problem WHERE id_problem='$_POST[id_problem_]'");
-$num = mysql_num_rows($result_problem);
-$fetch  = mysql_fetch_array($result_problem);	
+$num = mysqli_num_rows($result_problem);
+$fetch  = mysqli_fetch_array($result_problem);	
 ?>
 <body><table class="mana">
 <tr><th>แก้ไขข้อมูล</th>

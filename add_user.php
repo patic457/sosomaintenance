@@ -20,12 +20,12 @@ $.post("check_user.php",{check:check,username:username,password:password,prename
     
     <?
 $result_pre = mysql_query("SELECT * FROM prename");
-$num_pre = mysql_num_rows($result_pre);
+$num_pre = mysqli_num_rows($result_pre);
 echo"<select id='prename'>";
     echo"<option selected value=''>--กรุณาเลือก--</option>";
 $ii=0;
 while($ii<$num_pre){	
-$fetch_pre  = mysql_fetch_array($result_pre);
+$fetch_pre  = mysqli_fetch_array($result_pre);
 $id_prename_temp = $fetch_pre['id_prename'];
 $prename_temp = $fetch_pre['prename'];
  ?><option value="<?php echo $id_prename_temp; ?>"><?php echo $prename_temp; ?></option><?
@@ -41,11 +41,11 @@ $ii++;
       <option  value="0" selected>--กรุณาเลือก--</option>
       <?php 
 $result = mysql_query("SELECT * FROM sector");
-$num = mysql_num_rows($result);
+$num = mysqli_num_rows($result);
 $i=0;
 while($i<$num){	
 
-$fetch  = mysql_fetch_array($result);
+$fetch  = mysqli_fetch_array($result);
 $id_sector_temp = $fetch['id_sector'];
 $sector_temp = $fetch['sector'];    
        ?><option value="<?php echo $id_sector_temp; ?>"><?php echo $sector_temp; ?></option><?

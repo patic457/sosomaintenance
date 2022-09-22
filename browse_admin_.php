@@ -64,52 +64,52 @@ $(function(){$("#bt3").click(function(){ var comment =  $("#comment").attr("valu
 <center>
 <?
 $result_list = mysql_query("SELECT * FROM list_service WHERE id_list='$_GET[id_list]'");
-$fetch_list  = mysql_fetch_array($result_list);
+$fetch_list  = mysqli_fetch_array($result_list);
 
 $ddate = date("Y/m/d");
 
 $result_username = mysql_query("SELECT * FROM user WHERE username='$fetch_list[username]'");
-$fetch_username  = mysql_fetch_array($result_username);
+$fetch_username  = mysqli_fetch_array($result_username);
 
 $result_prename = mysql_query("SELECT * FROM prename WHERE id_prename='$fetch_username[id_prename]'");
-$fetch_prename  = mysql_fetch_array($result_prename);
+$fetch_prename  = mysqli_fetch_array($result_prename);
 
 $result_sector = mysql_query("SELECT * FROM sector WHERE id_sector='$fetch_username[id_sector]'");
-$fetch_sector  = mysql_fetch_array($result_sector);
+$fetch_sector  = mysqli_fetch_array($result_sector);
 
 $result_belong = mysql_query("SELECT * FROM belong WHERE id_belong='$fetch_sector[id_belong]'");
-$fetch_belong  = mysql_fetch_array($result_belong);
+$fetch_belong  = mysqli_fetch_array($result_belong);
 
 $result_problem_list = mysql_query("SELECT * FROM type_problem WHERE id_problem='$fetch_list[id_problem]'");
-$fetch_problem_list  = mysql_fetch_array($result_problem_list);
+$fetch_problem_list  = mysqli_fetch_array($result_problem_list);
 
 $result_building_list = mysql_query("SELECT * FROM building WHERE id_building='$fetch_list[id_building]'");
-$fetch_building_list  = mysql_fetch_array($result_building_list);
+$fetch_building_list  = mysqli_fetch_array($result_building_list);
 
 $result_room_list = mysql_query("SELECT * FROM room WHERE id_room='$fetch_list[id_room]'");
-$fetch_room_list  = mysql_fetch_array($result_room_list);
+$fetch_room_list  = mysqli_fetch_array($result_room_list);
 
 $result_tech_a_list = mysql_query("SELECT * FROM user WHERE username='$fetch_list[id_technician_a]'");
-$fetch_tech_a_list  = mysql_fetch_array($result_tech_a_list);
+$fetch_tech_a_list  = mysqli_fetch_array($result_tech_a_list);
 
 $result_tech_a_pre_list = mysql_query("SELECT * FROM prename WHERE id_prename='$fetch_tech_a_list[id_prename]'");
-$fetch_tech_a_pre_list  = mysql_fetch_array($result_tech_a_pre_list);
+$fetch_tech_a_pre_list  = mysqli_fetch_array($result_tech_a_pre_list);
 
 $result_tech_b_list = mysql_query("SELECT * FROM user WHERE username='$fetch_list[id_technician_b]'");
-$fetch_tech_b_list  = mysql_fetch_array($result_tech_b_list);
+$fetch_tech_b_list  = mysqli_fetch_array($result_tech_b_list);
 
 $result_tech_b_pre_list = mysql_query("SELECT * FROM prename WHERE id_prename='$fetch_tech_b_list[id_prename]'");
-$fetch_tech_b_pre_list  = mysql_fetch_array($result_tech_b_pre_list);
+$fetch_tech_b_pre_list  = mysqli_fetch_array($result_tech_b_pre_list);
 
 function technician_a_sel(){
 $result_t_sel = mysql_query("SELECT * FROM user WHERE user_status='9'");
-$num_t_sel = mysql_num_rows($result_t_sel);
+$num_t_sel = mysqli_num_rows($result_t_sel);
 $te = 0;
 echo"<select id='tech_a' name='tech_a'>";
 echo"<option value=\"0\">--ช่างเทคนิค--</option>";
 while($te<$num_t_sel ){
 
-$fetch_t_sel  = mysql_fetch_array($result_t_sel);
+$fetch_t_sel  = mysqli_fetch_array($result_t_sel);
 echo"<option value=\"$fetch_t_sel[username]\">$fetch_t_sel[name] $fetch_t_sel[lastname]</option>";
 $te++;
 }
@@ -118,12 +118,12 @@ echo"</select>";
 
 function technician_b_sel(){
 $result_t_sel = mysql_query("SELECT * FROM user WHERE user_status='9'");
-$num_t_sel = mysql_num_rows($result_t_sel);
+$num_t_sel = mysqli_num_rows($result_t_sel);
 $te = 0;
 echo"<select id='tech_b' name='tech_b'>";
 echo"<option value=\"0\">--ไม่มีผู้ช่วย--</option>";
 while($te<$num_t_sel ){
-$fetch_t_sel  = mysql_fetch_array($result_t_sel);
+$fetch_t_sel  = mysqli_fetch_array($result_t_sel);
 echo"<option value=\"$fetch_t_sel[username]\">$fetch_t_sel[name] $fetch_t_sel[lastname]</option>";
 $te++;
 }
@@ -132,12 +132,12 @@ echo"</select>";
 
 /*function building_sel(){
 $result_building_sel = mysql_query("SELECT * FROM building");
-$num_building_sel = mysql_num_rows($result_building_sel);
+$num_building_sel = mysqli_num_rows($result_building_sel);
 $build = 0;
 echo"<select id='b' name='b'>";
 echo"<option value=\"0\">--อาคาร--</option>";
 while($build<$num_building_sel){
-$fetch_building_sel  = mysql_fetch_array($result_building_sel);
+$fetch_building_sel  = mysqli_fetch_array($result_building_sel);
 echo"<option value=\"$fetch_building_sel[id_building]\">$fetch_building_sel[building]</option>";
 $build++;
 }
@@ -199,10 +199,10 @@ if($fetch_list['job_status']=='รอการอนุมัติ'){
 else if($fetch_list['job_status']=='ไม่อนุมัติ'){ 
 
 	$result_username_1_sel = mysql_query("SELECT * FROM user WHERE username='$fetch_list[username_1]'");
-	$fetch_username_1_sel  = mysql_fetch_array($result_username_1_sel);
+	$fetch_username_1_sel  = mysqli_fetch_array($result_username_1_sel);
 
 	$result_prename_1_sel = mysql_query("SELECT * FROM prename WHERE id_prename='$fetch_username_1_sel[id_prename]'");
-	$fetch_prename_1_sel  = mysql_fetch_array($result_prename_1_sel);
+	$fetch_prename_1_sel  = mysqli_fetch_array($result_prename_1_sel);
 
    echo "<p style='color:red;'><strong>$fetch_list[job_status]</strong>";
 	echo "<p style='color:red;'><u>เนื่องจาก</u> $fetch_list[comment]</p>";
@@ -213,10 +213,10 @@ else if($fetch_list['job_status']=='ไม่อนุมัติ'){
 else
 {
 	$result_username_1_sel = mysql_query("SELECT * FROM user WHERE username='$fetch_list[username_1]'");
-	$fetch_username_1_sel  = mysql_fetch_array($result_username_1_sel);
+	$fetch_username_1_sel  = mysqli_fetch_array($result_username_1_sel);
 
 	$result_prename_1_sel = mysql_query("SELECT * FROM prename WHERE id_prename='$fetch_username_1_sel[id_prename]'");
-	$fetch_prename_1_sel  = mysql_fetch_array($result_prename_1_sel);
+	$fetch_prename_1_sel  = mysqli_fetch_array($result_prename_1_sel);
 
 	echo "<br><p style='color:#009900;'><strong>อนุมัติ</strong></p>"; 
 	echo "<br><p style='color:#009900; text-align:right;'>ลงชื่อ $fetch_prename_1_sel[prename]$fetch_username_1_sel[name] $fetch_username_1_sel[lastname]";
