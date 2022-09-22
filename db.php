@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+?>
 
 <script src="jquery.js" language="javascript" type="text/javascript"></script>
 <script  language="javascript" type="text/javascript">
@@ -34,9 +36,9 @@ $p = "j2batag6pvrfimgh";
 $dbname = "g3uky2wss1pv3jyv";
 
 
-mysql_connect($host,$u,$p) or die("Error1");
-mysql_select_db($dbname) or die("Error2");
-mysql_query("SET NAMES UTF8");
+mysqli_connect($host,$u,$p,$dbname) or die("Error1");
+// mysqli_select_db($dbname) or die("Error2");
+// mysqli_query("SET NAMES UTF8");
 
 
 
