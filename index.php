@@ -39,8 +39,8 @@ color:red;
 <div id="wrap">
 
 <div id="header">
-<h1><a href=''>ระบบจัดการงานซ่อมบำรุง</a></h1>
-<h2>หน่วยอาคารสถานที่และยานพาหนะ คณะสัตวแพทยศาสตร์ มหาวิทยาลัยเกษตรศาสตร์</h2>
+<h1><a href=''>Soso Maintenance</a></h1>
+
 </div>
 
 <div id="menu">
@@ -184,8 +184,7 @@ else if($_SESSION['user_status_session']=='9'){
 
 <div id="bottom"> </div>
 
-<div id="footer">Copyright 2011 @
-หน่วยอาคารสถานที่และยานพาหนะ คณะสัตวแพทยศาสตร์ มหาวิทยาลัยเกษตรศาสตร์
+<div id="footer">Copyright 2011 @ Soso Maintenance
 </div>
 </div>
 
