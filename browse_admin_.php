@@ -98,12 +98,14 @@ $fetch_tech_a_list  = mysqli_fetch_array($result_tech_a_list);
 
 $result_tech_a_pre_list = $mysqli->query("SELECT * FROM prename WHERE id_prename='$fetch_tech_a_list[id_prename]'");
 $fetch_tech_a_pre_list  = mysqli_fetch_array($result_tech_a_pre_list);
+$fetch_tech_a_prename_title  = $fetch_tech_a_pre_list['prename'];
 
 $result_tech_b_list = $mysqli->query("SELECT * FROM user WHERE username='$fetch_list[id_technician_b]'");
 $fetch_tech_b_list  = mysqli_fetch_array($result_tech_b_list);
 
 $result_tech_b_pre_list = $mysqli->query("SELECT * FROM prename WHERE id_prename='$fetch_tech_b_list[id_prename]'");
 $fetch_tech_b_pre_list  = mysqli_fetch_array($result_tech_b_pre_list);
+$fetch_tech_b_prename_title  = $fetch_tech_b_pre_list['prename'];
 
 function technician_a_sel($mysqli){
 $result_t_sel = $mysqli->query("SELECT * FROM user WHERE user_status='9'");
@@ -167,9 +169,11 @@ echo"</select>";
 <tr><th align="center" style="text-align:center; " class="form"   scope="col" colspan="4">
 |------------------------------ ข้อมูลแจ้งซ่อม -------------------------------|</th></tr>
 <tr><th scope="row">ประเภทที่แจ้ง : </th><td><?php echo $fetch_problem_list['problem']; ?></td><th scope="row">อาคาร : </th><td><?php echo $fetch_building_list['building']; ?></td></tr>
-<tr><th scope="row">ชั้น : </th><td ><?php echo $fetch_list['floor']; ?></td><th scope="row">ห้อง : </th><td><?php echo $fetch_room_list['room']; ?></td></tr>
-<tr><th scope="row">ลักษณะอาการเบื้องต้น : </th><td colspan="2" ><?php echo $fetch_list['details']; ?></td>
-
+<tr>
+	<th scope="row">ชั้น : </th><td ><?php echo $fetch_list['floor']; ?></td>
+	<th scope="row">ห้อง : </th><td><?php echo $fetch_room_list['room']; ?></td>
+</tr>
+	<tr><th scope="row">ลักษณะอาการเบื้องต้น : </th><td colspan="2" ><?php echo $fetch_list['details']; ?></td>
 <td align="center">
 
 <?php //===================================================================หัวหน้า============================================================ ?>
@@ -275,8 +279,8 @@ if($fetch_list['job_status']=='ดำเนินการเรียบร้�
  } 
  if($fetch_list['job_status']=='อยู่ในระหว่างการดำเนินการ'){ 
 	echo"<tr><th style='color:#333333;'>ผู้รับผิดชอบ : </th><p><td colspan='3'><font color='black'>"; 
-	echo"$fetch_tech_a_pre_list[prename]$fetch_tech_a_list[name] $fetch_tech_a_list[lastname]";
-	if(isset($fetch_tech_b_list['prename'])==true){echo" และ $fetch_tech_b_list[prename]$fetch_tech_b_list[name] $fetch_tech_b_list[lastname]";}
+	echo"$fetch_tech_a_prename_title$fetch_tech_a_list[name] $fetch_tech_a_list[lastname]";
+	if(isset($fetch_tech_b_list['prename'])==true){echo" และ $fetch_tech_b_prename_title$fetch_tech_b_list[name] $fetch_tech_b_list[lastname]";}
 	echo"</font></td></tr>"; 
 
 				echo"<tr><th style='color:#333333;'>มอบหมายงานเมื่อวันที่ : </th><p><td><font color='black'>"; 
