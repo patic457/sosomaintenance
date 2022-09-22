@@ -1,4 +1,5 @@
-<?php //session_start();
+<?php 
+// session_start();
 include("db.php");
 
 $username_session = $_POST['a'];
