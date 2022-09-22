@@ -1,4 +1,4 @@
-<?php session_start();
+<?php //session_start();
 include"db.php";
 $username = $_POST['u'];
 $pass1 = $_POST['pass1'];

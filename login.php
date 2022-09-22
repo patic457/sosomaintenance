@@ -1,5 +1,5 @@
 <?php 
-session_start();
+//session_start();
 include('db.php');
 include("func.php"); 
 if(empty($_SESSION['username'])==true){}else{echo"<script>Location('index.php');</script>";exit();} 
