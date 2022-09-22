@@ -26,6 +26,6 @@ if($username_session=="" && $password_session=="" ){ echo"<script>alert('กร�
 					   $_SESSION['id_prename_session'] = $_SESSION['id_prename_temp'];
 					    $_SESSION['name_session'] = $_SESSION['name'];
 						 $_SESSION['lastname_session'] = $_SESSION['lastname'];	*/
-					 echo"<script>Location('index.php?m=''');</script>"; }}
+					 echo"<script>Location('index.php?m=');</script>"; }}
 					 
 					 ?>
