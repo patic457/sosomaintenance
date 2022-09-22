@@ -104,7 +104,7 @@ $fetch_tech_b_list  = mysqli_fetch_array($result_tech_b_list);
 $result_tech_b_pre_list = $mysqli->query("SELECT * FROM prename WHERE id_prename='$fetch_tech_b_list[id_prename]'");
 $fetch_tech_b_pre_list  = mysqli_fetch_array($result_tech_b_pre_list);
 
-function technician_a_sel(){
+function technician_a_sel($mysqli){
 $result_t_sel = $mysqli->query("SELECT * FROM user WHERE user_status='9'");
 $num_t_sel = mysqli_num_rows($result_t_sel);
 $te = 0;
@@ -119,7 +119,7 @@ $te++;
 echo"</select>";
 }; //technician_a_sel
 
-function technician_b_sel(){
+function technician_b_sel($mysqli){
 $result_t_sel = $mysqli->query("SELECT * FROM user WHERE user_status='9'");
 $num_t_sel = mysqli_num_rows($result_t_sel);
 $te = 0;
@@ -223,7 +223,7 @@ else
 
 	echo "<br><p style='color:#009900;'><strong>อนุมัติ</strong></p>"; 
 	echo "<br><p style='color:#009900; text-align:right;'>ลงชื่อ $fetch_prename_1_sel[prename]$fetch_username_1_sel[name] $fetch_username_1_sel[lastname]";
-	echo"<br>วันที่ ";Conthai($fetch_list[date_1]);
+	echo"<br>วันที่ ";Conthai($fetch_list['date_1']);
 	echo"<br>เวลา $fetch_list[time_1] น.</p>";
 	
 }
@@ -253,7 +253,7 @@ if($fetch_list['job_status']=='ไม่สามารถดำเนินก�
 if($fetch_list['job_status']=='ดำเนินการเรียบร้อย'){echo "<label style='color:green;'>$fetch_list[job_status]</label><p>";}*/
 ?>
 <?php //===================================================================เจ้าหน้าที่============================================================ ?>
-</td></tr><tr><th align="center"  style='text-align:center; color:#333333;'  scope="col" colspan="4">
+</td></tr><tr><th  style='text-align:center; color:#333333;'  scope="col" colspan="4">
 |------------------------------ สำหรับเจ้าหน้าที่ -------------------------------|</th>
 </tr>
  <!--เฉพาะเจ้าหน้าที -->
@@ -266,8 +266,8 @@ if($fetch_list['job_status']=='ดำเนินการเรียบร้�
 		echo"<tr><td colspan='4' style='color:blue;'>$fetch_list[job_status]</td></tr>";	
 		}
 			else{
-				?>  <tr  ><th style='color:#333333;'>ผู้รับผิดชอบ : </th><td><?php technician_a_sel() ?></td>
-					<th style='color:#333333;' >ผู้ช่วยงาน : </th><td><?php technician_b_sel() ?></td></tr>
+				?>  <tr  ><th style='color:#333333;'>ผู้รับผิดชอบ : </th><td><?php technician_a_sel($mysqli) ?></td>
+					<th style='color:#333333;' >ผู้ช่วยงาน : </th><td><?php technician_b_sel($mysqli) ?></td></tr>
 		            <tr><td colspan="4" ><input type="button" id="bt_t" value="ยืนยันเพื่อดำเนินการต่อไป"></td></tr>    
 		    	 <?
 			}
@@ -279,7 +279,7 @@ if($fetch_list['job_status']=='ดำเนินการเรียบร้�
 	echo"</font></td></tr>"; 
 
 				echo"<tr><th style='color:#333333;'>มอบหมายงานเมื่อวันที่ : </th><p><td><font color='black'>"; 
-				echo"<font color='black'>";Conthai($fetch_list[date_2]);echo"</td><th style='color:#333333;'>เวลา : </th><td><font color='black'>$fetch_list[time_2] น.</td>";
+				echo"<font color='black'>";Conthai($fetch_list['date_2']);echo"</td><th style='color:#333333;'>เวลา : </th><td><font color='black'>$fetch_list[time_2] น.</td>";
 				echo"</font></td></tr>"; 
 
 		if($_SESSION['user_status_session']=='0'){	
@@ -303,7 +303,7 @@ if($fetch_list['job_status']=='ดำเนินการเรียบร้�
 if(isset($fetch_tech_b_pre_list['prename'])==true){echo" และ $fetch_tech_b_pre_list[prename]$fetch_tech_b_list[name] $fetch_tech_b_list[lastname]";}
 			echo"</tr>";
 				echo"<tr><th style='color:#333333;'>มอบหมายงานเมื่อวันที่ : </th><p><td><font color='black'>"; 
-				echo"<font color='black'>";Conthai($fetch_list[date_2]);echo"</td><th style='color:#333333;'>เวลา : </th><td><font color='black'>$fetch_list[time_2] น.</td>";
+				echo"<font color='black'>";Conthai($fetch_list['date_2']);echo"</td><th style='color:#333333;'>เวลา : </th><td><font color='black'>$fetch_list[time_2] น.</td>";
 				echo"</font></td></tr>";
 
 
@@ -319,7 +319,7 @@ if(isset($fetch_tech_b_pre_list['prename'])==true){echo" และ $fetch_tech_b
 	if(isset($fetch_tech_b_pre_list['prename'])==true){echo" และ $fetch_tech_b_pre_list[prename]$fetch_tech_b_list[name] $fetch_tech_b_list[lastname]";}
 	echo"</font></td></tr>";    
 				echo"<tr><th style='color:#333333;'>มอบหมายงานเมื่อวันที่ : </th><p><td><font color='black'>"; 
-				echo"<font color='black'>";Conthai($fetch_list[date_2]);echo"</td><th style='color:#333333;'>เวลา : </th><td><font color='black'>$fetch_list[time_2] น.</td>";
+				echo"<font color='black'>";Conthai($fetch_list['date_2']);echo"</td><th style='color:#333333;'>เวลา : </th><td><font color='black'>$fetch_list[time_2] น.</td>";
 				echo"</font></td></tr>";
 
 			echo "<tr><td colspan='4' style='color:green;'>$fetch_list[job_status]<p> เมื่อวันที่ ";Conthai($fetch_list['date_complete']);
