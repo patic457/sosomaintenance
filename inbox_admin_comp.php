@@ -12,7 +12,7 @@ $sql_page = mysql_query("SELECT count(date) as date FROM list_service");}
 
 //$sql_page = "SELECT count(date) as date FROM list_service";
 
-$crow = mysql_fetch_row($sql_page);
+$crow = mysqli_fetch_row($sql_page);
 $totalrecord = $crow[0];
 $totalpage = ceil($totalrecord / $pagesize);
 

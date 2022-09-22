@@ -5,7 +5,7 @@
 $pagesize = 10;
 // แบ่งหน้าแสดงผล
 $sql_page = mysql_query("SELECT count(id_building) as id_building FROM building");
-$crow = mysql_fetch_row($sql_page);
+$crow = mysqli_fetch_row($sql_page);
 $totalrecord = $crow[0];
 $totalpage = ceil($totalrecord / $pagesize);
 if (isset($_GET['pageid'])) {

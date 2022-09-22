@@ -9,7 +9,7 @@ if(empty($_GET['link_s'])!=true){$sql_page=mysql_query("SELECT count(id_room) as
 else if(empty($_GET['link_b'])!=true){$sql_page=mysql_query("SELECT count(id_room) as id_room FROM room WHERE id_building='$_GET[link_b]'");}
 else{ $sql_page=mysql_query("SELECT count(id_room) as id_room FROM room");}
 
-$crow = mysql_fetch_row($sql_page);
+$crow = mysqli_fetch_row($sql_page);
 $totalrecord = $crow[0];
 $totalpage = ceil($totalrecord / $pagesize);
 if (isset($_GET['pageid'])) {

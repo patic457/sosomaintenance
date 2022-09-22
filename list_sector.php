@@ -11,7 +11,7 @@ else{ $sql_page=mysql_query("SELECT count(id_sector) as id_sector FROM sector");
 
 
 //$sql_page = mysql_query("SELECT count(id_sector) as id_sector FROM sector");
-$crow = mysql_fetch_row($sql_page);
+$crow = mysqli_fetch_row($sql_page);
 $totalrecord = $crow[0];
 $totalpage = ceil($totalrecord / $pagesize);
 if (isset($_GET['pageid'])) {

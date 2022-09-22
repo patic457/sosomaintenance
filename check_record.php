@@ -29,7 +29,7 @@ else if($_SESSION['user_status_session']=="1" || $_SESSION['user_status_session'
 
 //$sql_page = "SELECT count(date) as date FROM list_service";
 
-$crow = mysql_fetch_row($sql_page);
+$crow = mysqli_fetch_row($sql_page);
 $totalrecord = $crow[0];
 $totalpage = ceil($totalrecord / $pagesize);
 
