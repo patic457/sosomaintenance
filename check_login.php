@@ -1,5 +1,6 @@
 <?php session_start();
 include("db.php");
+
 $username_session = $_POST['a'];
 $password_session = base64_encode(md5($_POST['b']));
 
