@@ -14,11 +14,12 @@ if($username_session=="" && $password_session=="" ){ echo"<script>alert('กร�
 				$lastname_session = $fetch['lastname'];
 				$user_status_session = $fetch['user_status'];
 				 if($sqllg_num=="0"){echo"<script>alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');</script>";}
-					 else{ $_SESSION("username_session");
-					  $_SESSION("user_status_session"); 
-					  $_SESSION("id_prename_session");
-					  $_SESSION("name_session");
-					  $_SESSION("lastname_session"); 	
+					 else{ 
+						$_SESSION["username_session"] = $username_session;
+					  $_SESSION["user_status_session"] = $user_status_session; 
+					  $_SESSION["id_prename_session"] = $id_prename_session;
+					  $_SESSION["name_session"] = $name_session;
+					  $_SESSION["lastname_session"] = $lastname_session; 	
 					  /*$_SESSION['username_session'] = $_SESSION['username'];
 					   $_SESSION['user_status_session'] = $_SESSION['user_status_temp'];
 					   $_SESSION['id_prename_session'] = $_SESSION['id_prename_temp'];
