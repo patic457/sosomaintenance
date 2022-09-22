@@ -19,7 +19,7 @@ $.post("check_search_report.php",{id_building: id_building,var_check: var_check}
 
 <?
 
-function tech(){
+function tech($mysqli){
 $re_tech = $mysqli->query("SELECT * FROM technician");
 $num_tech = mysqli_num_rows($re_tech);
 $i_tech=0;
@@ -100,7 +100,7 @@ echo"</select>";
   </p>
   <p>&nbsp; </p>
   <p><label id="tech">  
-ช่างเทคนิค :  <?php tech(); ?> 
+ช่างเทคนิค :  <?php tech($mysqli); ?> 
  </label>
 <label id="job">
 สถานะการแจ้งซ่อม :    
