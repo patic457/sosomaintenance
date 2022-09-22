@@ -1,0 +1,7 @@
+
+	body {font-family: verdana; arial, sans-serif; font-size: 12px; }
+	#search, ul { padding: 3px; width: 150px; border: 1px solid #999; font-family: verdana; arial, sans-serif; font-size: 12px;}
+	ul { list-style-type: none; font-family: verdana; arial, sans-serif; font-size: 12px;  margin: 5px 0 0 0}
+	li { margin: 0 0 5px 0; cursor: default; color: red;}
+	li:hover { background: #ffc; }
+	#resultTeacher {font-size:18px; }

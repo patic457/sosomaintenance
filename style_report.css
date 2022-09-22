@@ -1,0 +1,14 @@
+
+.report{
+border-collapse: collapse;
+border:#666666 solid 1px;
+padding:2px;
+font-size:10px;
+}
+.report th {
+font-weight:bold;
+color:#000000;
+}
+.report td {
+color:#333333;
+}
