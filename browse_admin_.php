@@ -162,7 +162,7 @@ echo"</select>";
 <table class="form">
 <tr>
 <th style="text-align:center;" class="form"   scope="col" colspan="4">|------------------------------ ข้อมูลผู้แจ้ง -------------------------------|</th></tr>
-<tr><th  scope="row"  >ผู้แจ้ง : </th><td colspan="3"><?php echo $fetch_username['prename'].$fetch_username['name'].' '.$fetch_username['lastname'] ?></td></tr>
+<tr><th  scope="row"  >ผู้แจ้ง : </th><td colspan="3"><?php echo $fetch_prename.$fetch_username['name'].' '.$fetch_username['lastname'] ?></td></tr>
 <tr><th scope="row">สังกัด : </th><td><?php echo $fetch_belong['belong']; ?></td><th scope="row">หน่วยงาน : </th><td><?php echo $fetch_sector['sector']; ?></td></tr>
 <tr><th scope="row">โทรสายตรง : </th><td><?php echo $fetch_username['tel']; ?></td><th scope="row">อีเมล์ : </th><td><?php echo $fetch_username['mail']; ?></td></tr>
 <tr><th align="center" style="text-align:center; " class="form"   scope="col" colspan="4">
