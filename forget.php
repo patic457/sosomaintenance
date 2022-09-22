@@ -1,4 +1,4 @@
-<? session_start();include('db.php'); ?>
+<?php session_start();include('db.php'); ?>
 <head>
 <style>
 .login {

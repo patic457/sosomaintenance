@@ -1,4 +1,4 @@
-<? include"db.php";  include"session.php"; include"func.php"; 
+<?php include"db.php";  include"session.php"; include"func.php"; 
 
 $floor_ = $_POST['floor_'];
 $id_building_ = $_POST['id_building_'];
@@ -14,7 +14,7 @@ switch ($check_room) {
 		while($r<$num){	
 		$fetch_room  = mysql_fetch_array($result_room);
 		?>
-		<option value="<? echo $fetch_room['id_room']; ?>"><? echo $fetch_room['room']; ?></option><?
+		<option value="<?php echo $fetch_room['id_room']; ?>"><?php echo $fetch_room['room']; ?></option><?
 		$r++;
 		}
 	break;

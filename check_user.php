@@ -1,4 +1,4 @@
-<? include"db.php"; include"session.php"; include"func.php";
+<?php include"db.php"; include"session.php"; include"func.php";
 
 $username = $_GET['username'];
 if($_GET['check']=='del'){  

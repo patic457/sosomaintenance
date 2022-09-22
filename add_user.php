@@ -1,4 +1,4 @@
-<? include"session.php"; ?><link rel="stylesheet" type="text/css" href="style_adminn.css" />
+<?php include"session.php"; ?><link rel="stylesheet" type="text/css" href="style_adminn.css" />
 <script>
 $(function(){$("#bt").click(function(){var check='add';var password=$("#password").attr("value");var username=$("#username").attr("value");
 var prename=$("#prename").attr("value");var name=$("#name").attr("value");var lastname=$("#lastname").attr("value");
@@ -28,7 +28,7 @@ while($ii<$num_pre){
 $fetch_pre  = mysql_fetch_array($result_pre);
 $id_prename_temp = $fetch_pre['id_prename'];
 $prename_temp = $fetch_pre['prename'];
- ?><option value="<? echo $id_prename_temp; ?>"><? echo $prename_temp; ?></option><?
+ ?><option value="<?php echo $id_prename_temp; ?>"><?php echo $prename_temp; ?></option><?
 $ii++;
 }
  echo"</select>";
@@ -39,7 +39,7 @@ $ii++;
 <tr><td>ชื่อหน่วยงาน :
   <select id="id_sector">
       <option  value="0" selected>--กรุณาเลือก--</option>
-      <? 
+      <?php 
 $result = mysql_query("SELECT * FROM sector");
 $num = mysql_num_rows($result);
 $i=0;
@@ -48,7 +48,7 @@ while($i<$num){
 $fetch  = mysql_fetch_array($result);
 $id_sector_temp = $fetch['id_sector'];
 $sector_temp = $fetch['sector'];    
-       ?><option value="<? echo $id_sector_temp; ?>"><? echo $sector_temp; ?></option><?
+       ?><option value="<?php echo $id_sector_temp; ?>"><?php echo $sector_temp; ?></option><?
 $i++;
 }
  ?>

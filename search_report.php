@@ -1,4 +1,4 @@
-<? include"db.php"; include"session.php";include"func.php"
+<?php include"db.php"; include"session.php";include"func.php"
 
 
 ?>
@@ -87,7 +87,7 @@ echo"</select>";
   </select>
   </label> 
   <label id="b">
-อาคาร : <? build(); ?>
+อาคาร : <?php build(); ?>
   </label>
   <p>
     <!--<label id="s">
@@ -100,7 +100,7 @@ echo"</select>";
   </p>
   <p>&nbsp; </p>
   <p><label id="tech">  
-ช่างเทคนิค :  <? tech(); ?> 
+ช่างเทคนิค :  <?php tech(); ?> 
  </label>
 <label id="job">
 สถานะการแจ้งซ่อม :    

@@ -1,4 +1,4 @@
-<?  include"db.php";include"session.php"; 
+<?php  include"db.php";include"session.php"; 
 
 $p = $_POST['p'];
 $b = $_POST['b'];

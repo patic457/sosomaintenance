@@ -42,19 +42,19 @@ color:red;
 <div id="menu">
 <ul>
 <li  ><a  href="index.php">หน้าแรก</a></li>
-<? if($_SESSION['user_status_session']!='9'){?>
+<?php if($_SESSION['user_status_session']!='9'){?>
 <li  ><a  href="index.php?m=2">แจ้งซ่อม</a></li>
 <li  ><a  href="index.php?m=3">ประวัติการแจ้งซ่อม</a></li>
-<? }else{ ?>
+<?php }else{ ?>
 <li class="top" ><a href="index.php?m=17">ประวัติงานที่ได้รับมอบหมาย</a></li>
-<? } ?>
-<? if($_SESSION['user_status_session']=='2'){?>
+<?php } ?>
+<?php if($_SESSION['user_status_session']=='2'){?>
 <li  ><a  href="index.php?m=4">รอการอนุมัติ</a></li> 
-<? } ?>
-<? if($_SESSION['user_status_session']=='1' || $_SESSION['user_status_session']=='2'){ ?>
+<?php } ?>
+<?php if($_SESSION['user_status_session']=='1' || $_SESSION['user_status_session']=='2'){ ?>
 <li ><a  href="index.php?m=5">รอการดำเนินการ</a></li>
 <li ><a  href="index.php?m=6">อยูในระหว่างการดำเนินการ</a></li> 
-<? } ?>
+<?php } ?>
 
 </ul>
 </div>
@@ -100,7 +100,7 @@ $m_temp = $_GET['m'];
 </div><!-- End -->
 <div class="left"> 
 <h2>
-<? 
+<?php 
 if($_SESSION['user_status_session']=='0'){echo"สถานะผู้ใช้ทั่วไป";}
 else if($_SESSION['user_status_session']=='1'){echo"สถานะเจ้าหน้าที่";} 
 else if($_SESSION['user_status_session']=='2'){echo"สถานะหัวหน้าหน่วยอาคารฯ";}
@@ -108,8 +108,8 @@ else if($_SESSION['user_status_session']=='9'){echo"สถานะช่าง�
 ?>
 </h2>
 <ul>
-<li><a  href="index?m=4.3"><b>ขอต้อนรับคุณ<br><? echo "$_SESSION[name_session] $_SESSION[lastname_session]"; ?></b></a></li>
-<? 
+<li><a  href="index?m=4.3"><b>ขอต้อนรับคุณ<br><?php echo "$_SESSION[name_session] $_SESSION[lastname_session]"; ?></b></a></li>
+<?php 
 $sql_list_1 = "SELECT * FROM list_service WHERE job_status='รอการอนุมัติ'";
 $sql_list_2 = "SELECT * FROM list_service WHERE job_status='อนุมัติแล้วกำลังรอการดำเนินการ'";
 $sql_list_3 = "SELECT * FROM list_service WHERE job_status='อยู่ในระหว่างการดำเนินการ'";
@@ -159,7 +159,7 @@ else if($_SESSION['user_status_session']=='9'){
 <li><a href="destroy.php" class="blafont">ออกจากระบบ</a></li>
 </ul>
 
-<? if($_SESSION['user_status_session']=="1" || $_SESSION['user_status_session']=="2"){ ?>
+<?php if($_SESSION['user_status_session']=="1" || $_SESSION['user_status_session']=="2"){ ?>
 <h2>บริหารและจัดการโครงสร้าง</h2>
 <ul>
 <li><a href="index.php?m=7">จัดการ ตารางอาคาร</a></li> 
@@ -170,9 +170,9 @@ else if($_SESSION['user_status_session']=='9'){
 <li><a href="index.php?m=13">จัดการ ตารางคำนำหน้า</a></li>
 <li><a href="index.php?m=15">จัดการ ตารางผู้ใช้งาน</a></li>
 </ul>
-<? } ?>
+<?php } ?>
 
-</div> <? //end left ?>
+</div> <?php //end left ?>
 
 <div style="clear: both;"> </div>
 

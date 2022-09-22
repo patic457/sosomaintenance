@@ -1,4 +1,4 @@
-<? include"session.php"; ?>
+<?php include"session.php"; ?>
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
 <script language="javascript">
 $(function(){$("#bt").click(
@@ -34,23 +34,23 @@ $.post("check_floor.php",{b: b_},function(data){$("#floor").html(data);});
 ชื่อหน่วยงาน :<input type="text" id="sector_" ><p>
 อาคาร: <select id="id_building_">
 <option value="0">--กรุณาเลือก--</option>
-<? 
+<?php 
 while($i<$num_b){	
 $fetch_b  = mysql_fetch_array($result_b);
 $id_building_temp = $fetch_b['id_building'];
 $building_temp = $fetch_b['building'];
-?><option value="<? echo $id_building_temp; ?>"><? echo $building_temp; ?></option><?
+?><option value="<?php echo $id_building_temp; ?>"><?php echo $building_temp; ?></option><?
 $i++;
 }?></select>
 
 สังกัด : <select id="id_belong_">
 <option value="0">--กรุณาเลือก--</option>
-<? 
+<?php 
 while($j<$num){	
 $fetch  = mysql_fetch_array($result);
 $id_belong_temp = $fetch['id_belong'];
 $belong_temp = $fetch['belong'];
-?><option value="<? echo $id_belong_temp; ?>"><? echo $belong_temp; ?></option><?
+?><option value="<?php echo $id_belong_temp; ?>"><?php echo $belong_temp; ?></option><?
 $j++;
 }?></select>
   <label>

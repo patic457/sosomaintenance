@@ -1,4 +1,4 @@
-<? include"db.php";
+<?php include"db.php";
 $check_status_1 = $_POST['check_status_1'];
 $check_status_2 = $_POST['check_status_2'];
 

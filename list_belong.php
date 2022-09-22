@@ -1,4 +1,4 @@
-<? include"session.php"; 
+<?php include"session.php"; 
 
 //Page
 
@@ -34,7 +34,7 @@ $(function(){
               
 <div id="bta" align="right"><img src="images/add.png" width="20" height="20" id="">เพิ่มข้อมูล</div>
               
-<div id="add-div" style="display:none;"><? include"add_belong.php";?></div>
+<div id="add-div" style="display:none;"><?php include"add_belong.php";?></div>
 <p><div id="del-div"></div>
 <p><div id="edit-div"></div>
 <div class="title">รายชื่อสังกัด</div><p>
@@ -60,8 +60,8 @@ $belong_temp = $fetch['belong'];
 <script language="javascript">
 
 $(function(){
-	$("#bte<? echo $i; ?>").click(function(){
-		var check_status_1='belong';var check_status_2='edit';var id_belong_="<? echo $id_belong_temp; ?>";
+	$("#bte<?php echo $i; ?>").click(function(){
+		var check_status_1='belong';var check_status_2='edit';var id_belong_="<?php echo $id_belong_temp; ?>";
 		$.post("edit_belong.php",
 			{check_status_1: check_status_1,check_status_2: check_status_2,id_belong_: id_belong_},
 			function(data){
@@ -73,16 +73,16 @@ $(function(){
 });
 
 $(function(){
-	$("#click<? echo $i; ?>").click(function(){
-				Location("index.php?m=9&&link_a=<? echo $id_belong_temp; ?>");				
+	$("#click<?php echo $i; ?>").click(function(){
+				Location("index.php?m=9&&link_a=<?php echo $id_belong_temp; ?>");				
 			});
 });
 
 $(function(){
-	$("#btd<? echo $i; ?>").click(function(){
+	$("#btd<?php echo $i; ?>").click(function(){
 		if(confirm('คุณต้องการลบข้อมูลนี้ ?')==true)
     {
-       var check_status_1='belong';var check_status_2='del';var id_belong_ = "<? echo $id_belong_temp; ?>";
+       var check_status_1='belong';var check_status_2='del';var id_belong_ = "<?php echo $id_belong_temp; ?>";
 		$.post("check_admin.php",
 			{check_status_1: check_status_1,check_status_2: check_status_2,id_belong_:id_belong_},
 			function(data){
@@ -100,16 +100,16 @@ $(function(){
 
 
 <tr style="cursor:pointer;">
-<td id="click<? echo $i; ?>" ><? print $belong_temp; ?></td>
-<td id="click<? echo $i; ?>">
+<td id="click<?php echo $i; ?>" ><?php print $belong_temp; ?></td>
+<td id="click<?php echo $i; ?>">
 <?
 $sql_row = mysql_query("SELECT * FROM sector WHERE id_belong='$id_belong_temp'");
 $row_s = mysql_num_rows($sql_row);
 echo $row_s;
 ?>
 </td>
-<td ><img src="images/del.png" width="20" height="20" title="ลบข้อมูล" id="btd<? echo $i; ?>" border="0"></td>
-<td ><img src="images/edit.png" width="20" height="20" title="แก้ไขข้อมูล" id="bte<? echo $i; ?>" border="0"></td>
+<td ><img src="images/del.png" width="20" height="20" title="ลบข้อมูล" id="btd<?php echo $i; ?>" border="0"></td>
+<td ><img src="images/edit.png" width="20" height="20" title="แก้ไขข้อมูล" id="bte<?php echo $i; ?>" border="0"></td>
 
 </td></tr> 
 

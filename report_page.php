@@ -109,7 +109,7 @@ $sql="SELECT * FROM list_service WHERE YEAR(date)=$year AND MONTH(date)='$month'
 
 ?>
 <div class="head">รายการปฏิบัติงานตามใบแจ้งซ่อมไฟฟ้า ประปา โทรศัพท์ และอื่นๆ<div style="font-size:24px; font:italic;">
-<? 
+<?php 
 
 if($job_status_=='รอการอนุมัติ'){echo'สถานะรอการอนุมัติ' ;}
 else if($job_status_=='ไม่อนุมัติ'){echo'สถานะไม่อนุมัติ' ;}

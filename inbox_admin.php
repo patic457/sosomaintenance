@@ -1,9 +1,9 @@
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
-<?  include"db.php"; include"session.php"; include"func.php";?>
+<?php  include"db.php"; include"session.php"; include"func.php";?>
 <center>
 <form id="ff" method="post"><table align="center"  class="css"><tr><th scope="col">วันที่แจ้ง</th><th scope="col">เวลาที่แจ้ง</th><th scope="col">หน่วยงาน</th>
 <th scope="col">ประเภทที่แจ้ง</th><th scope="col">สถานะ</th><th scope="col">รายละเอียด</th></tr>
-<? 
+<?php 
 $result = mysql_query("SELECT * FROM list_service WHERE job_status='อนุมัติแล้วกำลังรอการดำเนินการ' ORDER BY YEAR(date) , MONTH(date) , DAY(date) DESC");
 $num = mysql_num_rows($result);
 if($num!=0){}else{}
@@ -14,11 +14,11 @@ while($i<$num){
 ?>
 <script language="javascript">
 $(function(){
-$("#bt<? echo $i; ?>").change(function(){$(this).hide();});
+$("#bt<?php echo $i; ?>").change(function(){$(this).hide();});
 });
 
-$(function(){$("#bt<? echo $i; ?>").change(function(){var bt_=$("#bt<? echo $i; ?>").attr("value");var id_=$("#id<? echo $i; ?>").attr("value");
-$.post("check_inbox_admin.php",{bt: bt_,id: id_},function(data){$("#msg<? echo $i; ?>").html(data);});
+$(function(){$("#bt<?php echo $i; ?>").change(function(){var bt_=$("#bt<?php echo $i; ?>").attr("value");var id_=$("#id<?php echo $i; ?>").attr("value");
+$.post("check_inbox_admin.php",{bt: bt_,id: id_},function(data){$("#msg<?php echo $i; ?>").html(data);});
 });
 });
 

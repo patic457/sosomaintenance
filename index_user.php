@@ -1,4 +1,4 @@
- <? include"session.php";include"func.php"; ?>
+ <?php include"session.php";include"func.php"; ?>
 <html>
 <head><script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript">
@@ -66,9 +66,9 @@ xmlhttp.send();
   <input type="text" size="30" onKeyUp="showResult(this.value)" />
 </form></center>
 <div align="right"><label id="bta"><img  src="images/add.png" border="0" width="20" height="20" >เพิ่มข้อมูล</label></div>
-<div id="add-div" style="display:none;"><? include"add_user.php"; ?></div>
+<div id="add-div" style="display:none;"><?php include"add_user.php"; ?></div>
 <div id="livesearch"></div>
 <div id="msg"></div>
-<? if($_GET['m']=='15'&&$_GET['check']=='edit'){include"edit_user.php";} ?>
+<?php if($_GET['m']=='15'&&$_GET['check']=='edit'){include"edit_user.php";} ?>
 </body>
 </html> 

@@ -1,4 +1,4 @@
-<? include"session.php";
+<?php include"session.php";
 //Page
 
 $pagesize = 10;
@@ -29,7 +29,7 @@ $(function(){
 
 <div id="bta" align="right"><img src="images/add.png" width="20" height="20" id="">เพิ่มข้อมูล</div>
               
-<div id="add-div" style="display:none;"><? include"add_prename.php";?></div>
+<div id="add-div" style="display:none;"><?php include"add_prename.php";?></div>
 <p><div id="del-div"></div>
 <p><div id="edit-div"></div>         
 <div id='title'>รายชื่อคำนำหน้า</div>
@@ -56,10 +56,10 @@ $prename_temp = $fetch['prename'];
 <script language="javascript">
 
 $(function(){
-	$("#btd<? echo $i; ?>").click(function(){
+	$("#btd<?php echo $i; ?>").click(function(){
 		if(confirm('คุณต้องการลบข้อมูลนี้ ?')==true)
     {
-      var check_status_1='prename';var check_status_2='del';var id_prename="<? echo $id_prename_temp; ?>";
+      var check_status_1='prename';var check_status_2='del';var id_prename="<?php echo $id_prename_temp; ?>";
 		$.post("check_admin.php",
 			{check_status_1: check_status_1,check_status_2: check_status_2,id_prename_:id_prename},
 			function(data){
@@ -74,8 +74,8 @@ $(function(){
 });
 
 $(function(){
-	$("#bte<? echo $i; ?>").click(function(){
-		var id_prename="<? echo $id_prename_temp; ?>";
+	$("#bte<?php echo $i; ?>").click(function(){
+		var id_prename="<?php echo $id_prename_temp; ?>";
 		$.post("edit_prename.php",
 			{id_prename_: id_prename},
 			function(data){
@@ -87,9 +87,9 @@ $(function(){
 });
 </script>
 
-<tr><td align="center"><? print $prename_temp; ?></td>
-<td align="center"><img src="images/del.png" width="20" height="20" id="btd<? echo $i; ?>"></td>
-<td align="center"><img src="images/edit.png" width="20" height="20" id="bte<? echo $i; ?>"></td>
+<tr><td align="center"><?php print $prename_temp; ?></td>
+<td align="center"><img src="images/del.png" width="20" height="20" id="btd<?php echo $i; ?>"></td>
+<td align="center"><img src="images/edit.png" width="20" height="20" id="bte<?php echo $i; ?>"></td>
 </td></tr> 
 
 <?

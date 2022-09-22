@@ -1,4 +1,4 @@
-<? session_start();
+<?php session_start();
 include"db.php";
 $username = $_POST['a'];
 $mail = $_POST['b'];

@@ -32,10 +32,10 @@ $(function(){
 			<legend>Log in</legend>
 			
 			<label for="username" style="font-weight:bold">ชื่อผู้ใช้</label>
-		  <input id="a" name="a" type="text"  maxlength="10" onClick="<? echo"value=''"; ?>" value="" onKeyUp="isEngNumchar(this.value,this)" onKeyUp="isSignchar(this.value,this)" />
+		  <input id="a" name="a" type="text"  maxlength="10" onClick="<?php echo"value=''"; ?>" value="" onKeyUp="isEngNumchar(this.value,this)" onKeyUp="isSignchar(this.value,this)" />
 
 			<label for="password"style="font-weight:bold">รหัสผ่าน</label>
-			<input id="b" name="b" type="password"  maxlength="10" onClick="<? echo"value=''"; ?>" value="" onKeyUp="isEngNumchar(this.value,this)" onKeyUp="isSignchar(this.value,this)" />
+			<input id="b" name="b" type="password"  maxlength="10" onClick="<?php echo"value=''"; ?>" value="" onKeyUp="isEngNumchar(this.value,this)" onKeyUp="isSignchar(this.value,this)" />
             
 		
 			

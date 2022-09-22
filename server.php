@@ -81,12 +81,12 @@ else{
 }	
 ?>
 <td align="center">
-<a href="check_user.php?check=del&&username=<? echo "$result[username]"; ?>"><img src="images/del.png" border="0" width="20" height="20" id="btd<? echo $i; ?>"title="ลบข้อมูล"></a>
+<a href="check_user.php?check=del&&username=<?php echo "$result[username]"; ?>"><img src="images/del.png" border="0" width="20" height="20" id="btd<?php echo $i; ?>"title="ลบข้อมูล"></a>
 </td>
-<td align="center"><a href="index.php?m=15&&check=edit&&username=<? echo "$result[username]";?>">
-															<img src="images/edit.png" border="0"  width="20" height="20" id="bte<? echo $i; ?>"title="แก้ไขข้อมูล"></a></td></tr>
+<td align="center"><a href="index.php?m=15&&check=edit&&username=<?php echo "$result[username]";?>">
+															<img src="images/edit.png" border="0"  width="20" height="20" id="bte<?php echo $i; ?>"title="แก้ไขข้อมูล"></a></td></tr>
 
-<?     
+<?php     
 $i++;
 }
 ?>

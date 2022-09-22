@@ -1,4 +1,4 @@
-<? include"session.php"; 
+<?php include"session.php"; 
 
 //Page
 
@@ -30,7 +30,7 @@ $(function(){
 
 <div id="bta" align="right"><img src="images/add.png" width="20" height="20" id="">เพิ่มข้อมูล</div>
               
-<div id="add-div" style="display:none;"><? include"add_problem.php";?></div>
+<div id="add-div" style="display:none;"><?php include"add_problem.php";?></div>
 <p><div id="del-div"></div>
 <p><div id="edit-div"></div>
 
@@ -58,10 +58,10 @@ $problem_temp = $fetch['problem'];
 <script language="javascript">
 
 $(function(){
-	$("#btd<? echo $i; ?>").click(function(){
+	$("#btd<?php echo $i; ?>").click(function(){
 		if(confirm('คุณต้องการลบข้อมูลนี้ ?')==true)
     {
-      var check_status_1='problem';var check_status_2='del';var id_problem_ = "<? echo $id_problem_temp; ?>";
+      var check_status_1='problem';var check_status_2='del';var id_problem_ = "<?php echo $id_problem_temp; ?>";
 		$.post("check_admin.php",
 			{check_status_1: check_status_1,check_status_2: check_status_2,id_problem_:id_problem_},
 			function(data){
@@ -76,8 +76,8 @@ $(function(){
 });
 
 $(function(){
-	$("#bte<? echo $i; ?>").click(function(){
-		var id_problem_="<? echo $id_problem_temp; ?>";
+	$("#bte<?php echo $i; ?>").click(function(){
+		var id_problem_="<?php echo $id_problem_temp; ?>";
 		$.post("edit_problem.php",
 			{id_problem_: id_problem_},
 			function(data){
@@ -89,16 +89,16 @@ $(function(){
 });
 
 $(function(){
-	$("#click<? echo $i; ?>").click(function(){
-				Location("index.php?m=12&&link=<? echo $id_problem_temp; ?>");				
+	$("#click<?php echo $i; ?>").click(function(){
+				Location("index.php?m=12&&link=<?php echo $id_problem_temp; ?>");				
 			});
 });
 </script>
 
-<tr><td align="center" id="click<? echo $i; ?>"><? print $problem_temp; ?></td>
-<td align="center"><img src="images/del.png" width="20" height="20" id="btd<? echo $i; ?>"></td>
-<td align="center"><img src="images/edit.png" width="20" height="20" id="bte<? echo $i; ?>"></td>
-<input type="hidden" id="id<? echo $i; ?>" value="<? echo $id_problem_temp; ?>" />
+<tr><td align="center" id="click<?php echo $i; ?>"><?php print $problem_temp; ?></td>
+<td align="center"><img src="images/del.png" width="20" height="20" id="btd<?php echo $i; ?>"></td>
+<td align="center"><img src="images/edit.png" width="20" height="20" id="bte<?php echo $i; ?>"></td>
+<input type="hidden" id="id<?php echo $i; ?>" value="<?php echo $id_problem_temp; ?>" />
 
 </td></tr> 
 

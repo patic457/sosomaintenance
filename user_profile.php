@@ -1,4 +1,4 @@
-<? include"session.php"; include"func.php"; ?><link rel="stylesheet" type="text/css" href="style_adminn.css" />
+<?php include"session.php"; include"func.php"; ?><link rel="stylesheet" type="text/css" href="style_adminn.css" />
 <script>
 $(function(){$("#btte").click(function(){var check='edit_profile';var username=$("#usernamee").attr("value");var password=$("#passworde").attr("value");
 var prename=$("#prenamee").attr("value");var name=$("#namee").attr("value");var lastname=$("#lastnamee").attr("value");
@@ -16,13 +16,13 @@ else if(id_sector=='0'){alert('กรุณาเลือกหน่วยง�
 </script>
 <body>
 
-<? $result_sel = mysql_query("SELECT * FROM user WHERE username='$_SESSION[username_session]'"); 
+<?php $result_sel = mysql_query("SELECT * FROM user WHERE username='$_SESSION[username_session]'"); 
 $fetch_sel  = mysql_fetch_array($result_sel); ?>
 
 <center><table class="mana"><tr><td>
 <strong>แก้ไขผู้ใช้</strong>
 <form name="f1" method="post" >
-ชื่อผู้ใช้ : <input id="usernamee" disabled type="text" maxlength="10" onKeyUp="isEngNumchar(this.value,this)" onKeyUp="isSignchar(this.value,this)" value="<? echo $fetch_sel['username']; ?>"  ></td>
+ชื่อผู้ใช้ : <input id="usernamee" disabled type="text" maxlength="10" onKeyUp="isEngNumchar(this.value,this)" onKeyUp="isSignchar(this.value,this)" value="<?php echo $fetch_sel['username']; ?>"  ></td>
 <td>รหัสผ่านใหม่ : <input onKeyUp="isEngNumchar(this.value,this)" onKeyUp="isSignchar(this.value,this)" id="passworde" type="password" maxlength="10" value=""  ></td></tr>
 <tr><td>คำนำหน้า :
     
@@ -36,7 +36,7 @@ while($ii<$num_pre){
 $fetch_pre  = mysql_fetch_array($result_pre);
 $id_prename_temp = $fetch_pre['id_prename'];
 $prename_temp = $fetch_pre['prename'];
- ?><option <? if($id_prename_temp==$fetch_sel['id_prename']){echo"selected";} ?> value="<? echo $id_prename_temp; ?>"><? echo $prename_temp; ?></option><?
+ ?><option <?php if($id_prename_temp==$fetch_sel['id_prename']){echo"selected";} ?> value="<?php echo $id_prename_temp; ?>"><?php echo $prename_temp; ?></option><?
 $ii++;
 }
  echo"</select>";
@@ -44,12 +44,12 @@ $ii++;
    
   </td>
 </tr>
-<tr><td>ชื่อ : <input type="text" id="namee" value="<? echo $fetch_sel['name']; ?>" ></td>
-<td> นามสกุล : <input type="text" id="lastnamee" value="<? echo $fetch_sel['lastname']; ?>" ></td>
+<tr><td>ชื่อ : <input type="text" id="namee" value="<?php echo $fetch_sel['name']; ?>" ></td>
+<td> นามสกุล : <input type="text" id="lastnamee" value="<?php echo $fetch_sel['lastname']; ?>" ></td>
 <tr><td>ชื่อหน่วยงาน :
   <select id="id_sectore">
       <option selected value="0">--กรุณาเลือก--</option>
-      <? 
+      <?php 
 $result = mysql_query("SELECT * FROM sector");
 $num = mysql_num_rows($result);
 $i=0;
@@ -58,21 +58,21 @@ while($i<$num){
 $fetch  = mysql_fetch_array($result);
 $id_sector_temp = $fetch['id_sector'];
 $sector_temp = $fetch['sector'];    
-       ?><option <? if($id_sector_temp==$fetch_sel['id_sector']){echo"selected";} ?> value="<? echo $id_sector_temp; ?>"><? echo $sector_temp; ?></option><?
+       ?><option <?php if($id_sector_temp==$fetch_sel['id_sector']){echo"selected";} ?> value="<?php echo $id_sector_temp; ?>"><?php echo $sector_temp; ?></option><?
 $i++;
 }
  ?>
     </select></td>
-    <td>เบอร์ภายใน : <input id="tele" value="<? echo $fetch_sel['tel']; ?>" type="text" size="6" onKeyUp="isNumchar(this.value,this)" maxlength="4" ></td></tr>
+    <td>เบอร์ภายใน : <input id="tele" value="<?php echo $fetch_sel['tel']; ?>" type="text" size="6" onKeyUp="isNumchar(this.value,this)" maxlength="4" ></td></tr>
     <tr>
       <td>
-      อีเมล์ : <input type="text" value="<? echo $fetch_sel['mail']; ?>" id="maile">
+      อีเมล์ : <input type="text" value="<?php echo $fetch_sel['mail']; ?>" id="maile">
       </td>
       <td>สิทธิ์การใช้งาน 
-        <select id="usere" <? if($fetch_sel['user_status']!='1' && $fetch_sel['user_status']!='2'){echo"disabled";} ?>  >
-          <option <? if($fetch_sel['user_status']=='0'){echo"selected";} ?>  value="0" >ผู้ใช้ทั่วไป</option>
-          <option <? if($fetch_sel['user_status']=='1'){echo"selected";} ?>  value="1">เจ้าหน้าที่</option>
-          <option <? if($fetch_sel['user_status']=='2'){echo"selected";} ?>  value="2">หัวหน้าหน่วยอาคารฯ</option>
+        <select id="usere" <?php if($fetch_sel['user_status']!='1' && $fetch_sel['user_status']!='2'){echo"disabled";} ?>  >
+          <option <?php if($fetch_sel['user_status']=='0'){echo"selected";} ?>  value="0" >ผู้ใช้ทั่วไป</option>
+          <option <?php if($fetch_sel['user_status']=='1'){echo"selected";} ?>  value="1">เจ้าหน้าที่</option>
+          <option <?php if($fetch_sel['user_status']=='2'){echo"selected";} ?>  value="2">หัวหน้าหน่วยอาคารฯ</option>
         </select>
 
         <p><input type="button" id="btte" value="ส่งข้อมูล">

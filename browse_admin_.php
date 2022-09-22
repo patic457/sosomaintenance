@@ -1,4 +1,4 @@
-<? include"db.php";  include"session.php"; include"func.php"; ?>
+<?php include"db.php";  include"session.php"; include"func.php"; ?>
 <script language="javascript">
 /*$(function(){$("#b").change(function(){var b_=$("#b").attr("value");var check_fl='service_fl';
 $.post("check_floor.php",{b: b_,check_fl: check_fl},function(data){$("#floor_sel").html(data);});
@@ -21,7 +21,7 @@ $(function(){$("#s_no").click(
 	function(){$("#comment-div").show();			
 	});
 });
-$(function(){$("#bt").click(function(){ var comment =  $("#comment").attr("value");var s = $("input[name='s']:checked").val();var id_ = "<? echo $_GET['id_list']; ?>";
+$(function(){$("#bt").click(function(){ var comment =  $("#comment").attr("value");var s = $("input[name='s']:checked").val();var id_ = "<?php echo $_GET['id_list']; ?>";
 										var step ='1';
 			if(comment==''){
 				alert('กรุณากรอกเหตุผล');
@@ -31,7 +31,7 @@ $(function(){$("#bt").click(function(){ var comment =  $("#comment").attr("value
 	});
 });
 
-$(function(){$("#bt_t").click(function(){ var t_a =  $("#tech_a").attr("value");var t_b = $("#tech_b").attr("value");var id_ = "<? echo $_GET['id_list']; ?>";
+$(function(){$("#bt_t").click(function(){ var t_a =  $("#tech_a").attr("value");var t_b = $("#tech_b").attr("value");var id_ = "<?php echo $_GET['id_list']; ?>";
 											var step ='2';
 	if(t_a=='0'){alert('กรุณาเลือกช่างเทคนิค');}else{
 	$.post("check_status.php",{tech_a: t_a,tech_b: t_b,id :id_,step: step},function(data){$("#msg_").html(data);});
@@ -47,7 +47,7 @@ $(function(){$("#n").click(
 	function(){$("#comment-div").show();			
 	});
 });
-$(function(){$("#bt3").click(function(){ var comment =  $("#comment").attr("value");var s = $("input[name='s3']:checked").val();var id_ = "<? echo $_GET['id_list']; ?>";
+$(function(){$("#bt3").click(function(){ var comment =  $("#comment").attr("value");var s = $("input[name='s3']:checked").val();var id_ = "<?php echo $_GET['id_list']; ?>";
 										var step ='3';
 			if(comment==''){
 				alert('กรุณากรอกเหตุผล');
@@ -147,28 +147,28 @@ echo"</select>";
 ?>
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
 <div class="title">แบบฟอร์มงานแจ้งซ่อม</div><p><br>
-<div><? if($_SESSION['user_status_session']=='0' && $fetch_list['job_status']!='ดำเนินการเรียบร้อย' ){}else{ ?><a href="<? echo"Export_page.php?id_list=$_GET[id_list]"; ?>" >
-<img align="right" border="0" src="images/printer.png" width="20" height="20" title="ออกรายงาน" ></a><? } ?></div>
-<div style="text-align:left;" class="title">เลขที่ใบแจ้งซ่อม : <? echo $fetch_list['id_list']; ?></div>
+<div><?php if($_SESSION['user_status_session']=='0' && $fetch_list['job_status']!='ดำเนินการเรียบร้อย' ){}else{ ?><a href="<?php echo"Export_page.php?id_list=$_GET[id_list]"; ?>" >
+<img align="right" border="0" src="images/printer.png" width="20" height="20" title="ออกรายงาน" ></a><?php } ?></div>
+<div style="text-align:left;" class="title">เลขที่ใบแจ้งซ่อม : <?php echo $fetch_list['id_list']; ?></div>
 <div style="text-align:right;" class="title">
-วันที่แจ้ง : <? echo Conthai($fetch_list['date']); ?></div>
-<div style="text-align:right;" class="title"><? echo"เวลา : $fetch_list[time] น.";?></div>
+วันที่แจ้ง : <?php echo Conthai($fetch_list['date']); ?></div>
+<div style="text-align:right;" class="title"><?php echo"เวลา : $fetch_list[time] น.";?></div>
 <form method="post">
 <table class="form">
 <tr>
 <th style="text-align:center;" class="form"   scope="col" colspan="4">|------------------------------ ข้อมูลผู้แจ้ง -------------------------------|</th></tr>
-<tr><th  scope="row"  >ผู้แจ้ง : </th><td colspan="3"><? echo "$fetch_username[prename]$fetch_username[name] $fetch_username[lastname]" ?></td></tr>
-<tr><th scope="row">สังกัด : </th><td><? echo $fetch_belong['belong']; ?></td><th scope="row">หน่วยงาน : </th><td><? echo $fetch_sector['sector']; ?></td></tr>
-<tr><th scope="row">โทรสายตรง : </th><td><? echo $fetch_username['tel']; ?></td><th scope="row">อีเมล์ : </th><td><? echo $fetch_username['mail']; ?></td></tr>
+<tr><th  scope="row"  >ผู้แจ้ง : </th><td colspan="3"><?php echo "$fetch_username[prename]$fetch_username[name] $fetch_username[lastname]" ?></td></tr>
+<tr><th scope="row">สังกัด : </th><td><?php echo $fetch_belong['belong']; ?></td><th scope="row">หน่วยงาน : </th><td><?php echo $fetch_sector['sector']; ?></td></tr>
+<tr><th scope="row">โทรสายตรง : </th><td><?php echo $fetch_username['tel']; ?></td><th scope="row">อีเมล์ : </th><td><?php echo $fetch_username['mail']; ?></td></tr>
 <tr><th align="center" style="text-align:center; " class="form"   scope="col" colspan="4">
 |------------------------------ ข้อมูลแจ้งซ่อม -------------------------------|</th></tr>
-<tr><th scope="row">ประเภทที่แจ้ง : </th><td><? echo $fetch_problem_list['problem']; ?></td><th scope="row">อาคาร : </th><td><? echo $fetch_building_list['building']; ?></td></tr>
-<tr><th scope="row">ชั้น : </th><td ><? echo $fetch_list['floor']; ?></td><th scope="row">ห้อง : </th><td><? echo $fetch_room_list['room']; ?></td></tr>
-<tr><th scope="row">ลักษณะอาการเบื้องต้น : </th><td colspan="2" ><? echo $fetch_list['details']; ?></td>
+<tr><th scope="row">ประเภทที่แจ้ง : </th><td><?php echo $fetch_problem_list['problem']; ?></td><th scope="row">อาคาร : </th><td><?php echo $fetch_building_list['building']; ?></td></tr>
+<tr><th scope="row">ชั้น : </th><td ><?php echo $fetch_list['floor']; ?></td><th scope="row">ห้อง : </th><td><?php echo $fetch_room_list['room']; ?></td></tr>
+<tr><th scope="row">ลักษณะอาการเบื้องต้น : </th><td colspan="2" ><?php echo $fetch_list['details']; ?></td>
 
 <td align="center">
 
-<? //===================================================================หัวหน้า============================================================ ?>
+<?php //===================================================================หัวหน้า============================================================ ?>
 <label style='font-weight:bold; color:#663300;;'>สำหรับหัวหน้าหน่วยอาคารสถานที่และยานพาหนะ</label><p>
 <?
 
@@ -249,13 +249,13 @@ if($fetch_list['job_status']=='ไม่สามารถดำเนินก�
 {echo "<p style='color:#FF7F50;'>$fetch_list[job_status]</p><u><p style='color:#FF7F50;'>เนื่องจาก</u> $fetch_list[comment]</p>";}
 if($fetch_list['job_status']=='ดำเนินการเรียบร้อย'){echo "<label style='color:green;'>$fetch_list[job_status]</label><p>";}*/
 ?>
-<? //===================================================================เจ้าหน้าที่============================================================ ?>
+<?php //===================================================================เจ้าหน้าที่============================================================ ?>
 </td></tr><tr><th align="center"  style='text-align:center; color:#333333;'  scope="col" colspan="4">
 |------------------------------ สำหรับเจ้าหน้าที่ -------------------------------|</th>
 </tr>
  <!--เฉพาะเจ้าหน้าที -->
 
-<?  if($fetch_list['job_status']=='รอการอนุมัติ'){echo"<tr><td colspan='4' style='color:black;'>$fetch_list[job_status]</td></tr>";	} 
+<?php  if($fetch_list['job_status']=='รอการอนุมัติ'){echo"<tr><td colspan='4' style='color:black;'>$fetch_list[job_status]</td></tr>";	} 
 
 	if($fetch_list['job_status']=='อนุมัติแล้วกำลังรอการดำเนินการ'){ 
 
@@ -263,8 +263,8 @@ if($fetch_list['job_status']=='ดำเนินการเรียบร้�
 		echo"<tr><td colspan='4' style='color:blue;'>$fetch_list[job_status]</td></tr>";	
 		}
 			else{
-				?>  <tr  ><th style='color:#333333;'>ผู้รับผิดชอบ : </th><td><? technician_a_sel() ?></td>
-					<th style='color:#333333;' >ผู้ช่วยงาน : </th><td><? technician_b_sel() ?></td></tr>
+				?>  <tr  ><th style='color:#333333;'>ผู้รับผิดชอบ : </th><td><?php technician_a_sel() ?></td>
+					<th style='color:#333333;' >ผู้ช่วยงาน : </th><td><?php technician_b_sel() ?></td></tr>
 		            <tr><td colspan="4" ><input type="button" id="bt_t" value="ยืนยันเพื่อดำเนินการต่อไป"></td></tr>    
 		    	 <?
 			}

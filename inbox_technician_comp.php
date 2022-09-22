@@ -1,13 +1,13 @@
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
 <script>
 $(function(){
-	$("#click<? echo $i; ?>").click(function(){
-				Location("index.php?m=9&&link_a=<? echo $id_belong_temp; ?>");				
+	$("#click<?php echo $i; ?>").click(function(){
+				Location("index.php?m=9&&link_a=<?php echo $id_belong_temp; ?>");				
 			});
 });
 </script>
 
-<? include"db.php"; include"session.php"; include"func.php";
+<?php include"db.php"; include"session.php"; include"func.php";
 
 function Select(){
 //Page
@@ -41,11 +41,11 @@ while($fetch = mysql_fetch_array($result)){
 ?>
 <script language="javascript">
 $(function(){
-$("#bt<? echo $i; ?>").change(function(){$(this).hide();});
+$("#bt<?php echo $i; ?>").change(function(){$(this).hide();});
 });
 
-$(function(){$("#bt<? echo $i; ?>").change(function(){var bt_=$("#bt<? echo $i; ?>").attr("value");var id_=$("#id<? echo $i; ?>").attr("value");
-$.post("check_inbox_admin.php",{bt: bt_,id: id_},function(data){$("#msg<? echo $i; ?>").html(data);});
+$(function(){$("#bt<?php echo $i; ?>").change(function(){var bt_=$("#bt<?php echo $i; ?>").attr("value");var id_=$("#id<?php echo $i; ?>").attr("value");
+$.post("check_inbox_admin.php",{bt: bt_,id: id_},function(data){$("#msg<?php echo $i; ?>").html(data);});
 });
 });
 
@@ -119,7 +119,7 @@ echo" | <a href=\"index?m=3&&pageid=$i_page\">$i_page</a> ";  }
 <body>
 <div class='title'>ประวัติงานที่ได้รับมอบหมาย</div><p>
 <form id="ff" method="post"><table align="center" class="css" ><tr><th scope="col">วันที่แจ้ง</th><th scope="col">เวลาที่แจ้ง</th><th scope="col">หน่วยงาน</th><th scope="col">ประเภทที่แจ้ง</th><th scope="col">สถานะ</th><th scope="col">รายละ้อียด</th></tr>
-<? Select();  ?>
+<?php Select();  ?>
 
 
 

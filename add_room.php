@@ -1,4 +1,4 @@
-<?  include"session.php"; 
+<?php  include"session.php"; 
 $result = mysql_query("SELECT * FROM sector order by id_belong ASC");
 $num = mysql_num_rows($result);
 $i=0;
@@ -26,7 +26,7 @@ function(data){$("#msg").html(data);});
 </td></tr><tr><td>
 อาคาร : <select name="b" id="b">
 <option value="0">--กรุณาเลือก--</option>
-<? 
+<?php 
 $resultb = mysql_query("SELECT * FROM building");
 $numb = mysql_num_rows($resultb);
 $j=0;
@@ -34,7 +34,7 @@ while($j<$numb){
 $fetchb  = mysql_fetch_array($resultb);
 $id_building_temp = $fetchb['id_building'];
 $building_temp = $fetchb['building'];
-?><option value="<? echo $id_building_temp; ?>"><? echo $building_temp; ?></option><?
+?><option value="<?php echo $id_building_temp; ?>"><?php echo $building_temp; ?></option><?
 $j++; }
 ?></select>
 </tr></td><td>
@@ -45,12 +45,12 @@ $j++; }
 หน่วยงาน : 
  <select name="d" id="d">
 <option value="0">--กรุณาเลือก--</option>
-<? 
+<?php 
 while($i<$num){	
 $fetch  = mysql_fetch_array($result);
 $id_sector_temp = $fetch['id_sector'];
 $sector_temp = $fetch['sector'];
-?><option value="<? echo $id_sector_temp; ?>"><? echo $sector_temp; ?></option><?
+?><option value="<?php echo $id_sector_temp; ?>"><?php echo $sector_temp; ?></option><?
 $i++;
 }?></select>
 </td>

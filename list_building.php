@@ -1,4 +1,4 @@
-<? include"session.php"; 
+<?php include"session.php"; 
 
 //Page
 
@@ -31,7 +31,7 @@ $(function(){
    
 <div id="bta" align="right"><img src="images/add.png" width="20" height="20" id="">เพิ่มข้อมูล</div>
               
-<div id="add-div" style="display:none;"><? include"add_building.php";?></div>
+<div id="add-div" style="display:none;"><?php include"add_building.php";?></div>
 
 <p><div id="del-div"></div>
 <p><div id="edit-div"></div>
@@ -60,10 +60,10 @@ $floor_temp = $fetch['floor'];
 
 <script language="javascript">
 $(function(){
-	$("#btd<? echo $i; ?>").click(function(){
+	$("#btd<?php echo $i; ?>").click(function(){
 		if(confirm('คุณต้องการลบข้อมูลนี้ ?')==true)
     {
-       var check_status_1='building';var check_status_2='del';var id_building_ = "<? echo $id_building_temp; ?>";
+       var check_status_1='building';var check_status_2='del';var id_building_ = "<?php echo $id_building_temp; ?>";
 		$.post("check_admin.php",
 			{check_status_1: check_status_1,check_status_2: check_status_2,id_building_:id_building_},
 			function(data){
@@ -78,8 +78,8 @@ $(function(){
 });
 
 $(function(){
-	$("#bte<? echo $i; ?>").click(function(){
-		var check_status_1='building';var check_status_2='edit';var id_building_="<? echo $id_building_temp; ?>";
+	$("#bte<?php echo $i; ?>").click(function(){
+		var check_status_1='building';var check_status_2='edit';var id_building_="<?php echo $id_building_temp; ?>";
 		$.post("edit_building.php",
 			{check_status_1: check_status_1,check_status_2: check_status_2,id_building_: id_building_},
 			function(data){
@@ -91,21 +91,21 @@ $(function(){
 });
 
 $(function(){
-	$("#click<? echo $i; ?>").click(function(){
-				Location("index.php?m=9&&link_b=<? echo $id_building_temp; ?>");				
+	$("#click<?php echo $i; ?>").click(function(){
+				Location("index.php?m=9&&link_b=<?php echo $id_building_temp; ?>");				
 			});
 });
 </script>
 
 
 <tr style="cursor:pointer;" >
-<td id="click<? echo $i; ?>">
-<? print $building_temp; ?>
+<td id="click<?php echo $i; ?>">
+<?php print $building_temp; ?>
 </td>
-<td id="click<? echo $i; ?>">
-<? echo $floor_temp; ?>
+<td id="click<?php echo $i; ?>">
+<?php echo $floor_temp; ?>
 </td>
-<td id="click<? echo $i; ?>">
+<td id="click<?php echo $i; ?>">
 <?
 $sql_row = mysql_query("SELECT * FROM sector WHERE id_building='$id_building_temp'");
 $row_s = mysql_num_rows($sql_row);
@@ -113,10 +113,10 @@ echo $row_s;
 ?>
 </td>
 <td>
-<img id="btd<? echo $i; ?>" src="images/del.png" width="20" height="20"  border='0' title="ลบข้อมูล" >
+<img id="btd<?php echo $i; ?>" src="images/del.png" width="20" height="20"  border='0' title="ลบข้อมูล" >
 </td>
 <td>
-<img id="bte<? echo $i; ?>" src="images/edit.png" width="20" height="20"  border='0' title="แก้ไขข้อมูล" >
+<img id="bte<?php echo $i; ?>" src="images/edit.png" width="20" height="20"  border='0' title="แก้ไขข้อมูล" >
 </td>
 </td>
 </tr> 

@@ -1,4 +1,4 @@
-<? include"db.php"; 
+<?php include"db.php"; 
 $b = $_POST['b'];
 $check_fl = $_POST['check_fl'];
 
@@ -12,7 +12,7 @@ switch ($check_fl) {
 		print"<option value=\"0\">--กรุณาเลือก--</option>";
 		while($fl<=$floor_temp){	
 		?>
-		<option id="c" value="<? echo $fl; ?>"><? echo $fl; ?></option><?
+		<option id="c" value="<?php echo $fl; ?>"><?php echo $fl; ?></option><?
 		$fl++;
 		}
 	break;
@@ -26,7 +26,7 @@ switch ($check_fl) {
 		print"<option selected value=\"0\">--กรุณาเลือก--</option>";
 		while($fl<=$floor_temp){	
 		?>
-		<option value="<? echo $fl; ?>"><? echo $fl; ?></option><?
+		<option value="<?php echo $fl; ?>"><?php echo $fl; ?></option><?
 		$fl++;
 		}
 	break;
@@ -35,7 +35,7 @@ switch ($check_fl) {
 	
 		?>
 		<script language="javascript">
-        $(function(){$("#floorr").change(function(){var floorr_=$("#floorr").attr("value");var check_room='service_room';var id_building_ = <? echo $b ?>;
+        $(function(){$("#floorr").change(function(){var floorr_=$("#floorr").attr("value");var check_room='service_room';var id_building_ = <?php echo $b ?>;
         $.post("check_room.php",{floor_: floorr_,check_room: check_room,id_building_:id_building_},function(data){$("#room_sel").html(data);});
         });
         });
@@ -49,7 +49,7 @@ switch ($check_fl) {
 		print"<option value=\"0\">--กรุณาเลือก--</option>";
 		while($fl<=$floor_temp){	
 		?>
-		<option value="<? echo $fl; ?>"><? echo $fl; ?></option><?
+		<option value="<?php echo $fl; ?>"><?php echo $fl; ?></option><?
 		$fl++;
 		}
 	break;

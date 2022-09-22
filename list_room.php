@@ -1,4 +1,4 @@
-<? include"session.php"; 
+<?php include"session.php"; 
 
 //Page
 
@@ -38,7 +38,7 @@ cursor:default;
 </style>
 <div id="bta" align="right"><img src="images/add.png" width="20" height="20" id="">เพิ่มข้อมูล</div>
               
-<div id="add-div" style="display:none;"><? include"add_room.php";?></div>
+<div id="add-div" style="display:none;"><?php include"add_room.php";?></div>
 <p><div id="del-div"></div>
 <p><div id="edit-div"></div>
 <div class="title">รายชื่อห้อง</div><p>
@@ -76,10 +76,10 @@ $floor_temp = $fetch['floor'];
 <script language="javascript">
 
 $(function(){
-	$("#btd<? echo $i; ?>").click(function(){
+	$("#btd<?php echo $i; ?>").click(function(){
 		if(confirm('คุณต้องการลบข้อมูลนี้ ?')==true)
     {
-      var check_status_1='room';var check_status_2='del';var id_room= "<? echo $id_room_temp; ?>";
+      var check_status_1='room';var check_status_2='del';var id_room= "<?php echo $id_room_temp; ?>";
 		$.post("check_admin.php",
 			{check_status_1: check_status_1,check_status_2: check_status_2,id_room_:id_room},
 			function(data){
@@ -94,8 +94,8 @@ $(function(){
 });
 
 $(function(){
-	$("#bte<? echo $i; ?>").click(function(){
-		var check_status_1='room';var check_status_2='edit';var id_room_="<? echo $id_room_temp; ?>";
+	$("#bte<?php echo $i; ?>").click(function(){
+		var check_status_1='room';var check_status_2='edit';var id_room_="<?php echo $id_room_temp; ?>";
 		$.post("edit_room.php",
 			{check_status_1: check_status_1,check_status_2: check_status_2,id_room_: id_room_},
 			function(data){
@@ -126,12 +126,12 @@ $fetch_  = mysql_fetch_array($result_);
 $building_temp = $fetch_['building'];
 ?>
 
-<tr><td align="center"><? print $room_temp; ?></td>
-<td align="center" <? echo $id_building_temp; ?>><? print $building_temp; ?></td>
-<td align="center"><? print $floor_temp; ?></td>
-<td align="center"><? print $sector_temp; ?></td>
-<td align="center"><img src="images/del.png" width="20" height="20" id="btd<? echo $i; ?>"></td>
-<td align="center"><img src="images/edit.png" width="20" height="20" id="bte<? echo $i; ?>"></td>
+<tr><td align="center"><?php print $room_temp; ?></td>
+<td align="center" <?php echo $id_building_temp; ?>><?php print $building_temp; ?></td>
+<td align="center"><?php print $floor_temp; ?></td>
+<td align="center"><?php print $sector_temp; ?></td>
+<td align="center"><img src="images/del.png" width="20" height="20" id="btd<?php echo $i; ?>"></td>
+<td align="center"><img src="images/edit.png" width="20" height="20" id="bte<?php echo $i; ?>"></td>
 </td></tr> 
 
 <?

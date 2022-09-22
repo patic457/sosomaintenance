@@ -1,4 +1,4 @@
-<? include"session.php"; 
+<?php include"session.php"; 
 
 //Page
 
@@ -44,7 +44,7 @@ $(function(){
 
 <div id="bta" align="right"><img src="images/add.png" width="20" height="20" id="">เพิ่มข้อมูล</div>
               
-<div id="add-div" style="display:none;"><? include"add_sector.php";?></div>
+<div id="add-div" style="display:none;"><?php include"add_sector.php";?></div>
 <p><div id="del-div"></div>
 <p><div id="edit-div"></div>
 
@@ -75,10 +75,10 @@ $id_building_temp = $fetch['id_building'];
 <script language="javascript">
 
 $(function(){
-	$("#btd<? echo $i; ?>").click(function(){
+	$("#btd<?php echo $i; ?>").click(function(){
 		if(confirm('คุณต้องการลบข้อมูลนี้ ?')==true)
     {
-     var check_status_1='sector';var check_status_2='del';var id_sector_ = "<? echo $id_sector_temp; ?>";
+     var check_status_1='sector';var check_status_2='del';var id_sector_ = "<?php echo $id_sector_temp; ?>";
 		$.post("check_admin.php",
 			{check_status_1: check_status_1,check_status_2: check_status_2,id_sector_:id_sector_},
 			function(data){
@@ -93,8 +93,8 @@ $(function(){
 });
 
 $(function(){
-	$("#bte<? echo $i; ?>").click(function(){
-		var check_status_1='sector';var check_status_2='edit';var id_sector_="<? echo $id_sector_temp; ?>";
+	$("#bte<?php echo $i; ?>").click(function(){
+		var check_status_1='sector';var check_status_2='edit';var id_sector_="<?php echo $id_sector_temp; ?>";
 		$.post("edit_sector.php",
 			{check_status_1: check_status_1,check_status_2: check_status_2,id_sector_: id_sector_},
 			function(data){
@@ -106,8 +106,8 @@ $(function(){
 });
 
 $(function(){
-	$("#click<? echo $i; ?>").click(function(){
-				Location("index.php?m=10&&link_s=<? echo $id_sector_temp; ?>");				
+	$("#click<?php echo $i; ?>").click(function(){
+				Location("index.php?m=10&&link_s=<?php echo $id_sector_temp; ?>");				
 			});
 });
 </script>
@@ -122,9 +122,9 @@ $fetch_build  = mysql_fetch_array($result_build);
 $building_temp = $fetch_build['building'];
 ?>
 
-<tr style="cursor:pointer;" ><td align="center" id="click<? echo $i; ?>"><? print $sector_temp; ?></td>
-<td align="center" id="click<? echo $i; ?>"><? echo $belong_temp; ?></td>
-<td align="center" id="click<? echo $i; ?>"><? echo $building_temp; ?></td>
+<tr style="cursor:pointer;" ><td align="center" id="click<?php echo $i; ?>"><?php print $sector_temp; ?></td>
+<td align="center" id="click<?php echo $i; ?>"><?php echo $belong_temp; ?></td>
+<td align="center" id="click<?php echo $i; ?>"><?php echo $building_temp; ?></td>
 <td>
 <?
 $sql_row = mysql_query("SELECT * FROM room WHERE id_sector='$id_sector_temp'");
@@ -132,8 +132,8 @@ $row_s = mysql_num_rows($sql_row);
 echo $row_s;
 ?>
 </td>
-<td align="center"><img src="images/del.png" width="20" height="20" id="btd<? echo $i; ?>" title="ลบข้อมูล"></td>
-<td align="center"><img src="images/edit.png" width="20" height="20" id="bte<? echo $i; ?>"title="แก้ไขข้อมูล"></td>
+<td align="center"><img src="images/del.png" width="20" height="20" id="btd<?php echo $i; ?>" title="ลบข้อมูล"></td>
+<td align="center"><img src="images/edit.png" width="20" height="20" id="bte<?php echo $i; ?>"title="แก้ไขข้อมูล"></td>
 </td></tr> 
 
 <?

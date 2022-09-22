@@ -1,4 +1,4 @@
-<? include"session.php";include"db.php"; ?>
+<?php include"session.php";include"db.php"; ?>
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
 <script language="javascript">
 $(function(){$("#bt").click(function(){var belong_=$("#belong_").attr("value");var check_status_1='belong';var check_status_2='add';

@@ -1,4 +1,4 @@
-<? include"session.php"; ?><link rel="stylesheet" type="text/css" href="style_adminn.css" />
+<?php include"session.php"; ?><link rel="stylesheet" type="text/css" href="style_adminn.css" />
 
 
 <center><table class="mana"><tr><td>
@@ -8,13 +8,13 @@
 <td>รหัสผ่าน : <input onkeyup="isEngNumchar(this.value,this)" name="password" type="password" maxlength="10" value="" ></td></tr>
 <tr><td>คำนำหน้า :
     
-    <? prename_t(); ?>
+    <?php prename_t(); ?>
    
   </td>
 <td>ประเภทของผู้ใช้ : 
         <select name="f" >
           <option  value="" selected>--กรุณาเลือก--</option>
-          <? 
+          <?php 
 $resultt = mysql_query("SELECT * FROM type_user");
 $numm= mysql_num_rows($resultt);
 $i=0;
@@ -22,7 +22,7 @@ while($i<$numm){
 $fetchh  = mysql_fetch_array($resultt);
 $id_type_user_temp = $fetchh['id_type_user'];
 $type_user_temp = $fetchh['type_user'];    
-       ?><option value="<? echo $id_type_user_temp; ?>"><? echo $type_user_temp; ?></option><?
+       ?><option value="<?php echo $id_type_user_temp; ?>"><?php echo $type_user_temp; ?></option><?
 $i++;
 }
 
@@ -32,7 +32,7 @@ $i++;
 <tr><td>ชื่อหน่วยงาน :
   <select name="d">
       <option selected>--กรุณาเลือก--</option>
-      <? 
+      <?php 
 $result = mysql_query("SELECT * FROM sector");
 $num = mysql_num_rows($result);
 $i=0;
@@ -41,7 +41,7 @@ while($i<$num){
 $fetch  = mysql_fetch_array($result);
 $id_sector_temp = $fetch['id_sector'];
 $sector_temp = $fetch['sector'];    
-       ?><option value="<? echo $id_sector_temp; ?>"><? echo $sector_temp; ?></option><?
+       ?><option value="<?php echo $id_sector_temp; ?>"><?php echo $sector_temp; ?></option><?
 $i++;
 }
  ?>

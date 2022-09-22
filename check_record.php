@@ -1,4 +1,4 @@
-<? include"db.php"; include"session.php"; include"func.php";?>
+<?php include"db.php"; include"session.php"; include"func.php";?>
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
 
 
@@ -9,7 +9,7 @@
 
 	
 	<p align="center" class='title'><b>รายการปฏิบัติงานตามใบแจ้งซ่อมไฟฟ้า ประปา โทรศัพท์ และอื่นๆ<br>ของหน่วยอาคารสถานที่และยานพาหนะ บางเขน</b><br>
-	<? if($month=='01'){echo"ประจำเดือน มกราคม 2554";}else if($month=='02'){echo"ประจำเดือน กุมภาพันธ์ 2554";}else if($month=='03'){echo"ประจำเดือน มีนาคม 2554";}
+	<?php if($month=='01'){echo"ประจำเดือน มกราคม 2554";}else if($month=='02'){echo"ประจำเดือน กุมภาพันธ์ 2554";}else if($month=='03'){echo"ประจำเดือน มีนาคม 2554";}
 	else if($month=='04'){echo"ประจำเดือน เมษายน 2554";}else if($month=='05'){echo"ประจำเดือน พฤษภาคม 2554";}else if($month=='06'){echo"ประจำเดือน มิถุนายน 2554";}
 	else if($month=='07'){echo"ประจำเดือน กรกฎาคม 2554";}else if($month=='08'){echo"ประจำเดือน สิงหาคม 2554";}else if($month=='09'){echo"ประจำเดือน กันยายน 2554";}
 	else if($month=='10'){echo"ประจำเดือน ตุลาคม 2554";}else if($month=='11'){echo"ประจำเดือน พฤศจิกายน 2554";}else if($month=='12'){echo"ประจำเดือน ธันวาคม 2554";} ?>
@@ -59,11 +59,11 @@ $fetch = mysql_fetch_array($result_r);
 ?>
 <script language="javascript">
 $(function(){
-$("#bt<? echo $i; ?>").change(function(){$(this).hide();});
+$("#bt<?php echo $i; ?>").change(function(){$(this).hide();});
 });
 
-$(function(){$("#bt<? echo $i; ?>").change(function(){var bt_=$("#bt<? echo $i; ?>").attr("value");var id_=$("#id<? echo $i; ?>").attr("value");
-$.post("check_inbox_admin.php",{bt: bt_,id: id_},function(data){$("#msg<? echo $i; ?>").html(data);});
+$(function(){$("#bt<?php echo $i; ?>").change(function(){var bt_=$("#bt<?php echo $i; ?>").attr("value");var id_=$("#id<?php echo $i; ?>").attr("value");
+$.post("check_inbox_admin.php",{bt: bt_,id: id_},function(data){$("#msg<?php echo $i; ?>").html(data);});
 });
 });
 </script>
@@ -117,9 +117,9 @@ $r++;
 }
 ?>
 </table>
-<p align="center"><a href="<? echo"report_page.php?job_status=$_GET[job_status]&&id_building=$_GET[id_building]&&tech=$_GET[tech]&&month=$_GET[month]&&year=$_GET[year]"; ?>" >
+<p align="center"><a href="<?php echo"report_page.php?job_status=$_GET[job_status]&&id_building=$_GET[id_building]&&tech=$_GET[tech]&&month=$_GET[month]&&year=$_GET[year]"; ?>" >
 <img border="0" src="images/printer.png" width="20" height="20" title="ออกรายงาน" ></a></p>
-<? 
+<?php 
 //Next Page
 /*for($i_page=1; $i_page<=$totalpage; $i_page++) { 
 if($i_page==$_GET['pageid']){echo "| $i_page ";}

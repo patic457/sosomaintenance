@@ -1,7 +1,7 @@
-<? include"db.php"; include"session.php"; ?>
+<?php include"db.php"; include"session.php"; ?>
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
 <script language="javascript">
-$(function(){$("#btt").click(function(){var prename=$("#ae").attr("value");var id_prename=<? echo $_POST['id_prename_']; ?>;var check_status_1='prename';
+$(function(){$("#btt").click(function(){var prename=$("#ae").attr("value");var id_prename=<?php echo $_POST['id_prename_']; ?>;var check_status_1='prename';
 var check_status_2='edit';
 $.post("check_admin.php",{id_prename_: id_prename,prename_: prename,check_status_1: check_status_1,check_status_2: check_status_2},function(data){$("#msg").html(data);});
 });
@@ -17,7 +17,7 @@ $prename_temp = $fetch_pre['prename'];
 <tr><td>
 <form id="f1" method="post">
 คำนำหน้า :
-   <input type="text" id="ae" value="<? echo $prename_temp; ?>" >&nbsp;
+   <input type="text" id="ae" value="<?php echo $prename_temp; ?>" >&nbsp;
   <input type="button"  id="btt" value="ส่งข้อมูล"/>
 </form>
 

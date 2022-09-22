@@ -1,4 +1,4 @@
-<? include"session.php"; ?>
+<?php include"session.php"; ?>
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
 <script language="javascript">
 $(function(){$("#bt").click(function(){var problem_=$("#problem_").attr("value");var check_status_1='problem';var check_status_2='add';

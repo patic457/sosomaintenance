@@ -121,7 +121,7 @@ function isNumchar(str,obj){  //ใส่ลงไป onkeyup="isNumchar(this.va
      return isThai; // ถ้าเป็น true แสดงว่าเป็นภาษาไทยทั้งหมด  
 }  
  </script> 
-<? 
+<?php 
 
 
 function ConThai($dall){
@@ -164,7 +164,7 @@ while($ii<$num_pre){
 $fetch_pre  = mysql_fetch_array($result_pre);
 $id_prename_temp = $fetch_pre['id_prename'];
 $prename_temp = $fetch_pre['prename'];
- ?><option value="<? echo $id_prename_temp; ?>"><? echo $prename_temp; ?></option><?
+ ?><option value="<?php echo $id_prename_temp; ?>"><?php echo $prename_temp; ?></option><?
 $ii++;
 }
  echo"</select>";

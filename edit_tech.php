@@ -1,6 +1,6 @@
-<? include"db.php"; include"session.php"; ?>
+<?php include"db.php"; include"session.php"; ?>
 <table  style="border-color:#CC0000; border:dashed;"><tr><td>
-<? 
+<?php 
 if(isset($_POST['edit'])==true){
 $edit=$_POST['edit'];
 $resultt = mysql_query("SELECT * FROM technician WHERE id_technician='$edit'");
@@ -21,7 +21,7 @@ while($i<=$num){
 $fetch  = mysql_fetch_array($result);
 $id_problem_temp = $fetch['id_problem'];
 $problem_temp = $fetch['problem'];
-?><option value="<? echo $id_problem_temp; ?>"><? echo $problem_temp; ?></option><?
+?><option value="<?php echo $id_problem_temp; ?>"><?php echo $problem_temp; ?></option><?
 $i++;
 }};
 ?>
@@ -30,8 +30,8 @@ $i++;
 function resetF(){ $('#eftext').hide();$('#ef2').val("");}
 </script>
 <body>
-<form id="f1" method="post" action="check_admin_technician.php"> <input type="hidden" name="idd" value="<? echo $id_technician_temp; ?>">
-<font color="red" ><strong>สำหรับแก้ไขข้อมูล ชื่อช่างเทคนิค<? echo "$name_temp $lastname_temp "; ?> กรุณาแก้ไขตรงนี้ </strong></font><p>
+<form id="f1" method="post" action="check_admin_technician.php"> <input type="hidden" name="idd" value="<?php echo $id_technician_temp; ?>">
+<font color="red" ><strong>สำหรับแก้ไขข้อมูล ชื่อช่างเทคนิค<?php echo "$name_temp $lastname_temp "; ?> กรุณาแก้ไขตรงนี้ </strong></font><p>
   <p>ยศ :
     <select  name="a">
       <option  value="" selected>--กรุณาเลือก--</option>
@@ -43,17 +43,17 @@ function resetF(){ $('#eftext').hide();$('#ef2').val("");}
       <option value="จ่าสิบเอกหญิง">จ่าสิบเอกหญิง</option>
     </select>
 &nbsp;  ชื่อ :
-    <input type="text"  name="b" value="<? echo $name_temp; ?>">
+    <input type="text"  name="b" value="<?php echo $name_temp; ?>">
 &nbsp;นามสกุล :
-    <input type="text" name="c" value="<? echo $lastname_temp; ?>">
+    <input type="text" name="c" value="<?php echo $lastname_temp; ?>">
 &nbsp;ตำแหน่ง :
-    <input type="text" name="d" value="<? echo $job_temp; ?>">
+    <input type="text" name="d" value="<?php echo $job_temp; ?>">
 &nbsp;  
   <p>ความสามารถ : 
 
     <select name="e"  id="e">
       <option selected>--กรุณาเลือก--</option>
-      <? a(); ?>
+      <?php a(); ?>
     </select>
     สังกัด :    
 

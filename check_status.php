@@ -1,4 +1,4 @@
-<? include"db.php"; include"session.php";
+<?php include"db.php"; include"session.php";
 
 $step=$_POST['step'];
 $id=$_POST['id'];

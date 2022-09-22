@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
-<? include"db.php"; include"session.php"; include"func.php";
+<?php include"db.php"; include"session.php"; include"func.php";
 
 function Select($sta){
 $result = mysql_query("SELECT * FROM list_service WHERE job_status='$sta' ORDER BY id_list DESC");
@@ -12,16 +12,16 @@ while($i<$num){
 ?>
 <script language="javascript">
 $(function(){
-$("#bt<? echo $i; ?>").change(function(){$(this).hide();});
+$("#bt<?php echo $i; ?>").change(function(){$(this).hide();});
 });
 
-$(function(){$("#bt<? echo $i; ?>").change(function(){var bt_=$("#bt<? echo $i; ?>").attr("value");var id_=$("#id<? echo $i; ?>").attr("value");
-$.post("check_inbox_super.php",{bt: bt_,id: id_},function(data){$("#msg<? echo $i; ?>").html(data);});
+$(function(){$("#bt<?php echo $i; ?>").change(function(){var bt_=$("#bt<?php echo $i; ?>").attr("value");var id_=$("#id<?php echo $i; ?>").attr("value");
+$.post("check_inbox_super.php",{bt: bt_,id: id_},function(data){$("#msg<?php echo $i; ?>").html(data);});
 });
 });
  
- $(function(){$("#btb<? echo $i; ?>").click(function(){var btb=$("#id<? echo $i; ?>").attr("value");
-$.post("browse.php",{btb: btb}),function(data){$("#case").html(window.open("browse.php?id=btb<? echo $i;?>"));}
+ $(function(){$("#btb<?php echo $i; ?>").click(function(){var btb=$("#id<?php echo $i; ?>").attr("value");
+$.post("browse.php",{btb: btb}),function(data){$("#case").html(window.open("browse.php?id=btb<?php echo $i;?>"));}
 });
 });
 
@@ -67,7 +67,7 @@ $status_temp =  $fetch_st['status'];*/
 
 print"<tr><td>";ConThai($date_temp);echo"</td><td>$t</td><td>$prename_temp$name_temp  $lastname_temp</td><td>$problem_temp</td>";
 ?><td>
-<a href="index.php?m=4.1&&id_list=<? echo $id_list_temp; ?>" title="แสดงรายละเอียด"><img src="images/view.png" alt="แสดงรายละเอียด" width="16" height="16" border="0" /></a>
+<a href="index.php?m=4.1&&id_list=<?php echo $id_list_temp; ?>" title="แสดงรายละเอียด"><img src="images/view.png" alt="แสดงรายละเอียด" width="16" height="16" border="0" /></a>
 </td><td> <?
 
 	
@@ -78,7 +78,7 @@ $i++;
 <center>
 <form id="ff" method="post" action="browse.php"><table align="center" class="css"><tr><th scope="col">วันที่แจ้ง</th><th scope="col">เวลาที่แจ้ง</th><th scope="col">ผู้แจ้ง</th>
 <th scope="col">ประเภทที่แจ้ง</th><th scope="col">รายละเอียด</th></tr>
-<? Select("รอการอนุมัติ"); ?>
+<?php Select("รอการอนุมัติ"); ?>
 </table></form></center>   
 <strong></strong>  
 
