@@ -8,7 +8,7 @@
 <td>รหัสผ่าน : <input onkeyup="isEngNumchar(this.value,this)" name="password" type="password" maxlength="10" value="" ></td></tr>
 <tr><td>คำนำหน้า :
     
-    <?php prename_t(); ?>
+    <?php prename_t($mysqli); ?>
    
   </td>
 <td>ประเภทของผู้ใช้ : 
