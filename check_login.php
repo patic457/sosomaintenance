@@ -17,7 +17,7 @@ if ($username_session == "" && $password_session == "") {
 	$lastname_session = $fetch['lastname'];
 	$user_status_session = $fetch['user_status'];
 	if ($sqllg_num == "0") {
-		echo "<script>alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง".$password_session."');</script>";
+		echo "<script>alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');</script>";
 	} else {
 		$_SESSION["username_session"] = $username_session;
 		$_SESSION["user_status_session"] = $user_status_session;
