@@ -7,11 +7,11 @@ $pagesize = 10;
 $sql_page = $mysqli->query("SELECT count(id_building) as id_building FROM building");
 $crow = mysqli_fetch_row($sql_page);
 $totalrecord = $crow[0];
-$tmp_pageid = $_GET['pageid'];
+
 $totalpage = ceil($totalrecord / $pagesize);
-if (isset($tmp_pageid)) {
-	$start = $pagesize * ($tmp_pageid - 1);
-	$pageid = $tmp_pageid;
+if (isset($_GET['pageid'])) {
+	$start = $pagesize * ($_GET['pageid'] - 1);
+	$pageid = $_GET['pageid'];
 } else {
 	$pageid = 1;
 	$start = 0;
