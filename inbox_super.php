@@ -58,14 +58,14 @@ $result_pre = $mysqli->query($sql_prename);
 $fetch_pre  = mysqli_fetch_array($result_pre);
 $prename_temp =  $fetch_pre['prename'];
 
-print_r($fetch_pre[1]);
-print_r($fetch_pre['prename']);
-
 $result_s = $mysqli->query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
 $fetch_s  = mysqli_fetch_array($result_s);
 $sector_temp =  $fetch_s['sector'];
 
-$result_p = $mysqli->query("SELECT * FROM type_problem WHERE id_problem='$id_problem_temp'");
+
+$type_problem = "SELECT * FROM type_problem WHERE id_problem='".$id_problem_temp."'";
+echo $type_problem;
+$result_p = $mysqli->query($type_problem );
 $fetch_p  = mysqli_fetch_array($result_p);
 $problem_temp =  $fetch_p['problem'];
 
