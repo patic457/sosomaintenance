@@ -83,7 +83,7 @@ echo"</select>";
   </select>
   </label> 
   <label id="b">
-อาคาร : <?php build(); ?>
+อาคาร : <?php build($mysqli); ?>
   </label>
   <p>
     <!--<label id="s">
@@ -96,7 +96,7 @@ echo"</select>";
   </p>
   <p>&nbsp; </p>
   <p><label id="tech">  
-ช่างเทคนิค :  <?php tech(); ?> 
+ช่างเทคนิค :  <?php tech($mysqli); ?> 
  </label>
 <label id="job">
 สถานะการแจ้งซ่อม :    
