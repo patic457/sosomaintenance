@@ -17,28 +17,28 @@ $(function(){$("#bt").click(function(){
 								});
 });*/
 
-	function checkStatus(id_, step, s, comment, data) {
-		var check_status = false;
-		if (s == 'n') {
-			if (comment == '') {
-				alert('กรุณากรอกเหตุผล');
-			}
-		} else if (s == 'y') {
-			var comment = '';
-			check_status = true;
-		}
+	// function checkStatus(id_, step, s, comment, data) {
+	// 	var check_status = false;
+	// 	if (s == 'n') {
+	// 		if (comment == '') {
+	// 			alert('กรุณากรอกเหตุผล');
+	// 		}
+	// 	} else if (s == 'y') {
+	// 		var comment = '';
+	// 		check_status = true;
+	// 	}
 
-		if (check_status == true) {
-			$.post("check_status.php", {
-				s: s,
-				comment: comment,
-				id: id_,
-				step: step
-			}, function(data) {
-				$("#msg_").html(data);
-			});
-		}
-	}
+	// 	if (check_status == true) {
+	// 		$.post("check_status.php", {
+	// 			s: s,
+	// 			comment: comment,
+	// 			id: id_,
+	// 			step: step
+	// 		}, function(data) {
+	// 			$("#msg_").html(data);
+	// 		});
+	// 	}
+	// }
 
 	$(function() {
 		$("#s_yes").click(
@@ -70,6 +70,7 @@ $(function(){$("#bt").click(function(){
 			}
 
 			if (check_status == true) {
+				alert(check_status);
 				$.post("check_status.php", {
 					s: s,
 					comment: comment,
