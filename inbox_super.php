@@ -47,6 +47,7 @@ $job_status_temp = $fetch['job_status'];
 
 $result_u = $mysqli->query("SELECT * FROM user WHERE username='$username_temp'");
 $fetch_u  = mysqli_fetch_array($result_u);
+print_r($fetch_u);
 $id_prename_temp =  $fetch_u['id_prename'];
 $name_temp =  $fetch_u['name'];
 $lastname_temp =  $fetch_u['lastname'];
