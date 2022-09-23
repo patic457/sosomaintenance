@@ -19,7 +19,8 @@ $(function(){$("#bt").click(function(){
 
 	function checkStatus(id_, step, s, comment) {
 		var check_status = true;
-		if (s == 'ไม่อนุมัติ') {
+
+		if (s == 'ไม่อนุมัติ' || s == 'ไม่สามารถดำเนินการได้') {
 			if (comment == '') {
 				check_status = false;
 				alert('กรุณากรอกเหตุผล');
@@ -125,28 +126,7 @@ $(function(){$("#bt").click(function(){
 			var s = $("input[name='s3']:checked").val();
 			var id_ = "<?php echo $_GET['id_list']; ?>";
 			var step = '3';
-			//
-			var check_status = false;
-			if (s == 'n') {
-				if (comment == '') {
-					alert('กรุณากรอกเหตุผล');
-				}
-			} else if (s == 'y') {
-				var comment = '';
-				check_status = true;
-			}
-
-			if (check_status == true) {
-				$.post("check_status.php", {
-					s: s,
-					comment: comment,
-					id: id_,
-					step: step
-				}, function(data) {
-					$("#msg_").html(data);
-				});
-			}
-			//
+			checkStatus(id_, step, s, comment);
 
 			// if (s == 'n') {
 			// 	if (comment == '') {
@@ -266,7 +246,8 @@ echo"</select>";
 	<link rel="stylesheet" type="text/css" href="style_adminn.css" />
 	<div class="title">แบบฟอร์มงานแจ้งซ่อม</div>
 	<p><br>
-	<div><?php if ($_SESSION['user_status_session'] == '0' && $fetch_list['job_status'] != 'ดำเนินการเรียบร้อย') {
+	<div><?php
+			if ($_SESSION['user_status_session'] == '0' && $fetch_list['job_status'] != 'ดำเนินการเรียบร้อย') {
 			} else { ?><a href="<?php echo "Export_page.php?id_list=$_GET[id_list]"; ?>">
 				<img align="right" border="0" src="images/printer.png" width="20" height="20" title="ออกรายงาน"></a><?php } ?></div>
 	<div style="text-align:left;" class="title">เลขที่ใบแจ้งซ่อม : <?php echo $fetch_list['id_list']; ?></div>
