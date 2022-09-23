@@ -56,9 +56,10 @@ $id_sector_temp =  $fetch_u['id_sector'];
 $sql_prename = "SELECT * FROM prename WHERE id_prename='".$id_prename_temp."'";
 $result_pre = $mysqli->query($sql_prename);
 $fetch_pre  = mysqli_fetch_array($result_pre);
-$prename_temp =  $fetch_pre[1];
+$prename_temp =  $fetch_pre['prename'];
 
-print_r($prename_temp);
+print_r($fetch_pre[1]);
+print_r($fetch_pre['prename']);
 
 $result_s = $mysqli->query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
 $fetch_s  = mysqli_fetch_array($result_s);
