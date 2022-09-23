@@ -55,7 +55,7 @@ if($pass4!=$fetch_sel['password']){
 session_destroy();
 session_unset ();
 }
-		echo"<script>alert('แก้ไขข้อมูลของคุณสำเร็ลแล้ว');Location('index.php');</script>";
+		echo"<script>alert('แก้ไขข้อมูลของคุณสำเร็ลแล้ว');Location('index.php?m=');</script>";
 	}
 
 ?>

@@ -21,6 +21,6 @@ $time = date("H").":".date("i").":".date("s");
 
 $sqll = "insert into list_service values('$id_list','$date_temp','$time','$u','$p','$b','$f','$r','$d','รอการอนุมัติ','','','','','','','','','','')";
 $sqlquery = $mysqli->query($sqll) or die("Error 3");
-print"<script>alert('บันทึกข้อมูลสำเร็จแล้ว');Location('index.php');</script>";
+print"<script>alert('บันทึกข้อมูลสำเร็จแล้ว');Location('index.php?m=');</script>";
 
 ?>

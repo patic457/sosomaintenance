@@ -40,7 +40,7 @@ switch($step){
 		
 		$sqll = "update list_service set job_status='$s' , comment='$comment' , date_complete='$date_temp' , time_complete='$time_temp' where id_list='$id'";
 		$sqlquery = $mysqli->query($sqll) or die("Error 3");
-		print"<script>alert('คุณได้ดำเนินการเรียบร้อยแล้ว ระบบได้จัดเก็บประวัติแจ้งซ่อมลงในฐานข้อมูลเรียบร้อยแล้ว');Location('index.php');</script>";
+		print"<script>alert('คุณได้ดำเนินการเรียบร้อยแล้ว ระบบได้จัดเก็บประวัติแจ้งซ่อมลงในฐานข้อมูลเรียบร้อยแล้ว');Location('index.php?m=');</script>";
 	break;
 		 
 			}
