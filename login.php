@@ -59,7 +59,7 @@ if (empty($_SESSION['username']) == true) {
 			<br />
 			<input type="button" style="margin: -20px 0 0 287px;" class="button" id="bt" value="เข้าสู่ระบบ" />
 
-			<p style="margin: 5px 0 0 px; font-weight:bold"><label onClick="Location('forget.php');">ลืมรหัสผ่าน ?</label></a>
+			<!-- <p style="margin: 5px 0 0 px; font-weight:bold"><label onClick="Location('forget.php');">ลืมรหัสผ่าน ?</label></a> -->
 		</fieldset>
 	</form>
 
