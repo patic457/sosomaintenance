@@ -250,7 +250,7 @@ include("session.php");
 
 		<div id="bottom"> </div>
 
-		<div id="footer">Copyright 2011 @ Soso Maintenance
+		<div id="footer">Copyright 2011 @ Faculty of Veterinary Medicine Kasetsart University
 		</div>
 	</div>
 
