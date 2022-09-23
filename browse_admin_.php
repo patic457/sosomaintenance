@@ -58,7 +58,28 @@ $(function(){$("#bt").click(function(){
 			var s = $("input[name='s']:checked").val();
 			var id_ = "<?php echo $_GET['id_list']; ?>";
 			var step = '1';
-			checkStatus(id_, step, s, comment, data);
+			//
+			var check_status = false;
+			if (s == 'n') {
+				if (comment == '') {
+					alert('กรุณากรอกเหตุผล');
+				}
+			} else if (s == 'y') {
+				var comment = '';
+				check_status = true;
+			}
+
+			if (check_status == true) {
+				$.post("check_status.php", {
+					s: s,
+					comment: comment,
+					id: id_,
+					step: step
+				}, function(data) {
+					$("#msg_").html(data);
+				});
+			}
+			//
 		});
 	});
 
@@ -101,7 +122,29 @@ $(function(){$("#bt").click(function(){
 			var s = $("input[name='s3']:checked").val();
 			var id_ = "<?php echo $_GET['id_list']; ?>";
 			var step = '3';
-			checkStatus(id_, step, s, comment, data);
+			//
+			var check_status = false;
+			if (s == 'n') {
+				if (comment == '') {
+					alert('กรุณากรอกเหตุผล');
+				}
+			} else if (s == 'y') {
+				var comment = '';
+				check_status = true;
+			}
+
+			if (check_status == true) {
+				$.post("check_status.php", {
+					s: s,
+					comment: comment,
+					id: id_,
+					step: step
+				}, function(data) {
+					$("#msg_").html(data);
+				});
+			}
+			//
+
 			// if (s == 'n') {
 			// 	if (comment == '') {
 			// 		alert('กรุณากรอกเหตุผล');
