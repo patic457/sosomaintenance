@@ -17,27 +17,24 @@ $(function(){$("#bt").click(function(){
 								});
 });*/
 
-	function checkStatus(id_, step, s, comment, data) {
-		var check_status = false;
-		if (s == 'n') {
+	function checkStatus(id_, step, s, comment) {
+		if (s == 'ไม่อนุมัติ') {
 			if (comment == '') {
 				alert('กรุณากรอกเหตุผล');
 			}
-		} else if (s == 'y') {
-			var comment = '';
+		} else if (s == 'อนุมัติ') {
 			check_status = true;
 		}
 
-		if (check_status == true) {
-			$.post("check_status.php", {
-				s: s,
-				comment: comment,
-				id: id_,
-				step: step
-			}, function(data) {
-				$("#msg_").html(data);
-			});
-		}
+		$.post("check_status.php", {
+			s: s,
+			comment: comment,
+			id: id_,
+			step: step
+		}, function(data) {
+			$("#msg_").html(data);
+		});
+
 	}
 
 	$(function() {
@@ -59,11 +56,7 @@ $(function(){$("#bt").click(function(){
 			var id_ = "<?php echo $_GET['id_list']; ?>";
 			var step = '1';
 			//
-			console.log(s);
-			console.log(comment);
-			console.log(id_);
-			console.log(step);
-			console.log(data);
+			checkStatus(id_, step, s, comment);
 			//
 
 			//
@@ -78,7 +71,7 @@ $(function(){$("#bt").click(function(){
 			// }
 
 			// if (check_status == true) {
-			
+
 			// 	$.post("check_status.php", {
 			// 		s: s,
 			// 		comment: comment,
