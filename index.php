@@ -66,7 +66,6 @@ include("session.php");
 				<li><a href="index.php?m=">หน้าแรก</a></li>
 				<?php if ($_SESSION['user_status_session'] != '9') { ?>
 					<li><a href="index.php?m=2">แจ้งซ่อม</a></li>
-					<li><a href="index.php?m=3">ประวัติการแจ้งซ่อม</a></li>
 				<?php } else { ?>
 					<li class="top"><a href="index.php?m=17">ประวัติงานที่ได้รับมอบหมาย</a></li>
 				<?php } ?>
@@ -76,8 +75,11 @@ include("session.php");
 				<?php if ($_SESSION['user_status_session'] == '1' || $_SESSION['user_status_session'] == '2') { ?>
 					<li><a href="index.php?m=5">รอการดำเนินการ</a></li>
 					<li><a href="index.php?m=6">อยูในระหว่างการดำเนินการ</a></li>
+				<?php }
+				if ($_SESSION['user_status_session'] != '9') {
+				?>
+					<li><a href="index.php?m=3">ประวัติการแจ้งซ่อม</a></li>
 				<?php } ?>
-
 			</ul>
 		</div>
 
