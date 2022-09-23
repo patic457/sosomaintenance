@@ -47,16 +47,20 @@ $job_status_temp = $fetch['job_status'];
 
 $result_u = $mysqli->query("SELECT * FROM user WHERE username='$username_temp'");
 $fetch_u  = mysqli_fetch_array($result_u);
-print_r($fetch_u);
+
 $id_prename_temp =  $fetch_u['id_prename'];
 $name_temp =  $fetch_u['name'];
 $lastname_temp =  $fetch_u['lastname'];
 $id_sector_temp =  $fetch_u['id_sector'];
 
+print_r($fetch_u);
+
 $sql_prename = "SELECT * FROM prename WHERE id_prename='".$id_prename_temp."'";
 $result_pre = $mysqli->query($sql_prename);
 $fetch_pre  = mysqli_fetch_array($result_pre);
 $prename_temp =  $fetch_pre['prename'];
+
+print_r($fetch_pre);
 
 $result_s = $mysqli->query("SELECT * FROM sector WHERE id_sector='$id_sector_temp'");
 $fetch_s  = mysqli_fetch_array($result_s);
