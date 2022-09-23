@@ -52,7 +52,8 @@ $name_temp =  $fetch_u['name'];
 $lastname_temp =  $fetch_u['lastname'];
 $id_sector_temp =  $fetch_u['id_sector'];
 
-$result_pre = $mysqli->query("SELECT * FROM prename WHERE id_prename='$id_prename_temp'");
+$sql_prename = "SELECT * FROM prename WHERE id_prename='".$id_prename_temp."'";
+$result_pre = $mysqli->query($sql_prename);
 $fetch_pre  = mysqli_fetch_array($result_pre);
 $prename_temp =  $fetch_pre['prename'];
 
