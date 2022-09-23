@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="style_adminn.css" />
 <?php include"db.php"; include"session.php"; include"func.php";
 
-function Select(){
+function Select($mysqli){
 //Page
 $pagesize = 15;
 // แบ่งหน้าแสดงผล
@@ -115,7 +115,7 @@ echo" | <a href=\"index?m=3&&pageid=$i_page\">$i_page</a> ";  }
 <body>
 <div class='title'>ประวัติการแจ้งซ่อม</div><p>
 <form id="ff" method="post"><table align="center" class="css" ><tr><th scope="col">วันที่แจ้ง</th><th scope="col">เวลาที่แจ้ง</th><th scope="col">หน่วยงาน</th><th scope="col">ประเภทที่แจ้ง</th><th scope="col">สถานะ</th><th scope="col">รายละ้อียด</th></tr>
-<?php Select();  ?>
+<?php Select($mysqli);  ?>
 
 
 
