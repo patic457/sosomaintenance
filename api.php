@@ -30,7 +30,7 @@ $opts = array('http' =>
 );
 
 $data = json_decode(file_get_contents('php://input'), true);
-$json_string = json_encode($data, JSON_PRETTY_PRINT);
+$json_string = json_encode($data);
 
 
 $file = fopen("test.txt","w");
