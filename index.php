@@ -80,7 +80,7 @@ include("session.php");
 				?>
 					<li><a href="index.php?m=3">ประวัติการแจ้งซ่อม</a></li>
 				<?php } ?>
-				<li id="noti">fff</li>
+				<li align="right">fff</li>
 			</ul>
 
 		</div>
