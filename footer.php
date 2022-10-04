@@ -1,10 +1,10 @@
 <head>
     <script language="javascript">
         $(function() {
-            setTimeout(
-                function() {
-                    alert('Hi');
-                }, 3000);
+            setTimeout(function() {
+                window.location.reload(1);
+                alert('Hi');
+            }, 5000);
         });
     </script>
 </head>
