@@ -32,10 +32,9 @@ $opts = array('http' =>
 $data = json_decode(file_get_contents('php://input'), true);
 $json_string = json_encode($data);
 
+$expression = $json_string;
 
-$file = fopen("test.txt","w");
-fwrite($file,$json_string );
-fclose($file);
+echo '<script>console.log("'.htmlspecialchars(stripslashes(str_replace(array("\r", "\n"), '', var_export($expression, true)))).'")</script>';
 
 echo $json_string;
 
