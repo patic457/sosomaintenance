@@ -3,7 +3,7 @@
         $(function() {
             setTimeout(function() {
                 window.location.reload(1);
-                alert('Hi');
+    
             }, 5000);
         });
     </script>
