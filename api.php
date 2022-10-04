@@ -34,7 +34,7 @@ $json_string = json_encode($data);
 
 $expression = $json_string;
 
-echo '<script>console.log("'.htmlspecialchars(stripslashes(str_replace(array("\r", "\n"), '', var_export($expression, true)))).'")</script>';
+echo var_export($expression, true);
 
 echo $json_string;
 
