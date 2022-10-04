@@ -30,7 +30,7 @@ $opts = array('http' =>
 );
 
 $data = json_decode(file_get_contents('php://input'), true);
-printf($data);
+// printf($data);
 echo json_encode($data);
 
 $conn->close();
