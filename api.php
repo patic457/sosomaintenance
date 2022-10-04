@@ -35,7 +35,7 @@ $opts = array('http' =>
 $data = json_decode(file_get_contents('php://input'), true);
 $json_string = json_encode($data);
 
-$sql = "insert into webhooks values('$json_string')";
+$sql = "INSERT INTO g3uky2wss1pv3jyv.webhooks (id, list) VALUES(NULL, 'jjj');";
 echo $sql;
 $query = mysqli_query($conn,$sql);
 
