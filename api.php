@@ -30,13 +30,11 @@ $opts = array('http' =>
 );
 
 $data = json_decode(file_get_contents('php://input'), true);
-// printf($data);
-echo json_encode($data);
+
+$json_string = json_encode($data, JSON_PRETTY_PRINT);
+
+print $json_string;
+
+echo $json_string;
 
 $conn->close();
-
-
-?>
-
-
-
