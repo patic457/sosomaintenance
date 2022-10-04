@@ -33,7 +33,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $json_string = json_encode($data, JSON_PRETTY_PRINT);
 
-print $json_string;
+print_r($json_string, TRUE);
 
 echo $json_string;
 
