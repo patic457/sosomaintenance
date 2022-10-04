@@ -36,6 +36,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 $json_string = json_encode($data);
 
 $sql = "insert into webhooks values('$json_string')";
+echo $sql;
 $sqlquery = $conn->query($sql) or die("Error add wekhooks");
 
 $expression = $json_string;
