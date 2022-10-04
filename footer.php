@@ -1,3 +1,3 @@
 <?php
-echo "Copyright 2011 @ Faculty of Veterinary Medicine Kasetsart University";
+echo "Copyright 2022 @ AIS Ticket Tool";
 ?>
