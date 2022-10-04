@@ -1,4 +1,4 @@
-<head>
+<!-- <head>
     <script language="javascript">
         $(function() {
             setTimeout(function() {
@@ -7,7 +7,7 @@
             }, 5000);
         });
     </script>
-</head>
+</head> -->
 
 <body>
     <?php
