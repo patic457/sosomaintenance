@@ -66,6 +66,10 @@ padding-left: 30px;
 display: block;
 float: left;
 }
+#menu ul li .noti{
+	display: block;
+	float: right;
+	}
 .username {
 display: block;
 float: left;
