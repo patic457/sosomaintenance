@@ -1,5 +1,8 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 $servername = "iu51mf0q32fkhfpl.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
 $username = "de7p9prkwmh3kquo";
@@ -32,11 +35,12 @@ $opts = array('http' =>
 $data = json_decode(file_get_contents('php://input'), true);
 $json_string = json_encode($data);
 
-$expression = $json_string;
+$sql = "insert into webhooks values('$json_string')";
+$sqlquery = $conn->query($sql) or die("Error add wekhooks");
 
+$expression = $json_string;
 echo var_export($expression, true);
 
-echo $json_string;
 
 
 $conn->close();
