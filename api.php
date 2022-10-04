@@ -31,12 +31,13 @@ $opts = array('http' =>
 
 $data = json_decode(file_get_contents('php://input'), true);
 $json_string = json_encode($data, JSON_PRETTY_PRINT);
+
+
+$file = fopen("test.txt","w");
+fwrite($file,$json_string );
+fclose($file);
+
 echo $json_string;
-
-
-echo '<script>console.log("'.$json_string.'")</script>';
-
-
 
 
 $conn->close();
