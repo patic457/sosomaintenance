@@ -37,7 +37,7 @@ $json_string = json_encode($data);
 
 $sql = "insert into webhooks values('$json_string')";
 echo $sql;
-$sqlquery = $conn->query($sql) or die("Error add wekhooks");
+$query = mysqli_query($conn,$sql);
 
 $expression = $json_string;
 echo var_export($expression, true);
