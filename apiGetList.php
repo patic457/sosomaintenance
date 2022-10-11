@@ -48,14 +48,14 @@ $sql = "SELECT * FROM " . $table;
 
 // echo $sql;
 $result = mysqli_query($conn, $sql);
-$data = array();
+// $data = array();
 while ($row = mysqli_fetch_assoc($result)) {
 
-    $data[] = $row;
+    $obj = mysqli_fetch_object($data);
 }
 
-header('Content-Type: application/json; charset=utf-8');
-echo $data;
+header("Content-Type: application/json");
+echo $json_encode($obj);
 
 
 // echo json_encode($query);
