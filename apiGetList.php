@@ -49,7 +49,7 @@ $sql = "SELECT * FROM " . $table;
 // echo $sql;
 $query = mysqli_query($conn, $sql);
 
-echo $query;
+echo json_encode($query);
 
 // $expression = $json_string;
 // echo var_export($expression, true);
