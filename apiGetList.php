@@ -49,10 +49,11 @@ $sql = "SELECT * FROM " . $table;
 // echo $sql;
 $result = mysqli_query($conn, $sql);
 $data = array();
-while ($row = mysqli_fetch_assoc($result)) {
-    $obj = json_decode($row[]);
-    $obj->id;
-    $obj->list;
+
+while ($row = $result -> fetch_assoc()) {
+    $obj = json_encode($row);
+    $row["id"];
+    $row["list"];
     array_push($data, $obj);
 }
 
