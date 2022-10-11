@@ -33,29 +33,10 @@ $opts = array(
     )
 );
 
-// $data = json_decode(file_get_contents('php://input'), true);
-
-// $json_string = json_encode($data);
-// $json_decode_string = json_decode($data);
-// if (!empty($json_decode_string->sosotype)) {
-//     $sosotype = $json_decode_string->sosotype;
-// } else {
-//     $sosotype = "";
-// }
-
 $table = "g3uky2wss1pv3jyv.webhooks";
 $sql = "SELECT * FROM " . $table;
-
-// echo $sql;
 $result = mysqli_query($conn, $sql);
 $data = array();
-
-// while ($row = $result -> fetch_assoc()) {
-//     $obj = json_decode($row[]);
-//     $obj->id;
-//     $obj->list;
-//     array_push($data, $obj);
-// }
 $num = mysqli_num_rows($result);
 for ($q = 0; $q < $num; $q++) {
     $obj = new stdClass();
@@ -66,15 +47,6 @@ for ($q = 0; $q < $num; $q++) {
 
 header("Content-Type: application/json");
 echo json_encode($data);
-// echo $data;
-
-
-// echo json_encode($query);
-
-// $expression = $json_string;
-// echo var_export($expression, true);
-
-
 
 
 $conn->close();
