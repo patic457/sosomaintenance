@@ -61,8 +61,8 @@ for ($q = 1; $q <= $num; $q++) {
     $obj = new stdClass();
     $fetch = mysqli_fetch_array($result);
     $obj = json_decode($fetch[$q]);
-    $obj->id;
-    $obj->list;
+    // $obj->id;
+    // $obj->list;
     array_push($data, $obj);
 }
 
