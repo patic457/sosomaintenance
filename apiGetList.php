@@ -51,9 +51,9 @@ $result = mysqli_query($conn, $sql);
 $data = array();
 
 while ($row = $result -> fetch_assoc()) {
-    $obj = json_encode($row);
-    $row["id"];
-    $row["list"];
+    $obj = json_decode($row[]);
+    $obj->id;
+    $obj->list;
     array_push($data, $obj);
 }
 
