@@ -47,9 +47,11 @@ $table = "g3uky2wss1pv3jyv.webhooks";
 $sql = "SELECT * FROM " . $table;
 
 // echo $sql;
-$query = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql);
 
-echo json_encode($query);
+echo $result;
+
+// echo json_encode($query);
 
 // $expression = $json_string;
 // echo var_export($expression, true);
