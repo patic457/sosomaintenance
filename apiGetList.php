@@ -59,7 +59,7 @@ $data = array();
 $num = mysqli_num_rows($result);
 for ($q = 1; $q <= $num; $q++) {
     $fetch = mysqli_fetch_array($result);
-    $obj = json_decode($fetch);
+    $obj = json_decode($fetch[$q]);
     $obj->id;
     $obj->list;
     array_push($data, $obj);
