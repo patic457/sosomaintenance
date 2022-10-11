@@ -67,8 +67,8 @@ for ($q = 0; $q < $num; $q++) {
 }
 
 header("Content-Type: application/json");
-// echo json_encode($data);
-echo $data;
+echo json_encode($data);
+// echo $data;
 
 
 // echo json_encode($query);
