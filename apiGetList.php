@@ -10,12 +10,12 @@ $password = "j2batag6pvrfimgh";
 $dbname = "g3uky2wss1pv3jyv";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password,$dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error."<hr>");
-} 
+    die("Connection failed: " . $conn->connect_error . "<hr>");
+}
 
 $postdata = http_build_query(
     array(
@@ -24,7 +24,8 @@ $postdata = http_build_query(
     )
 );
 
-$opts = array('http' =>
+$opts = array(
+    'http' =>
     array(
         'method'  => 'POST',
         'header'  => 'Content-Type: application/json',
@@ -33,14 +34,24 @@ $opts = array('http' =>
 );
 
 $data = json_decode(file_get_contents('php://input'), true);
-$json_string = json_encode($data);
 
-$sql = "INSERT INTO g3uky2wss1pv3jyv.webhooks (id, list) VALUES(NULL, '$json_string');";
+// $json_string = json_encode($data);
+// $json_decode_string = json_decode($data);
+// if (!empty($json_decode_string->sosotype)) {
+//     $sosotype = $json_decode_string->sosotype;
+// } else {
+//     $sosotype = "";
+// }
+
+$table = "g3uky2wss1pv3jyv.webhooks";
+$sql = "SELECT * FROM " . $table;
+
 echo $sql;
-$query = mysqli_query($conn,$sql);
+$query = mysqli_query($conn, $sql);
 
 $expression = $json_string;
 echo var_export($expression, true);
+
 
 
 
