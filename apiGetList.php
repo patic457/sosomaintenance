@@ -57,9 +57,12 @@ $data = array();
 //     array_push($data, $obj);
 // }
 $num = mysqli_num_rows($result);
-for ($q=1;$q<=$num;$q++){
+for ($q = 1; $q <= $num; $q++) {
     $fetch = mysqli_fetch_array($result);
-    array_push($data,$fetch);
+    $obj = json_decode($fetch);
+    $obj->id;
+    $obj->list;
+    array_push($data, $obj);
 }
 
 header("Content-Type: application/json");
