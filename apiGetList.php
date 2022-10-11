@@ -48,14 +48,13 @@ $sql = "SELECT * FROM " . $table;
 
 // echo $sql;
 $result = mysqli_query($conn, $sql);
-$desc = array();
-$views = array();
-while ($row = mysqli_fetch_array($result)) {
-    $desc[] = $row["video_desc"];
-    $views[] = $row["video_views"];
+$data = array();
+while ($row = mysqli_fetch_assoc($result)) {
+
+    $data[] = $row;
 }
-$res = array($desc, $views);
-echo json_encode($res);
+
+echo json_encode($data);
 
 // echo json_encode($query);
 
