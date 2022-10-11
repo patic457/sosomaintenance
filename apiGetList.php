@@ -55,7 +55,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 }
 
 header('Content-Type: application/json; charset=utf-8');
-echo json_encode($data, true);
+echo $data;
 
 
 // echo json_encode($query);
