@@ -50,11 +50,16 @@ $sql = "SELECT * FROM " . $table;
 $result = mysqli_query($conn, $sql);
 $data = array();
 
-while ($row = $result -> fetch_assoc()) {
-    $obj = json_decode($row[]);
-    $obj->id;
-    $obj->list;
-    array_push($data, $obj);
+// while ($row = $result -> fetch_assoc()) {
+//     $obj = json_decode($row[]);
+//     $obj->id;
+//     $obj->list;
+//     array_push($data, $obj);
+// }
+
+for ($q=1;$q<=$num;$q++){
+    $fetch = mysqli_fetch_array($result);
+    array_push($data,$fetch);
 }
 
 header("Content-Type: application/json");
