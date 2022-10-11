@@ -63,7 +63,7 @@ for ($q = 0; $q < $num; $q++) {
     $obj = $fetch[1];
     // $obj->id;
     // $obj->list;
-    array_push($data, json_encode($obj));
+    array_push($data, json_decode($obj));
 }
 
 header("Content-Type: application/json");
