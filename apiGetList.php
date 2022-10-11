@@ -63,11 +63,12 @@ for ($q = 0; $q < $num; $q++) {
     $obj = $fetch[1];
     // $obj->id;
     // $obj->list;
-    array_push($data, $obj);
+    array_push($data, json_encode($obj));
 }
 
 header("Content-Type: application/json");
-echo json_encode($data);
+// echo json_encode($data);
+echo $data;
 
 
 // echo json_encode($query);
