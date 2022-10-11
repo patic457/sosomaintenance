@@ -60,9 +60,7 @@ $num = mysqli_num_rows($result);
 for ($q = 0; $q < $num; $q++) {
     $obj = new stdClass();
     $fetch = mysqli_fetch_array($result);
-    $obj = $fetch[1];
-    // $obj->id;
-    // $obj->list;
+    $obj = $fetch[1]->messages;
     array_push($data, json_decode($obj));
 }
 
