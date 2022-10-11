@@ -50,12 +50,12 @@ $sql = "SELECT * FROM " . $table;
 $result = mysqli_query($conn, $sql);
 $data = array();
 while ($row = mysqli_fetch_assoc($result)) {
-
-    array_push($data, $row );
+    $json_row =  json_decode($row[]);
+    array_push($data, $json_row );
 }
 
 header("Content-Type: application/json");
-echo json_encode($data);
+echo $data;
 
 
 // echo json_encode($query);
