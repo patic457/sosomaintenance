@@ -33,7 +33,7 @@ $opts = array(
     )
 );
 
-$data = json_decode(file_get_contents('php://input'), true);
+// $data = json_decode(file_get_contents('php://input'), true);
 
 // $json_string = json_encode($data);
 // $json_decode_string = json_decode($data);
@@ -46,11 +46,13 @@ $data = json_decode(file_get_contents('php://input'), true);
 $table = "g3uky2wss1pv3jyv.webhooks";
 $sql = "SELECT * FROM " . $table;
 
-echo $sql;
+// echo $sql;
 $query = mysqli_query($conn, $sql);
 
-$expression = $json_string;
-echo var_export($expression, true);
+echo $query;
+
+// $expression = $json_string;
+// echo var_export($expression, true);
 
 
 
