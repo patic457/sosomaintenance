@@ -57,7 +57,7 @@ $data = array();
 //     array_push($data, $obj);
 // }
 $num = mysqli_num_rows($result);
-for ($q = 1; $q <= $num; $q++) {
+for ($q = 0; $q <= $num; $q++) {
     $obj = new stdClass();
     $fetch = mysqli_fetch_array($result);
     $obj = json_decode($fetch[$q]);
