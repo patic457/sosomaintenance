@@ -116,6 +116,7 @@ $status_temp =  $fetch_st['status'];*/
                     <th scope="col">รายละเอียด</th>
                 </tr>
                 <?php Select($mysqli, "รอการอนุมัติ"); ?>
+                <?php Select($mysqli, "PagerDuty"); ?>
             </table>
         </form>
     </center>
