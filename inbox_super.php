@@ -150,12 +150,17 @@ $status_temp =  $fetch_st['status'];*/
                 });
             </script>
             <?php
+                $oVal = (object)[];
+
                 $fetch = mysqli_fetch_array($result);
                 // $event_tmp = $fetch['messages'][0]["event"];
                 $event_tmp = "incident.trigger";
 
 
-                var_dump($fetch["list"]->messages);
+
+                $messages = json_decode($fetch["list"]);
+
+                var_dump($messages);
 
                 if ($event_tmp == "incident.trigger") {
                 } else {
