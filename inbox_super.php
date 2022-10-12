@@ -153,9 +153,9 @@ $status_temp =  $fetch_st['status'];*/
                 $fetch = mysqli_fetch_array($result);
                 // $event_tmp = $fetch['messages'][0]["event"];
                 $event_tmp = "incident.trigger";
-                $hookobj =  json_decode($fetch);
 
-                var_dump($hookobj->messages);
+
+                var_dump($fetch["list"]);
 
                 if ($event_tmp == "incident.trigger") {
                 } else {
