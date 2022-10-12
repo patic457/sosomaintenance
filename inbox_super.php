@@ -111,7 +111,7 @@ $status_temp =  $fetch_st['status'];*/
             $api_url = 'https://sosomaintenance.herokuapp.com/apiGetList.php';
             $json_data = file_get_contents($api_url);
             $response_data = json_decode($json_data);
-            $list_data = $response_data->data;
+            $list_data = $response_data->messages;
             // $user_data = array_slice($user_data, 0, 9);
             foreach ($list_data as $list) {
                 var_dump($list);
