@@ -153,7 +153,7 @@ $status_temp =  $fetch_st['status'];*/
                 $fetch  = mysqli_fetch_array($result);
                 // $event_tmp = $fetch['messages'][0]["event"];
                 $event_tmp = "incident.trigger";
-                echo json_decode($fetch);
+                echo json_encode($fetch);
 
                 if ($event_tmp == "incident.trigger") {
                 } else {
