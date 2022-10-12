@@ -158,7 +158,7 @@ $status_temp =  $fetch_st['status'];*/
 
 
 
-                $messages = json_decode($fetch["list"]);
+                $messages = json_decode($fetch["list"][0]["messages"]);
 
                 var_dump($messages);
 
