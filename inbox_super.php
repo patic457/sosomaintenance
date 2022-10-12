@@ -112,9 +112,15 @@ $status_temp =  $fetch_st['status'];*/
             $json_data = file_get_contents($api_url);
             $response_data = json_decode($json_data);
             foreach ($response_data as $list) {
-                $incident_event_tmp = $list->messages[0]->event;
-                if ($incident_event_tmp == "incident.trigger") {
-                    print_r($list->messages[0]->incident);
+                $incident_event = $list->messages[0]->event;
+                if ($incident_event == "incident.trigger") {
+                    $incident_arr = $list->messages[0]->incident;
+                    $incident_number = $incident_arr->incident_number;
+                    $title = $incident_arr->title;
+                    $description = $incident_arr->description;
+                    $created_at = $incident_arr->created_at;
+                    $status = $incident_arr->status;
+                    echo "$incident_number $title $description $created_at $status";
                     echo "<hr>";
                 }
             }
