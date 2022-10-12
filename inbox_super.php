@@ -158,7 +158,7 @@ $status_temp =  $fetch_st['status'];*/
 
 
 
-                $messages = json_decode($fetch["list"][0]);
+                $messages = $fetch["list"][$i]["messages"];
 
                 var_dump($messages);
 
@@ -230,7 +230,7 @@ $status_temp =  $fetch_st['status'];*/
                 <th scope="col">รายละเอียด</th>
             </tr>
             <tr>
-                <?php Select($mysqli, "รอการอนุมัติ"); ?>
+                <?php //Select($mysqli, "รอการอนุมัติ"); ?>
             </tr>
             <tr>
                 <?php selectWebhook($mysqli); ?>
