@@ -112,12 +112,11 @@ $status_temp =  $fetch_st['status'];*/
             $json_data = file_get_contents($api_url);
             $response_data = json_decode($json_data);
             foreach ($response_data as $list) {
-                print_r($list->messages[0]);
-                echo"<hr>";
-            //     echo "name: " . $user->employee_name;
-            //     echo "<br />";
-            //     echo "name: " . $user->employee_age;
-            //     echo "<br /> <br />";
+                $incident_event_tmp = $list->messages[0]->event;
+                if ($incident_event_tmp == "incident.trigger") {
+                    print_r($list->messages[0]->log_entries);
+                    echo "<hr>";
+                }
             }
         }
 
