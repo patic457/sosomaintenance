@@ -114,7 +114,7 @@ $status_temp =  $fetch_st['status'];*/
             foreach ($response_data as $list) {
                 $incident_event_tmp = $list->messages[0]->event;
                 if ($incident_event_tmp == "incident.trigger") {
-                    print_r($list->messages[0]->log_entries);
+                    print_r($list->messages[0]->incident);
                     echo "<hr>";
                 }
             }
