@@ -155,7 +155,7 @@ $status_temp =  $fetch_st['status'];*/
                 $event_tmp = "incident.trigger";
 
 
-                var_dump($fetch["list"]);
+                var_dump($fetch["list"]->messages);
 
                 if ($event_tmp == "incident.trigger") {
                 } else {
