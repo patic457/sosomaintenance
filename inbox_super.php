@@ -120,7 +120,11 @@ $status_temp =  $fetch_st['status'];*/
                     $description = $incident_arr->description;
                     $created_at = $incident_arr->created_at;
                     $status = $incident_arr->status;
-                    echo "$incident_number $title $description $created_at $status";
+                    echo "Ticket ID : $incident_number";
+                    echo "Title :  $title";
+                    echo "Description : $description";
+                    echo "Status : $status";
+                    echo "Created At : $created_at";
                     echo "<hr>";
                 }
             }
