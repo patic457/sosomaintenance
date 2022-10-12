@@ -108,7 +108,7 @@ $status_temp =  $fetch_st['status'];*/
         function selectWebhook()
         {
             echo "<div class='title'>PagerDuty</div><p>";
-            $api_url = 'apiGetList.php';
+            $api_url = 'https://sosomaintenance.herokuapp.com/apiGetList.php';
             $json_data = file_get_contents($api_url);
             $response_data = json_decode($json_data);
             var_dump($response_data);
