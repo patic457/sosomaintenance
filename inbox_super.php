@@ -113,7 +113,7 @@ $status_temp =  $fetch_st['status'];*/
             } else {
             }
             $i = 0;
-            echo "<div class='title'>รอการอนุมัติ</div><p>";
+            echo "<div class='title'>PagerDuty</div><p>";
 
             while ($i < $num) {
                 ?>
@@ -196,16 +196,19 @@ $status_temp =  $fetch_st['status'];*/
                     echo "</td><td>$t</td><td>$prename_temp$name_temp  $lastname_temp</td><td>$problem_temp</td>";
             ?>
         <td>
-            <a href="index.php?m=4.1&&id_list=<?php  $id_tmp=0; echo $id_tmp; ?>" title="แสดงรายละเอียด"><img src="images/view.png" alt="แสดงรายละเอียด" width="16" height="16" border="0" /></a>
+            <a href="index.php?m=4.1&&id_list=<?php $id_tmp = 0;
+                                                echo $id_tmp; ?>" title="แสดงรายละเอียด"><img src="images/view.png" alt="แสดงรายละเอียด" width="16" height="16" border="0" /></a>
         </td>
-        <td> <?php
+        <td>
+<?php
 
 
                     $i++;
                 }
             }
         }
-                ?>
+
+?>
 
 <center>
     <form id="ff" method="post" action="browse.php">
@@ -217,9 +220,11 @@ $status_temp =  $fetch_st['status'];*/
                 <th scope="col">ประเภทที่แจ้ง</th>
                 <th scope="col">รายละเอียด</th>
             </tr>
-            <?php Select($mysqli, "รอการอนุมัติ"); ?>
             <tr>
-                <?php selectWebhook($mysqli) ?>
+                <?php Select($mysqli, "รอการอนุมัติ"); ?>
+            </tr>
+            <tr>
+                <?php selectWebhook($mysqli); ?>
             </tr>
         </table>
     </form>
