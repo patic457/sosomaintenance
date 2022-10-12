@@ -111,15 +111,16 @@ $status_temp =  $fetch_st['status'];*/
             $api_url = 'apiGetList.php';
             $json_data = file_get_contents($api_url);
             $response_data = json_decode($json_data);
-            $list_data = $response_data->data;
+            var_dump($response_data);
+            // $list_data = $response_data->data;
             // $user_data = array_slice($user_data, 0, 9);
-            foreach ($list_data as $list) {
-                var_dump($list);
-                //     echo "name: " . $user->employee_name;
-                //     echo "<br />";
-                //     echo "name: " . $user->employee_age;
-                //     echo "<br /> <br />";
-            }
+            // foreach ($list_data as $list) {
+
+            //     echo "name: " . $user->employee_name;
+            //     echo "<br />";
+            //     echo "name: " . $user->employee_age;
+            //     echo "<br /> <br />";
+            // }
         }
 
                 ?>
