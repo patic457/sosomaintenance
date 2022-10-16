@@ -38,8 +38,8 @@ $sql = "SELECT * FROM " . $table;
 $result = mysqli_query($conn, $sql);
 $data = [];
 $num = mysqli_num_rows($result);
-for ($q = 0; $q < $num; $q++) {
     $obj = new stdClass();
+for ($q = 0; $q < $num; $q++) {
     $fetch = mysqli_fetch_array($result);
     $obj = $fetch[1];
     array_push($data, json_decode($obj));
