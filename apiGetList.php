@@ -41,14 +41,13 @@ $num = mysqli_num_rows($result);
 for ($q = 0; $q < $num; $q++) {
     $obj = new stdClass();
     $fetch = mysqli_fetch_array($result);
-    if ($fetch != null || $data != null) {
-        $obj = $fetch[1];
-        array_push($data, json_decode($obj));
-    }
+    $obj = $fetch[1];
+    array_push($data, json_decode($obj));
 }
+$res = array_filter($data);
 
 header("Content-Type: application/json");
-echo json_encode($data);
+echo json_encode($res);
 
 
 $conn->close();
