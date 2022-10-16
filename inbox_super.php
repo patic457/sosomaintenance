@@ -103,6 +103,33 @@ $status_temp =  $fetch_st['status'];*/
                 $i++;
             }
         }
+
+
+        function selectWebhook()
+        {
+            echo "<div class='title'>PagerDuty</div><p>";
+            $api_url = 'https://sosomaintenance.herokuapp.com/apiGetList.php';
+            $json_data = file_get_contents($api_url);
+            $response_data = json_decode($json_data);
+            foreach ($response_data as $list) {
+                $incident_event = $list->messages[0]->event;
+                if ($incident_event == "incident.trigger") {
+                    $incident_arr = $list->messages[0]->incident;
+                    $incident_number = $incident_arr->incident_number;
+                    $title = $incident_arr->title;
+                    $description = $incident_arr->description;
+                    $created_at = $incident_arr->created_at;
+                    $status = $incident_arr->status;
+                    echo "Ticket ID : $incident_number";
+                    echo "Title :  $title";
+                    echo "Description : $description";
+                    echo "Status : $status";
+                    echo "Created At : $created_at";
+                    echo "<hr>";
+                }
+            }
+        }
+
                 ?>
 
     <center>
@@ -115,7 +142,13 @@ $status_temp =  $fetch_st['status'];*/
                     <th scope="col">ประเภทที่แจ้ง</th>
                     <th scope="col">รายละเอียด</th>
                 </tr>
-                <?php Select($mysqli, "รอการอนุมัติ"); ?>
+                <tr>
+                    <?php //Select($mysqli, "รอการอนุมัติ"); 
+                    ?>
+                </tr>
+                <tr>
+                    <?php selectWebhook($mysqli); ?>
+                </tr>
             </table>
         </form>
     </center>
