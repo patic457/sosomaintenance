@@ -39,10 +39,12 @@ $result = mysqli_query($conn, $sql);
 $data = array();
 $num = mysqli_num_rows($result);
 for ($q = 0; $q < $num; $q++) {
-    $obj = new stdClass();
-    $fetch = mysqli_fetch_array($result);
-    $obj = $fetch[1];
-    array_push($data, json_decode($obj));
+    if ($q != 0) {
+        $obj = new stdClass();
+        $fetch = mysqli_fetch_array($result);
+        $obj = $fetch[1];
+        array_push($data, json_decode($obj));
+    }
 }
 // $res = array_filter($data, fn ($value) => !is_null($value));
 $res = $data;
