@@ -44,10 +44,11 @@ for ($q = 0; $q < $num; $q++) {
     $obj = $fetch[1];
     array_push($data, json_decode($obj));
 }
-$res = array_filter($data, fn ($value) => !is_null($value));
+// $res = array_filter($data, fn ($value) => !is_null($value));
+$res = $data;
 
 header("Content-Type: application/json");
-echo json_encode([$res[0]]);
+echo json_encode($res);
 
 
 $conn->close();
