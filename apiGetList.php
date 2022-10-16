@@ -44,7 +44,7 @@ for ($q = 0; $q < $num; $q++) {
     $obj = $fetch[1];
     array_push($data, json_decode($obj));
 }
-$res = array_filter($data);
+$res = array_filter($data, fn ($value) => !is_null($value));
 
 header("Content-Type: application/json");
 echo json_encode($res);
