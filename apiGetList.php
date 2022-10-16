@@ -36,6 +36,7 @@ $opts = array(
 $table = "g3uky2wss1pv3jyv.webhooks";
 $sql = "SELECT * FROM " . $table;
 $result = mysqli_query($conn, $sql);
+$data = [];
 $num = mysqli_num_rows($result);
 for ($q = 0; $q < $num; $q++) {
     $obj = new stdClass();
