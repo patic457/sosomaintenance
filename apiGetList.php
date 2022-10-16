@@ -37,12 +37,12 @@ $table = "g3uky2wss1pv3jyv.webhooks";
 $sql = "SELECT * FROM " . $table;
 $result = mysqli_query($conn, $sql);
 $data = [];
-$num = mysqli_num_rows($result);
 $obj = new stdClass();
+$num = mysqli_num_rows($result);
 for ($q = 0; $q < $num; $q++) {
     $fetch = mysqli_fetch_array($result);
     if ($fetch != null) {
-        $obj = $fetch[1];
+        // $obj = $fetch[1];
         array_push($data, json_decode($obj));
     }
 }
