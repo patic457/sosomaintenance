@@ -36,7 +36,7 @@ $opts = array(
 $table = "g3uky2wss1pv3jyv.webhooks";
 $sql = "SELECT * FROM " . $table;
 $result = mysqli_query($conn, $sql);
-$data = [];
+$data = array();
 $num = mysqli_num_rows($result);
 for ($q = 0; $q < $num; $q++) {
     $obj = new stdClass();
@@ -44,10 +44,10 @@ for ($q = 0; $q < $num; $q++) {
     $obj = $fetch[1];
     array_push($data, json_decode($obj));
 }
-// $res = array_filter($data, fn ($value) => !is_null($value));
+$res = array_filter($data, fn ($value) => !is_null($value));
 
 header("Content-Type: application/json");
-echo json_encode($data);
+echo json_encode([$res]);
 
 
 $conn->close();
