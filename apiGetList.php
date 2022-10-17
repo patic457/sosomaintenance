@@ -45,7 +45,7 @@ for ($q = 0; $num > $q; $q++) {
     $status_tmp =  $fetch['status'];
     $message_tmp =  json_decode($fetch[1]);
     // $message_tmp =  $fetch[1];
-    echo $message_tmp['messages'];
+    echo $message_tmp->messages[0];
     echo "<hr>";
     $obj->message = $message_tmp;
     $obj->status = intval($status_tmp);
