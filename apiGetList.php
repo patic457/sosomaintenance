@@ -41,10 +41,14 @@ $num = mysqli_num_rows($result);
 for ($q = 0; $q < $num; $q++) {
     $obj = new stdClass();
     $fetch = mysqli_fetch_array($result);
-    $obj->id = $q;
+    $obj->id = $fetch[0];
     $message_tmp =  json_decode($fetch[1]);
     $obj->message = $message_tmp;
-    if ($obj->message != null) {
+    echo $message_tmp["message"];
+    echo "<hr>";
+    echo $message_tmp->message;
+    echo "<hr>";
+    if ($obj->id != null) {
         array_push($data, $obj);
     }
 }
