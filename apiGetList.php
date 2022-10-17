@@ -42,7 +42,8 @@ for ($q = 0; $q < $num; $q++) {
     $obj = new stdClass();
     $fetch = mysqli_fetch_array($result);
     $obj->id = $q;
-    $obj->message = json_decode($fetch[1]);
+    $message_tmp =  json_decode($fetch[1]);
+    $obj->message = $message_tmp['message'];
     if ($obj->message != null) {
         array_push($data, $obj);
     }
