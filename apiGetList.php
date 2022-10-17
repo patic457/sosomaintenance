@@ -38,15 +38,15 @@ $sql = "SELECT * FROM " . $table;
 $result = mysqli_query($conn, $sql);
 $data = [];
 $num = mysqli_num_rows($result);
-for ($q = 0; $q < $num; $q++) {
+for ($q = 0; $num > $q; $q++) {
     $obj = new stdClass();
     $fetch = mysqli_fetch_array($result);
-    $obj->id = $fetch[0];
+    $obj->id = $q;
     $message_tmp =  json_decode($fetch[1]);
-    echo gettype($message_tmp['message']);
+    // echo gettype($message_tmp);
     // echo $message_tmp->message;
-    echo "<hr>";
-    // $obj->message = $message_tmp;
+    // echo "<hr>";
+    $obj->message = $message_tmp;
     if ($obj->id != null) {
         array_push($data, $obj);
     }
