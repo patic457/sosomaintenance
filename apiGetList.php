@@ -46,11 +46,12 @@ for ($q = 0; $num > $q; $q++) {
         $message_incident_tmp = $message_tmp[0]->{'incident'};
 
         $obj = new stdClass();
-        $obj->id = intval($fetch['id']);
         $obj->eventIncident = $jsondecode_tmp->{'event'};
-        $obj->incidentStatus = $message_incident_tmp->status;
-        $obj->notificationStatus = intval($fetch['notificationStatus']);
-        $obj->message = $message_tmp;
+        $obj->incident_number = intval($essage_incident_tmp->{'incident_number'});
+
+        $obj->incident_status = $message_incident_tmp->status;
+        $obj->notification_status = intval($fetch['notification_status']);
+        $obj->messagesLogs = $message_tmp;
         array_push($data, $obj);
     }
 }
