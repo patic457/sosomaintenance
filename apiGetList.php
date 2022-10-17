@@ -39,21 +39,15 @@ $result = mysqli_query($conn, $sql);
 $data = [];
 $num = mysqli_num_rows($result);
 for ($q = 0; $num > $q; $q++) {
-    $obj = new stdClass();
     $fetch = mysqli_fetch_array($result);
-    $obj->id = $q;
-    $status_tmp =  $fetch['status'];
     $message_tmp =  json_decode($fetch[1]);
-    // $message_tmp =  $fetch[1];
-    print $message_tmp->{'messages'};
-    // echo $message_tmp->messages[0];
-    // echo "<hr>";
-    $obj->message = $message_tmp->{'messages'};
-    $obj->status = intval($status_tmp);
-
-    // if ($obj->id != null) {
-    array_push($data, $obj);
-    // }
+    if ($message_tmp != null) {
+        $obj = new stdClass();
+        $obj->id = intval($fetch['id']);
+        $obj->status = intval($fetch['status']);
+        $obj->message = $message_tmp->{'messages'};
+        array_push($data, $obj);
+    }
 }
 
 // $res = array(array_filter($data, fn ($value) => !is_null($value)));
