@@ -42,7 +42,8 @@ for ($q = 0; $num > $q; $q++) {
     $obj = new stdClass();
     $fetch = mysqli_fetch_array($result);
     $obj->id = $q;
-    $message_tmp =  json_decode($fetch[1]);
+    // $message_tmp =  json_decode($fetch[1]);
+    $message_tmp =  $fetch;
     // echo gettype($message_tmp);
     // echo $message_tmp->message;
     // echo "<hr>";
