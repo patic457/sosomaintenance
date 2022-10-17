@@ -44,6 +44,7 @@ for ($q = 0; $num > $q; $q++) {
     $obj->id = $q;
     // $message_tmp =  json_decode($fetch[1]);
     $message_tmp =  $fetch['message'];
+    $status_tmp =  $fetch['status'];
     // echo gettype($message_tmp);
     // echo $message_tmp->message;
     // echo "<hr>";
