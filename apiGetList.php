@@ -42,9 +42,11 @@ for ($q = 0; $num > $q; $q++) {
     $fetch = mysqli_fetch_array($result);
     $message_tmp =  json_decode($fetch[1]);
     if ($message_tmp != null) {
+        $message_incident_tmp = $message_tmp->{'incident'};
+    
         $obj = new stdClass();
         $obj->id = intval($fetch['id']);
-        $obj->eventIncident = $message_tmp->{'incident'}->{'status'};
+        $obj->eventIncident = $message_incident_tmp->{'status'};
         $obj->notificationStatus = intval($fetch['notificationStatus']);
         $obj->message = $message_tmp->{'messages'};
         array_push($data, $obj);
