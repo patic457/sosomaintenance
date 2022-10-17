@@ -40,15 +40,16 @@ $data = [];
 $num = mysqli_num_rows($result);
 for ($q = 0; $num > $q; $q++) {
     $fetch = mysqli_fetch_array($result);
-    $message_tmp =  json_decode($fetch[1]);
-    if ($message_tmp != null) {
+    $jsondecode_tmp =  json_decode($fetch[1]);
+    if ($jsondecode_tmp != null) {
+        $message_tmp = $jsondecode_tmp->{'messages'};
         $message_incident_tmp = $message_tmp['incident'];
     
         $obj = new stdClass();
         $obj->id = intval($fetch['id']);
         $obj->eventIncident = $message_incident_tmp->{'status'};
         $obj->notificationStatus = intval($fetch['notificationStatus']);
-        $obj->message = $message_tmp->{'messages'};
+        $obj->message = $message_tmp;
         array_push($data, $obj);
     }
 }
