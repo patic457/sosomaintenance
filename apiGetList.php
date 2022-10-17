@@ -43,9 +43,9 @@ for ($q = 0; $q < $num; $q++) {
     $fetch = mysqli_fetch_array($result);
     $obj->id = $fetch[0];
     $message_tmp =  json_decode($fetch[1]);
-    $obj->message = $message_tmp;
-    echo $message_tmp[1];
+    echo gettype($message_tmp);
     echo "<hr>";
+    $obj->message = $message_tmp;
     if ($obj->id != null) {
         array_push($data, $obj);
     }
