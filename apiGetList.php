@@ -43,7 +43,7 @@ for ($q = 0; $q < $num; $q++) {
     $fetch = mysqli_fetch_array($result);
     $obj->id = $q;
     $message_tmp =  json_decode($fetch[1]);
-    $obj->message = $message_tmp->message;
+    $obj->message = $message_tmp;
     if ($obj->message != null) {
         array_push($data, $obj);
     }
