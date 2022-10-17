@@ -42,7 +42,7 @@ for ($q = 0; $num > $q; $q++) {
     $fetch = mysqli_fetch_array($result);
     $message_tmp =  json_decode($fetch[1]);
     if ($message_tmp != null) {
-        $message_incident_tmp = $message_tmp->{'incident'};
+        $message_incident_tmp = $message_tmp['incident'];
     
         $obj = new stdClass();
         $obj->id = intval($fetch['id']);
