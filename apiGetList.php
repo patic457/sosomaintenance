@@ -49,6 +49,8 @@ for ($q = 0; $num > $q; $q++) {
     // echo $message_tmp->message;
     // echo "<hr>";
     $obj->message = $message_tmp;
+    $obj->status = $status_tmp;
+
     // if ($obj->id != null) {
         array_push($data, $obj);
     // }
