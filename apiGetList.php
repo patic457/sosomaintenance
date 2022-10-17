@@ -44,9 +44,7 @@ for ($q = 0; $q < $num; $q++) {
     $obj->id = $fetch[0];
     $message_tmp =  json_decode($fetch[1]);
     $obj->message = $message_tmp;
-    echo $message_tmp["message"];
-    echo "<hr>";
-    echo $message_tmp->message;
+    echo $message_tmp[1];
     echo "<hr>";
     if ($obj->id != null) {
         array_push($data, $obj);
