@@ -47,9 +47,9 @@ for ($q = 0; $num > $q; $q++) {
     // echo $message_tmp->message;
     // echo "<hr>";
     $obj->message = $message_tmp;
-    if ($obj->id != null) {
+    // if ($obj->id != null) {
         array_push($data, $obj);
-    }
+    // }
 }
 
 // $res = array(array_filter($data, fn ($value) => !is_null($value)));
