@@ -51,7 +51,7 @@ for ($q = 0; $num > $q; $q++) {
         $obj->incident_number = intval($message_incident_tmp->{'incident_number'});
         $obj->incident_title = $message_incident_tmp->{'title'};
         $obj->incident_description = $message_incident_tmp->{'description'};
-        $obj->created_at = $message_incident_tmp->{'created_at'};
+        $obj->incident_created_at = $message_incident_tmp->{'created_at'};
 
         $obj->notification_status = intval($fetch['notification_status']);
         $obj->messagesLogs = $message_tmp;
