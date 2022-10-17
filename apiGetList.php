@@ -43,7 +43,7 @@ for ($q = 0; $num > $q; $q++) {
     $fetch = mysqli_fetch_array($result);
     $obj->id = $q;
     // $message_tmp =  json_decode($fetch[1]);
-    $message_tmp =  $fetch['id'];
+    $message_tmp =  $fetch['message'];
     // echo gettype($message_tmp);
     // echo $message_tmp->message;
     // echo "<hr>";
