@@ -43,11 +43,12 @@ for ($q = 0; $num > $q; $q++) {
     $fetch = mysqli_fetch_array($result);
     $obj->id = $q;
     $status_tmp =  $fetch['status'];
-    // $message_tmp =  json_decode($fetch[1]);
-    $message_tmp =  $fetch[1];
+    $message_tmp =  json_decode($fetch[1]);
+    // $message_tmp =  $fetch[1];
+    print $message_tmp->{'messages'};
     // echo $message_tmp->messages[0];
     // echo "<hr>";
-    $obj->message = $message_tmp;
+    $obj->message = $message_tmp->{'messages'};
     $obj->status = intval($status_tmp);
 
     // if ($obj->id != null) {
