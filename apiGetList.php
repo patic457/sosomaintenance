@@ -44,7 +44,8 @@ for ($q = 0; $num > $q; $q++) {
     if ($message_tmp != null) {
         $obj = new stdClass();
         $obj->id = intval($fetch['id']);
-        $obj->status = intval($fetch['status']);
+        $obj->eventIncident = $message_tmp->{'incident'}->{'status'};
+        $obj->notificationStatus = intval($fetch['notificationStatus']);
         $obj->message = $message_tmp->{'messages'};
         array_push($data, $obj);
     }
