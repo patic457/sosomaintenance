@@ -46,8 +46,8 @@ for ($q = 0; $num > $q; $q++) {
         $message_incident_tmp = $message_tmp[0]->{'incident'};
 
         $obj = new stdClass();
-        $obj->eventIncident = $jsondecode_tmp->{'event'};
-        $obj->incident_number = intval($essage_incident_tmp->{'incident_number'});
+        $obj->event_incident = $message_tmp->{'event'};
+        $obj->incident_number = intval($message_incident_tmp->{'incident_number'});
 
         $obj->incident_status = $message_incident_tmp->status;
         $obj->notification_status = intval($fetch['notification_status']);
