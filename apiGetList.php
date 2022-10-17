@@ -42,17 +42,16 @@ for ($q = 0; $num > $q; $q++) {
     $obj = new stdClass();
     $fetch = mysqli_fetch_array($result);
     $obj->id = $q;
-    // $message_tmp =  json_decode($fetch[1]);
-    $message_tmp =  $fetch[1];
     $status_tmp =  $fetch['status'];
-    // echo gettype($message_tmp);
-    // echo $message_tmp->message;
-    // echo "<hr>";
+    $message_tmp =  json_decode($fetch[1]);
+    // $message_tmp =  $fetch[1];
+    echo $message_tmp->messages;
+    echo "<hr>";
     $obj->message = $message_tmp;
     $obj->status = intval($status_tmp);
 
     // if ($obj->id != null) {
-        array_push($data, $obj);
+    array_push($data, $obj);
     // }
 }
 
