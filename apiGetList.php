@@ -54,7 +54,7 @@ for ($q = 0; $num > $q; $q++) {
         $obj->incident_created_at = $message_incident_tmp->{'created_at'};
 
         $obj->notification_status = intval($fetch['notification_status']);
-        $obj->messagesLogs = $message_tmp;
+        $obj->messagesLogs = $jsondecode_tmp;
         array_push($data, $obj);
     }
 }
