@@ -17,31 +17,37 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error . "<hr>");
 }
 
-$postdata = http_build_query(
-    array(
-        'var1' => 'some content',
-        'var2' => 'doh'
-    )
-);
+function createWebhook($conn)
+{
 
-$opts = array(
-    'http' =>
-    array(
-        'method'  => 'POST',
-        'header'  => 'Content-Type: application/json',
-        'content' => $postdata
-    )
-);
+    $postdata = http_build_query(
+        array(
+            'var1' => 'some content',
+            'var2' => 'doh'
+        )
+    );
 
-$data = json_decode(file_get_contents('php://input'), true);
-$json_string = json_encode($data);
+    $opts = array(
+        'http' =>
+        array(
+            'method'  => 'POST',
+            'header'  => 'Content-Type: application/json',
+            'content' => $postdata
+        )
+    );
 
-if (isset($json_string) || $json_string == '') {
-    $sql = "INSERT INTO g3uky2wss1pv3jyv.webhooks (id, list) VALUES(NULL, '$json_string');";
-    echo $sql;
-    $query = mysqli_query($conn, $sql);
-    $expression = $json_string;
-    echo var_export($expression, true);
+    $data = json_decode(file_get_contents('php://input'), true);
+    $json_string = json_encode($data);
+
+    if (isset($json_string) || $json_string == '') {
+        $sql = "INSERT INTO g3uky2wss1pv3jyv.webhooks (id, list) VALUES(NULL, '$json_string');";
+        // echo $sql;
+        $query = mysqli_query($conn, $sql);
+        $expression = $json_string;
+        // echo var_export($expression, true);
+    }
 }
+
+createWebhook($conn);
 
 $conn->close();
