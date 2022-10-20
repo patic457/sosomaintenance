@@ -70,7 +70,6 @@ function createWebhook($conn, $table)
 
     if (isset($json_string) || $json_string == '') {
         $sql = "INSERT INTO $table (id, list) VALUES(NULL, '$json_string');";
-        // echo $sql;
         $query = mysqli_query($conn, $sql);
         $expression = $json_string;
         // echo var_export($expression, true);
