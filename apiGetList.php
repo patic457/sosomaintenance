@@ -46,7 +46,7 @@ for ($q = 0; $num > $q; $q++) {
         if ($num == 1) {
             $obj->messages = $jsondecode_tmp;
         } else {
-            $message_tmp = $jsondecode_tmp->{'messages'};
+            // $message_tmp = $jsondecode_tmp->{'messages'};
             // $message_incident_tmp = $message_tmp[0]->{'incident'};
 
 
