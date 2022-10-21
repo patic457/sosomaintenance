@@ -89,18 +89,18 @@ function insertTicket($conn, String $table, Object $obj)
 
 function updateTicket($conn, String $table, Object $obj)
 {
+    $incident_event = $obj->incident_event;
     $sql_if = '';
     $sql_tbl =  "UPDATE $table SET ";
     $sql_where = "WHERE id='$obj->id'";
     $sql_updateAt = ",updatedAt='$obj->updatedAt' ";
     $sql_duedate = ",dueDate='$obj->dueDate' ";
-    // echo $sql_duedate;
     $sql_status = "status='$obj->status' ";
-    if ($obj->status == "acknowledge") {
+    if ($incident_event == "incident.acknowledge") {
         $sql_if = $sql_duedate;
-    } else if ($obj->status == "assign") {
-    } else if ($obj->status == "annotate") {
-    } else if ($obj->status == "resolve") {
+    } else if ($incident_event == "incident.assign") {
+    } else if ($incident_event == "incident.annotate") {
+    } else if ($incident_event == "incident.resolve") {
     }
 
     $sql = $sql_tbl . $sql_status . $sql_updateAt . $sql_if . $sql_where;
