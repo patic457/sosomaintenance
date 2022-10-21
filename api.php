@@ -83,7 +83,7 @@ $last_id = createWebhook($conn, $table);
 
 $dataPagerduty = adaptorPagerduty($conn, $table, $last_id);
 
-echo $dataPagerduty;
+var_dump($dataPagerduty);
 
 // insertInTicket($conn, $tableTicket, $dataPagerduty);
 
