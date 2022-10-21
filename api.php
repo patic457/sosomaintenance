@@ -27,9 +27,9 @@ function adaptorPagerduty($conn, $table)
         if ($jsondecode_tmp != null) {
             $message_tmp = $jsondecode_tmp->{'messages'};
             $message_incident_tmp = $message_tmp[0]->{'incident'};
-            $message_service_tmp = $message_incident_tmp[0]->{'service'};
-            $message_priority_tmp = $message_incident_tmp[0]->{'priority'};
-            $message_acknowledgements_tmp = $message_incident_tmp[0]->{'acknowledgements'};
+            $message_service_tmp = $message_incident_tmp->{'service'};
+            $message_priority_tmp = $message_incident_tmp->{'priority'};
+            $message_acknowledgements_tmp = $message_incident_tmp->{'acknowledgements'};
 
             $obj = new stdClass();
             $obj->incident_event = $message_tmp[0]->{'event'};
