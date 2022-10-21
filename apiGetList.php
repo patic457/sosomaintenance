@@ -34,7 +34,7 @@ $opts = array(
 );
 
 $table = "g3uky2wss1pv3jyv.webhooks";
-$sql = "SELECT * FROM " . $table . "ORDER BY id DESC";
+$sql = "SELECT * FROM " . $table . " ORDER BY id DESC LIMIT 1";
 $result = mysqli_query($conn, $sql);
 $data = [];
 $num = mysqli_num_rows($result);
