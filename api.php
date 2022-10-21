@@ -96,9 +96,7 @@ function updateTicket($conn, String $table, Object $obj)
     $sql_duedate = ",dueDate='$obj->dueDate' ";
     $sql_status = "status='$obj->status' ";
     if ($obj->status == "acknowledge") {
-        if ($obj->dueDate != '') {
-            $sql_if = $sql_duedate;
-        }
+        $sql_if = $sql_duedate;
     } else if ($obj->status == "assign") {
     } else if ($obj->status == "annotate") {
     } else if ($obj->status == "resolve") {
