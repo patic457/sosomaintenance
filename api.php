@@ -4,6 +4,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+
+
 function createWebhook($conn, $table)
 {
     $data = json_decode(file_get_contents('php://input'), true);
@@ -69,9 +71,12 @@ function adaptorPagerduty($conn, $table, $last_id)
 
 function insertInTicket($conn, String $table, Object $obj)
 {
-    $val = "('$obj->id','$obj->status','$obj->problemCategoryName','$obj->criticalityName','$obj->problemName','$obj->description','$obj->dueDate','$obj->createdAt');";
-    $sql = "INSERT INTO " . $table . " (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdAt) VALUES " . $val;
+    $hookBy = "PagerDuty";
+    $val = "('$obj->id','$obj->status','$obj->problemCategoryName','$obj->criticalityName','$obj->problemName','$obj->description','$obj->dueDate',$hookBy,$hookBy,'$obj->createdAt','$obj->updatedAt');";
+    $sql = "INSERT INTO " . $table . " (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdBy,updatedBy,createdAt,updatedAt) VALUES " . $val;
     mysqli_query($conn, $sql);
+    $lastId = mysqli_insert_id($conn);
+    return  json_encode('{"res": ' . $lastId . '}');
 }
 
 
@@ -91,6 +96,9 @@ $last_id = createWebhook($conn, $table);
 
 $dataPagerduty = adaptorPagerduty($conn, $table, $last_id);
 
-insertInTicket($conn, $tableTicket, $dataPagerduty);
+$res = insertInTicket($conn, $tableTicket, $dataPagerduty);
+
+header("Content-Type: application/json");
+echo $res;
 
 $conn->close();
