@@ -94,7 +94,7 @@ function updateTicket($conn, String $table, Object $obj)
     $sql_where = "WHERE id='$obj->id'";
     $sql_updateAt = ",updatedAt='$obj->updatedAt' ";
     $sql_duedate = ",dueDate='$obj->dueDate' ";
-    echo $sql_duedate;
+    // echo $sql_duedate;
     $sql_status = "status='$obj->status' ";
     if ($obj->status == "acknowledge") {
         $sql_if = $sql_duedate;
@@ -104,7 +104,7 @@ function updateTicket($conn, String $table, Object $obj)
     }
 
     $sql = $sql_tbl . $sql_status . $sql_updateAt . $sql_if . $sql_where;
-    // echo $sql;
+    echo $sql;
     mysqli_query($conn, $sql);
 }
 
