@@ -43,9 +43,8 @@ for ($q = 0; $num > $q; $q++) {
     $jsondecode_tmp =  json_decode($fetch[1]);
     if ($jsondecode_tmp != null) {
         $obj = new stdClass();
-
         if ($num == 1) {
-            $data = $jsondecode_tmp;
+            $obj->messagesLogs = $jsondecode_tmp;
         } else {
             $message_tmp = $jsondecode_tmp->{'messages'};
             $message_incident_tmp = $message_tmp[0]->{'incident'};
@@ -70,7 +69,7 @@ for ($q = 0; $num > $q; $q++) {
 // $res = array(array_filter($data, fn ($value) => !is_null($value)));
 
 if ($num == 1) {
-    $res = $data[0];
+    $res = $data[0]->messagesLogs;
 } else {
     $res = $data;
 }
