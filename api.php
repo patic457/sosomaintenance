@@ -18,6 +18,7 @@ function createWebhook($conn, $table)
 
 function adaptorPagerduty($conn, $table, $last_id)
 {
+    $dateTime = date('Y-m-d H:i:s');
     $sql = "SELECT * FROM " . $table . " WHERE id = $last_id";
     $result = mysqli_query($conn, $sql);
     $data = [];
@@ -37,11 +38,11 @@ function adaptorPagerduty($conn, $table, $last_id)
             $obj->id = intval($message_incident_tmp->{'incident_number'});
             $obj->status = $message_incident_tmp->status;
             $obj->problemCategoryName = $message_service_tmp->name;
-            $obj->updatedAt = new DateTime();
+            $obj->updatedAt = $dateTime;
             $obj->criticalityName = $message_priority_tmp->name;
             $obj->problemName = $message_incident_tmp->{'title'};
             $obj->description = $message_incident_tmp->{'description'};
-            $obj->reportedDate  = new DateTime();
+            $obj->reportedDate  = $dateTime;
             $obj->createdAt = $message_incident_tmp->{'created_at'};
             $obj->dueDate = null;
             if (count($message_acknowledgements_tmp) > 0) {
