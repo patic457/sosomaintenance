@@ -24,6 +24,14 @@ function convertDateTime($datetime)
     return $d;
 }
 
+function checkStatusTicket($conn, String $table, Object $obj)
+{
+    $sql = "SELECT * FROM " . $table . " WHERE id = $obj->id";
+    $result = mysqli_query($conn, $sql);
+    $num = mysqli_num_rows($result);
+    return intval($num);
+}
+
 function adaptorPagerduty($conn, $table, $last_id)
 {
     $dateTime = date('Y-m-d H:i:s');
@@ -69,7 +77,7 @@ function adaptorPagerduty($conn, $table, $last_id)
     return $obj;
 }
 
-function insertInTicket($conn, String $table, Object $obj)
+function insertTicket($conn, String $table, Object $obj)
 {
     $hookBy = "PagerDuty";
     $val = "('$obj->id','$obj->status','$obj->problemCategoryName','$obj->criticalityName','$obj->problemName','$obj->description','$obj->dueDate','$hookBy','$hookBy','$obj->createdAt','$obj->updatedAt');";
@@ -79,6 +87,13 @@ function insertInTicket($conn, String $table, Object $obj)
     return  json_encode('{"res": ' . $lastId . '}');
 }
 
+function updateTicket($conn, String $table, Object $obj)
+{
+    if ($obj->status != "triggered") {
+        $sql = "UPDATE " . $table . " SET status='$obj->status' WHERE id='$obj->id'";
+        mysqli_query($conn, $sql);
+    }
+}
 
 
 $servername = "iu51mf0q32fkhfpl.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
@@ -93,10 +108,15 @@ if ($conn->connect_error) {
 }
 
 $last_id = createWebhook($conn, $table);
-
 $dataPagerduty = adaptorPagerduty($conn, $table, $last_id);
-
-$res = insertInTicket($conn, $tableTicket, $dataPagerduty);
+$checkStatusTicket = checkStatusTicket($conn, $tableTicket,  $dataPagerduty);
+if ($checkStatusTicket > 0) {
+    //UPDATE
+    $res = updateTicket($conn, $tableTicket, $dataPagerduty);
+} else {
+    //CREATE
+    $res = insertTicket($conn, $tableTicket, $dataPagerduty);
+}
 
 header("Content-Type: application/json");
 echo $res;
