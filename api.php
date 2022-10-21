@@ -104,7 +104,7 @@ function updateTicket($conn, String $table, Object $obj)
     }
 
     $sql = $sql_tbl . $sql_status . $sql_updateAt . $sql_if . $sql_where;
-    echo $sql;
+    // echo $sql;
     mysqli_query($conn, $sql);
 }
 
@@ -128,7 +128,9 @@ if ($checkStatusTicket > 0) {
     $res = updateTicket($conn, $tableTicket, $dataPagerduty);
 } else {
     //CREATE
-    $res = insertTicket($conn, $tableTicket, $dataPagerduty);
+    $incident_event = $dataPagerduty->incident_event;
+    if($incident_event=="incident.trigger"){
+    $res = insertTicket($conn, $tableTicket, $dataPagerduty);}
 }
 
 header("Content-Type: application/json");
