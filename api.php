@@ -41,7 +41,7 @@ function adaptorPagerduty($conn, $table)
             $obj->problemName = $message_incident_tmp->{'title'};
             $obj->description = $message_incident_tmp->{'description'};
             $obj->reportedDate  = new DateTime();
-            $obj->dueDate = $message_acknowledgements_tmp->{'at'};
+            $obj->dueDate = count($message_acknowledgements_tmp) != 0 ? $message_acknowledgements_tmp->{'at'} : null;
             $obj->createdAt = $message_incident_tmp->{'created_at'};
 
             $obj->notification_status = intval($fetch['notification_status']);
@@ -55,7 +55,7 @@ function adaptorPagerduty($conn, $table)
 function insertInTicket($conn, $table, array $dataPagerduty)
 {
     foreach ($dataPagerduty as $obj) {
-        $sql = "INSERT INTO $table (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdAt ) VALUES ($obj->id,$obj->status,$obj->problemCategoryName,$obj->problemName,$obj->description,$obj->dueDate,$obj->createdAt );";
+        $sql = "INSERT INTO $table (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdAt ) VALUES ($obj->id,$obj->status,$obj->problemCategoryName,$obj->criticalityName,$obj->problemName,$obj->description,$obj->dueDate,$obj->createdAt );";
         mysqli_query($conn, $sql);
     }
 }
