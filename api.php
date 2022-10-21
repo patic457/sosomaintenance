@@ -129,8 +129,9 @@ if ($checkStatusTicket > 0) {
 } else {
     //CREATE
     $incident_event = $dataPagerduty->incident_event;
-    if($incident_event=="incident.trigger"){
-    $res = insertTicket($conn, $tableTicket, $dataPagerduty);}
+    if ($incident_event == "incident.trigger") {
+        $res = insertTicket($conn, $tableTicket, $dataPagerduty);
+    }
 }
 
 header("Content-Type: application/json");
