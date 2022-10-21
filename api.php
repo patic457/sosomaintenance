@@ -48,20 +48,20 @@ function adaptorPagerduty($conn, $table, $last_id)
                 $obj->dueDate = $message_acknowledgements_tmp[0]->{'at'};
             }
 
-            // $obj->notification_status = intval($fetch['notification_status']);
-            // $obj->messagesLogs = $jsondecode_tmp;
-            array_push($data, $obj);
+            $obj->notification_status = intval($fetch['notification_status']);
+            $obj->messagesLogs = $jsondecode_tmp;
+            // array_push($data, $obj);
         }
     }
 
-    return $data;
+    return $obj;
 }
 
-function insertInTicket($conn, $table, array $dataPagerduty)
+function insertInTicket($conn, String $table, Object $dataPagerduty)
 {
     foreach ($dataPagerduty as $obj) {
         $sql = "INSERT INTO $table (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdAt ) VALUES ($obj->id,$obj->status,$obj->problemCategoryName,$obj->criticalityName,$obj->problemName,$obj->description,$obj->dueDate,$obj->createdAt );";
-        // echo $sql;
+        echo $sql;
         mysqli_query($conn, $sql);
     }
 }
@@ -83,8 +83,6 @@ $last_id = createWebhook($conn, $table);
 
 $dataPagerduty = adaptorPagerduty($conn, $table, $last_id);
 
-var_dump($dataPagerduty);
-
-// insertInTicket($conn, $tableTicket, $dataPagerduty);
+insertInTicket($conn, $tableTicket, $dataPagerduty);
 
 $conn->close();
