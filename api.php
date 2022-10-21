@@ -53,7 +53,7 @@ function adaptorPagerduty($conn, $table, $last_id)
             array_push($data, $obj);
         }
     }
-     var_dump($data);
+
     return $data;
 }
 
@@ -83,6 +83,8 @@ $last_id = createWebhook($conn, $table);
 
 $dataPagerduty = adaptorPagerduty($conn, $table, $last_id);
 
-insertInTicket($conn, $tableTicket, $dataPagerduty);
+echo $dataPagerduty;
+
+// insertInTicket($conn, $tableTicket, $dataPagerduty);
 
 $conn->close();
