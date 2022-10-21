@@ -39,7 +39,6 @@ function adaptorPagerduty($conn, $table, $last_id)
             $obj->problemCategoryName = $message_service_tmp->name;
             $obj->updatedAt = new DateTime();
             $obj->criticalityName = $message_priority_tmp->name;
-            var_dump($obj->criticalityName);
             $obj->problemName = $message_incident_tmp->{'title'};
             $obj->description = $message_incident_tmp->{'description'};
             $obj->reportedDate  = new DateTime();
@@ -54,6 +53,7 @@ function adaptorPagerduty($conn, $table, $last_id)
             array_push($data, $obj);
         }
     }
+     var_dump($data);
     return $data;
 }
 
@@ -61,7 +61,7 @@ function insertInTicket($conn, $table, array $dataPagerduty)
 {
     foreach ($dataPagerduty as $obj) {
         $sql = "INSERT INTO $table (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdAt ) VALUES ($obj->id,$obj->status,$obj->problemCategoryName,$obj->criticalityName,$obj->problemName,$obj->description,$obj->dueDate,$obj->createdAt );";
-        echo $sql;
+        // echo $sql;
         mysqli_query($conn, $sql);
     }
 }
