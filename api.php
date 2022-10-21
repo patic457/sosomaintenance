@@ -59,11 +59,12 @@ function adaptorPagerduty($conn, $table, $last_id)
 
 function insertInTicket($conn, String $table, Object $dataPagerduty)
 {
-    foreach ($dataPagerduty as $obj) {
-        $sql = "INSERT INTO $table (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdAt ) VALUES ($obj->id,$obj->status,$obj->problemCategoryName,$obj->criticalityName,$obj->problemName,$obj->description,$obj->dueDate,$obj->createdAt );";
-        echo $sql;
-        mysqli_query($conn, $sql);
-    }
+    echo $dataPagerduty;
+    // foreach ($dataPagerduty as $obj) {
+    //     $sql = "INSERT INTO " . $table . " (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdAt ) VALUES ($obj->id,$obj->status,$obj->problemCategoryName,$obj->criticalityName,$obj->problemName,$obj->description,$obj->dueDate,$obj->createdAt );";
+    //     echo $sql;
+    //     mysqli_query($conn, $sql);
+    // }
 }
 
 
