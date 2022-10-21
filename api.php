@@ -38,14 +38,18 @@ function adaptorPagerduty($conn, $table)
             $obj->problemCategoryName = $message_service_tmp->name;
             $obj->updatedAt = new DateTime();
             $obj->criticalityName = $message_priority_tmp->name;
+            var_dump($obj->criticalityName);
             $obj->problemName = $message_incident_tmp->{'title'};
             $obj->description = $message_incident_tmp->{'description'};
             $obj->reportedDate  = new DateTime();
-            $obj->dueDate = count($message_acknowledgements_tmp) != 0 ? $message_acknowledgements_tmp->{'at'} : null;
             $obj->createdAt = $message_incident_tmp->{'created_at'};
+            $obj->dueDate = null;
+            if (count($message_acknowledgements_tmp) > 0) {
+                $obj->dueDate = $message_acknowledgements_tmp->{'at'};
+            }
 
-            $obj->notification_status = intval($fetch['notification_status']);
-            $obj->messagesLogs = $jsondecode_tmp;
+            // $obj->notification_status = intval($fetch['notification_status']);
+            // $obj->messagesLogs = $jsondecode_tmp;
             array_push($data, $obj);
         }
     }
@@ -56,7 +60,7 @@ function insertInTicket($conn, $table, array $dataPagerduty)
 {
     foreach ($dataPagerduty as $obj) {
         $sql = "INSERT INTO $table (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdAt ) VALUES ($obj->id,$obj->status,$obj->problemCategoryName,$obj->criticalityName,$obj->problemName,$obj->description,$obj->dueDate,$obj->createdAt );";
-       echo $sql;
+        echo $sql;
         mysqli_query($conn, $sql);
     }
 }
