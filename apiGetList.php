@@ -44,21 +44,21 @@ for ($q = 0; $num > $q; $q++) {
     if ($jsondecode_tmp != null) {
         $obj = new stdClass();
         if ($num == 1) {
-            $obj->messagesLogs = $jsondecode_tmp;
+            $obj->messages = $jsondecode_tmp;
         } else {
             $message_tmp = $jsondecode_tmp->{'messages'};
-            $message_incident_tmp = $message_tmp[0]->{'incident'};
+            // $message_incident_tmp = $message_tmp[0]->{'incident'};
 
 
-            $obj->incident_event = $message_tmp[0]->{'event'};
-            $obj->incident_status = $message_incident_tmp->status;
-            $obj->incident_number = intval($message_incident_tmp->{'incident_number'});
-            $obj->incident_title = $message_incident_tmp->{'title'};
-            $obj->incident_description = $message_incident_tmp->{'description'};
-            $obj->incident_created_at = $message_incident_tmp->{'created_at'};
+            // $obj->incident_event = $message_tmp[0]->{'event'};
+            // $obj->incident_status = $message_incident_tmp->status;
+            // $obj->incident_number = intval($message_incident_tmp->{'incident_number'});
+            // $obj->incident_title = $message_incident_tmp->{'title'};
+            // $obj->incident_description = $message_incident_tmp->{'description'};
+            // $obj->incident_created_at = $message_incident_tmp->{'created_at'};
 
-            $obj->notification_status = intval($fetch['notification_status']);
-            $obj->messagesLogs = $jsondecode_tmp;
+            // $obj->notification_status = intval($fetch['notification_status']);
+            $obj->messages = $jsondecode_tmp;
         }
 
 
@@ -69,7 +69,7 @@ for ($q = 0; $num > $q; $q++) {
 // $res = array(array_filter($data, fn ($value) => !is_null($value)));
 
 if ($num == 1) {
-    $res = $data[0]->messagesLogs;
+    $res = $data;
 } else {
     $res = $data;
 }
