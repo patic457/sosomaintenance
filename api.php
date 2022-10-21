@@ -100,12 +100,12 @@ function updateTicket($conn, String $table, Object $obj)
             $sql_if = $sql_duedate;
         }
     } else if ($obj->status == "assign") {
+    } else if ($obj->status == "annotate") {
     } else if ($obj->status == "resolve") {
     }
 
-    //annotate
     $sql = $sql_tbl . $sql_status . $sql_updateAt . $sql_if . $sql_where;
-
+    echo $sql;
     mysqli_query($conn, $sql);
 }
 
