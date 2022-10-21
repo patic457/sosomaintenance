@@ -69,9 +69,9 @@ for ($q = 0; $num > $q; $q++) {
 // $res = array(array_filter($data, fn ($value) => !is_null($value)));
 
 if ($num == 1) {
-    $res = $data;
+    $res = $data[0];
 } else {
-    $res = $data;
+    $res = $data[0];
 }
 
 header("Content-Type: application/json");
