@@ -45,7 +45,7 @@ function adaptorPagerduty($conn, $table, $last_id)
             $obj->createdAt = $message_incident_tmp->{'created_at'};
             $obj->dueDate = null;
             if (count($message_acknowledgements_tmp) > 0) {
-                $obj->dueDate = $message_acknowledgements_tmp->{'at'};
+                $obj->dueDate = $message_acknowledgements_tmp[0]->{'at'};
             }
 
             // $obj->notification_status = intval($fetch['notification_status']);
