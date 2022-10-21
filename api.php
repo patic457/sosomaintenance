@@ -16,9 +16,16 @@ function createWebhook($conn, $table)
     }
 }
 
+function convertDateTime($datetime)
+{
+    $d  = date("Y-m-d H:i:s", strtotime($datetime));
+    return $d;
+}
+
 function adaptorPagerduty($conn, $table, $last_id)
 {
     $dateTime = date('Y-m-d H:i:s');
+
     $sql = "SELECT * FROM " . $table . " WHERE id = $last_id";
     $result = mysqli_query($conn, $sql);
     $data = [];
@@ -43,10 +50,12 @@ function adaptorPagerduty($conn, $table, $last_id)
             $obj->problemName = $message_incident_tmp->{'title'};
             $obj->description = $message_incident_tmp->{'description'};
             $obj->reportedDate  = $dateTime;
-            $obj->createdAt = $message_incident_tmp->{'created_at'};
+            $convert_created_at = convertDateTime($message_incident_tmp->{'created_at'});
+            $obj->createdAt = $convert_created_at;
             $obj->dueDate = null;
             if (count($message_acknowledgements_tmp) > 0) {
-                $obj->dueDate = $message_acknowledgements_tmp[0]->{'at'};
+                $convert_at = convertDateTime($message_acknowledgements_tmp[0]->{'at'});
+                $obj->dueDate = $convert_at;
             }
 
             $obj->notification_status = intval($fetch['notification_status']);
