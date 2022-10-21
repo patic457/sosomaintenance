@@ -57,7 +57,7 @@ function adaptorPagerduty($conn, $table, $last_id)
     return $obj;
 }
 
-function insertInTicket($conn, String $table, Object $dataPagerduty)
+function insertInTicket($conn, String $table, Object $obj)
 {
     $sql = "INSERT INTO " . $table . " (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdAt ) VALUES ($obj->id,$obj->status,$obj->problemCategoryName,$obj->criticalityName,$obj->problemName,$obj->description,$obj->dueDate,$obj->createdAt );";
     echo $sql;
