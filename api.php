@@ -64,6 +64,7 @@ function adaptorPagerduty($conn, $table, $last_id)
             $obj->createdAt = $convert_created_at;
             $obj->dueDate = null;
             if (count($message_acknowledgements_tmp) > 0) {
+                echo $message_acknowledgements_tmp[0]->{'at'};
                 $convert_at = convertDateTime($message_acknowledgements_tmp[0]->{'at'});
                 $obj->dueDate = $convert_at;
             }
@@ -105,7 +106,7 @@ function updateTicket($conn, String $table, Object $obj)
     }
 
     $sql = $sql_tbl . $sql_status . $sql_updateAt . $sql_if . $sql_where;
-    echo $sql;
+    // echo $sql;
     mysqli_query($conn, $sql);
 }
 
