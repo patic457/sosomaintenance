@@ -89,10 +89,20 @@ function insertTicket($conn, String $table, Object $obj)
 
 function updateTicket($conn, String $table, Object $obj)
 {
-    if ($obj->status != "triggered") {
-        $sql = "UPDATE " . $table . " SET status='$obj->status' WHERE id='$obj->id'";
-        mysqli_query($conn, $sql);
+    $sql_tbl =  "UPDATE $table SET ";
+    $sql_where = "WHERE id='$obj->id'";
+    $sql_updateAt = "updatedAt='$obj->updatedAt' ";
+    $sql_duedate = "dueDate='$obj->dueDate' ";
+    $sql_status = "status='$obj->status' ";
+    if ($obj->status == "acknowledgement") {
+        if ($obj->dueDate != null) {
+            $sql_if = $sql_duedate;
+        }
+    } else if ($obj->status == "resolve") {
     }
+    $sql = $sql_tbl . $sql_status . $sql_updateAt . $sql_if . $sql_where;
+
+    mysqli_query($conn, $sql);
 }
 
 
