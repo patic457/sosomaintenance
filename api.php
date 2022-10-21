@@ -12,12 +12,13 @@ function createWebhook($conn, $table)
     if (isset($json_string) || $json_string == '') {
         $sql = "INSERT INTO $table (id, list) VALUES(NULL, '$json_string');";
         mysqli_query($conn, $sql);
+        return mysqli_insert_id($conn);
     }
 }
 
-function adaptorPagerduty($conn, $table)
+function adaptorPagerduty($conn, $table, $last_id)
 {
-    $sql = "SELECT * FROM " . $table;
+    $sql = "SELECT * FROM " . $table . " WHERE id = $last_id";
     $result = mysqli_query($conn, $sql);
     $data = [];
     $num = mysqli_num_rows($result);
@@ -78,9 +79,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error . "<hr>");
 }
 
-createWebhook($conn, $table);
+$last_id = createWebhook($conn, $table);
 
-$dataPagerduty = adaptorPagerduty($conn, $table);
+$dataPagerduty = adaptorPagerduty($conn, $table, $last_id);
 
 insertInTicket($conn, $tableTicket, $dataPagerduty);
 
