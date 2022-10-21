@@ -72,7 +72,7 @@ function adaptorPagerduty($conn, $table, $last_id)
 function insertInTicket($conn, String $table, Object $obj)
 {
     $hookBy = "PagerDuty";
-    $val = "('$obj->id','$obj->status','$obj->problemCategoryName','$obj->criticalityName','$obj->problemName','$obj->description','$obj->dueDate',$hookBy,$hookBy,'$obj->createdAt','$obj->updatedAt');";
+    $val = "('$obj->id','$obj->status','$obj->problemCategoryName','$obj->criticalityName','$obj->problemName','$obj->description','$obj->dueDate','$hookBy','$hookBy','$obj->createdAt','$obj->updatedAt');";
     $sql = "INSERT INTO " . $table . " (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdBy,updatedBy,createdAt,updatedAt) VALUES " . $val;
     mysqli_query($conn, $sql);
     $lastId = mysqli_insert_id($conn);
