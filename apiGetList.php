@@ -34,7 +34,7 @@ $opts = array(
 );
 
 $table = "g3uky2wss1pv3jyv.webhooks";
-$sql = "SELECT * FROM " . $table;
+$sql = "SELECT * FROM " . $table . "ORDER BY id DESC LIMIT 1";
 $result = mysqli_query($conn, $sql);
 $data = [];
 $num = mysqli_num_rows($result);
@@ -42,25 +42,38 @@ for ($q = 0; $num > $q; $q++) {
     $fetch = mysqli_fetch_array($result);
     $jsondecode_tmp =  json_decode($fetch[1]);
     if ($jsondecode_tmp != null) {
-        $message_tmp = $jsondecode_tmp->{'messages'};
-        $message_incident_tmp = $message_tmp[0]->{'incident'};
-
         $obj = new stdClass();
-        $obj->incident_event = $message_tmp[0]->{'event'};
-        $obj->incident_status = $message_incident_tmp->status;
-        $obj->incident_number = intval($message_incident_tmp->{'incident_number'});
-        $obj->incident_title = $message_incident_tmp->{'title'};
-        $obj->incident_description = $message_incident_tmp->{'description'};
-        $obj->incident_created_at = $message_incident_tmp->{'created_at'};
 
-        $obj->notification_status = intval($fetch['notification_status']);
-        $obj->messagesLogs = $jsondecode_tmp;
+        if ($num == 1) {
+            $data = $jsondecode_tmp;
+        } else {
+            $message_tmp = $jsondecode_tmp->{'messages'};
+            $message_incident_tmp = $message_tmp[0]->{'incident'};
+
+
+            $obj->incident_event = $message_tmp[0]->{'event'};
+            $obj->incident_status = $message_incident_tmp->status;
+            $obj->incident_number = intval($message_incident_tmp->{'incident_number'});
+            $obj->incident_title = $message_incident_tmp->{'title'};
+            $obj->incident_description = $message_incident_tmp->{'description'};
+            $obj->incident_created_at = $message_incident_tmp->{'created_at'};
+
+            $obj->notification_status = intval($fetch['notification_status']);
+            $obj->messagesLogs = $jsondecode_tmp;
+        }
+
+
         array_push($data, $obj);
     }
 }
 
 // $res = array(array_filter($data, fn ($value) => !is_null($value)));
-$res = $data;
+
+if ($num == 1) {
+    $res = $data[0];
+} else {
+    $res = $data;
+}
 
 header("Content-Type: application/json");
 echo json_encode($res);
