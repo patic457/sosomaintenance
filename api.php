@@ -50,6 +50,7 @@ function adaptorPagerduty($conn, $table, $last_id)
             $message_service_tmp = $message_incident_tmp->{'service'};
             $message_priority_tmp = $message_incident_tmp->{'priority'};
             $message_acknowledgements_tmp = $message_incident_tmp->{'acknowledgements'};
+            $message_teams_tmp = $message_incident_tmp->{'teams'};
 
             $obj = new stdClass();
             $obj->incident_event = $message_tmp[0]->{'event'};
@@ -60,15 +61,23 @@ function adaptorPagerduty($conn, $table, $last_id)
             $obj->criticalityName = $message_priority_tmp->name;
             $obj->problemName = $message_incident_tmp->{'title'};
             $obj->description = $message_incident_tmp->{'description'};
+            $obj->srcChannel = $message_service_tmp->{'summary'};
+            $obj->channelId  = $message_service_tmp->{'summary'};
             $obj->reportedDate  = $dateTime;
             $convert_created_at = convertDateTime($message_incident_tmp->{'created_at'});
             $obj->createdAt = $convert_created_at;
+            $obj->teamId = null;
+            if (count($message_teams_tmp) > 0) {
+                $obj->teamId = $message_teams_tmp[0]->{'summary'};
+            }
             $obj->dueDate = null;
             if (count($message_acknowledgements_tmp) > 0) {
                 $convert_at = convertDateTime($message_acknowledgements_tmp[0]->{'at'});
                 $obj->dueDate = $convert_at;
             }
 
+            $obj->createdBy = $message_tmp[0]->{'log_entries'}[0]->{'agent'}->{'summary'};
+            $obj->updatedBy = $obj->createdBy;
             $obj->notification_status = intval($fetch['notification_status']);
             $obj->messagesLogs = $jsondecode_tmp;
             // array_push($data, $obj);
@@ -80,9 +89,9 @@ function adaptorPagerduty($conn, $table, $last_id)
 
 function insertTicket($conn, String $table, Object $obj)
 {
-    $hookBy = "PagerDuty";
-    $val = "('$obj->id','$obj->status','$obj->problemCategoryName','$obj->criticalityName','$obj->problemName','$obj->description','$obj->dueDate','$hookBy','$hookBy','$obj->createdAt','$obj->updatedAt');";
-    $sql = "INSERT INTO " . $table . " (id,status,problemCategoryName,criticalityName,problemName,description,dueDate,createdBy,updatedBy,createdAt,updatedAt) VALUES " . $val;
+    $hookBy = $obj->createdBy;
+    $val = "('$obj->id','$obj->status','$obj->srcChannel','$obj->problemCategoryName','$obj->criticalityName','$obj->problemName','$obj->description','$obj->teamId','$obj->channelId','$obj->dueDate','$hookBy','$hookBy','$obj->createdAt','$obj->updatedAt');";
+    $sql = "INSERT INTO " . $table . " (id,status,srcChannel,problemCategoryName,criticalityName,problemName,description,teamId,channelId,dueDate,createdBy,updatedBy,createdAt,updatedAt) VALUES " . $val;
     mysqli_query($conn, $sql);
     $lastId = mysqli_insert_id($conn);
     return  json_encode('{"res": ' . $lastId . '}');
@@ -91,10 +100,11 @@ function insertTicket($conn, String $table, Object $obj)
 function updateTicket($conn, String $table, Object $obj)
 {
     $incident_event = $obj->incident_event;
-    echo $incident_event;
+
     $sql_if = '';
     $sql_tbl =  "UPDATE $table SET ";
     $sql_where = "WHERE id='$obj->id'";
+    $sql_updatedBy = ",updatedBy='$obj->updatedBy' ";
     $sql_updateAt = ",updatedAt='$obj->updatedAt' ";
     $sql_duedate = ",dueDate='$obj->dueDate' ";
     $sql_status = "status='$obj->status' ";
@@ -105,7 +115,7 @@ function updateTicket($conn, String $table, Object $obj)
     } else if ($incident_event == "incident.resolve") {
     }
 
-    $sql = $sql_tbl . $sql_status . $sql_updateAt . $sql_if . $sql_where;
+    $sql = $sql_tbl . $sql_status . $sql_updateAt . $sql_updatedBy . $sql_if . $sql_where;
     // echo $sql;
     mysqli_query($conn, $sql);
 }
