@@ -8,13 +8,14 @@ date_default_timezone_set("Asia/Bangkok");
 
 function createWebhook($conn, $table)
 {
+    $res = 0;
     $data = json_decode(file_get_contents('php://input'), true);
     $json_string = json_encode($data);
-
-    if (isset($json_string) || $json_string == '') {
+    if (isset($json_string) || $json_string == '' || $json_string == null) {
         $sql = "INSERT INTO $table (id, list) VALUES(NULL, '$json_string');";
         mysqli_query($conn, $sql);
-        return mysqli_insert_id($conn);
+        $res = mysqli_insert_id($conn);
+        return $res;
     }
 }
 
@@ -120,21 +121,25 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error . "<hr>");
 }
 
+$res_json = '{}';
 $last_id = createWebhook($conn, $table);
-$dataPagerduty = adaptorPagerduty($conn, $table, $last_id);
-$checkStatusTicket = checkStatusTicket($conn, $tableTicket,  $dataPagerduty);
-if ($checkStatusTicket > 0) {
-    //UPDATE
-    $res = updateTicket($conn, $tableTicket, $dataPagerduty);
-} else {
-    //CREATE
-    $incident_event = $dataPagerduty->incident_event;
-    if ($incident_event == "incident.trigger") {
-        $res = insertTicket($conn, $tableTicket, $dataPagerduty);
+if ($last_id != 0) {
+    $dataPagerduty = adaptorPagerduty($conn, $table, $last_id);
+    $checkStatusTicket = checkStatusTicket($conn, $tableTicket,  $dataPagerduty);
+    if ($checkStatusTicket > 0) {
+        //UPDATE
+        $res_json = updateTicket($conn, $tableTicket, $dataPagerduty);
+    } else {
+        //CREATE
+        $incident_event = $dataPagerduty->incident_event;
+        if ($incident_event == "incident.trigger") {
+            $res_json = insertTicket($conn, $tableTicket, $dataPagerduty);
+        }
     }
 }
 
 header("Content-Type: application/json");
-echo $res;
+echo json_encode($res_json);
+
 
 $conn->close();
