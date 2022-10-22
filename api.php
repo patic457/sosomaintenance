@@ -91,6 +91,7 @@ function insertTicket($conn, String $table, Object $obj)
 function updateTicket($conn, String $table, Object $obj)
 {
     $incident_event = $obj->incident_event;
+    echo $incident_event;
     $sql_if = '';
     $sql_tbl =  "UPDATE $table SET ";
     $sql_where = "WHERE id='$obj->id'";
@@ -139,7 +140,7 @@ if ($last_id != 0) {
 }
 
 header("Content-Type: application/json");
-echo $res_json;
+// echo $res_json;
 
 
 $conn->close();
