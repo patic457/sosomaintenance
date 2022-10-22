@@ -139,7 +139,7 @@ if ($last_id != 0) {
 }
 
 header("Content-Type: application/json");
-echo json_encode($res_json);
+echo $res_json;
 
 
 $conn->close();
