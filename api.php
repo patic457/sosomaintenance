@@ -51,6 +51,10 @@ function adaptorPagerduty($conn, $table, $last_id)
             $message_priority_tmp = $message_incident_tmp->{'priority'};
             $message_acknowledgements_tmp = $message_incident_tmp->{'acknowledgements'};
             $message_teams_tmp = $message_incident_tmp->{'teams'};
+            $message_log_entries_tmp = $message_tmp[0]->{'log_entries'}[0];
+            $message_log_entries_agent_tmp = $message_log_entries_tmp->{'agent'};
+            $message_log_entries_channel_tmp = $message_log_entries_tmp->{'channel'};
+
 
             $obj = new stdClass();
             $obj->incident_event = $message_tmp[0]->{'event'};
@@ -60,12 +64,13 @@ function adaptorPagerduty($conn, $table, $last_id)
             $obj->updatedAt = $dateTime;
             $obj->criticalityName = $message_priority_tmp->name;
             $obj->problemName = $message_incident_tmp->{'title'};
-            $obj->description = $message_incident_tmp->{'description'};
+
             $obj->srcChannel = $message_service_tmp->{'summary'};
             $obj->channelId  = $message_service_tmp->{'summary'};
             $obj->reportedDate  = $dateTime;
             $convert_created_at = convertDateTime($message_incident_tmp->{'created_at'});
             $obj->createdAt = $convert_created_at;
+
             $obj->teamId = null;
             if (count($message_teams_tmp) > 0) {
                 $obj->teamId = $message_teams_tmp[0]->{'summary'};
@@ -75,8 +80,12 @@ function adaptorPagerduty($conn, $table, $last_id)
                 $convert_at = convertDateTime($message_acknowledgements_tmp[0]->{'at'});
                 $obj->dueDate = $convert_at;
             }
+            $obj->description = null;
+            if (isset($message_log_entries_channel_tmp->{'details'})) {
+                $obj->description = $message_log_entries_channel_tmp->{'details'};
+            }
 
-            $obj->createdBy = $message_tmp[0]->{'log_entries'}[0]->{'agent'}->{'summary'};
+            $obj->createdBy = $message_log_entries_agent_tmp->{'summary'};
             $obj->updatedBy = $obj->createdBy;
             $obj->notification_status = intval($fetch['notification_status']);
             $obj->messagesLogs = $jsondecode_tmp;
