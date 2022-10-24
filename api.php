@@ -10,7 +10,8 @@ function createWebhook($conn, $table)
 {
     $res = 0;
     $data = json_decode(file_get_contents('php://input'), true);
-    $json_string = json_encode($data);
+    $data_rep = preg_replace("/\"/", "'", $data);
+    $json_string = json_encode($data_rep);
     if (isset($json_string) || $json_string == '' || $json_string == null) {
         $sql = "INSERT INTO $table (id, list) VALUES(NULL, '$json_string');";
         mysqli_query($conn, $sql);
